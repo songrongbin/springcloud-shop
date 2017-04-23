@@ -11,18 +11,6 @@
 
     <artifactId>com.bins.netflixhystrix</artifactId>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-config</artifactId>
-                <version>1.0.4.RELEASE</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <dependencies>
         <!--<dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -35,5 +23,9 @@
             <artifactId>spring-cloud-starter-hystrix-dashboard</artifactId>
         </dependency>-->
     </dependencies>
+
+
+
+
 
 </project>
