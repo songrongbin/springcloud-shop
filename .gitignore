@@ -1,1 +1,6 @@
 .idea/
+config-client/com.bins.configclient.iml
+config-client/target/
+config-server/com.bins.configserver.iml
+eureka-client/com.bins.eurekaclient.iml
+eureka-server/target/

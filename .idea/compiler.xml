@@ -6,11 +6,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="com.bins.configclient" />
+        <module name="com.bins.configserver" />
+        <module name="com.bins.eurekaclient" />
         <module name="com.bins.eurekaserver" />
         <module name="netflix-hystrix" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="com.bins.configclient" target="1.7" />
+      <module name="com.bins.configserver" target="1.7" />
+      <module name="com.bins.eurekaclient" target="1.7" />
       <module name="com.bins.eurekaserver" target="1.7" />
       <module name="config-client" target="1.7" />
       <module name="config-server" target="1.7" />

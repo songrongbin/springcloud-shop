@@ -12,11 +12,11 @@
     <artifactId>com.bins.eurekaserver</artifactId>
 
     <dependencies>
-
-        <!--<dependency>
+        <!--暴露各种指标-->
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>-->
+        </dependency>
 
         <!--增加eureka-server的依赖-->
         <dependency>
@@ -31,7 +31,7 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>-->
 
-        <!--暴露各种指标-->
+
         <!--<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>

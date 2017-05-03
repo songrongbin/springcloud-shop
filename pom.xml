@@ -17,12 +17,15 @@
     <version>1.0.0-SNAPSHOT</version>
     <modules>
         <!--<module>springcloudconfig</module>
-        <module>config-server</module>
-        <module>config-client</module>
 
-        <module>eureka-client</module>
+
+
+
         <module>netflix-hystrix</module>-->
+        <module>config-server</module>
         <module>eureka-server</module>
+        <module>eureka-client</module>
+        <module>config-client</module>
     </modules>
     <packaging>pom</packaging>
 
