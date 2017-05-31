@@ -26,6 +26,10 @@
         <module>eureka-server</module>
         <module>eureka-client</module>
         <module>config-client</module>
+        <module>sentence</module>
+        <module>eureka-trade</module>
+        <module>eureka-order</module>
+        <module>eureka-user</module>
     </modules>
     <packaging>pom</packaging>
 

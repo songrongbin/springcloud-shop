@@ -10,7 +10,11 @@
         <module name="com.bins.configserver" />
         <module name="com.bins.eurekaclient" />
         <module name="com.bins.eurekaserver" />
+        <module name="eureka-order" />
+        <module name="eureka-trade" />
+        <module name="eureka-user" />
         <module name="netflix-hystrix" />
+        <module name="sentence" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -21,8 +25,12 @@
       <module name="config-client" target="1.7" />
       <module name="config-server" target="1.7" />
       <module name="eureka-client" target="1.7" />
+      <module name="eureka-order" target="1.7" />
       <module name="eureka-server" target="1.7" />
+      <module name="eureka-trade" target="1.7" />
+      <module name="eureka-user" target="1.7" />
       <module name="netflix-hystrix" target="1.7" />
+      <module name="sentence" target="1.7" />
       <module name="springcloud" target="1.7" />
       <module name="springcloudconfig" target="1.7" />
     </bytecodeTargetLevel>
