@@ -1,11 +1,13 @@
 package com.bins.sentence.controller;
 
+import com.bins.sentence.api.TradeClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -22,6 +24,9 @@ public class SentenceController {
 
     @Autowired
     DiscoveryClient client;
+
+    @Autowired
+    private TradeClient tradeClient;
 
     @RequestMapping("/sentence")
     public String getSentence() {
@@ -42,5 +47,28 @@ public class SentenceController {
             }
         }
         return null;
+    }
+
+    @RequestMapping("/sentence")
+    public @ResponseBody
+    String getTrade() {
+        return
+                "<h3>造句:</h3><br/>" +
+                        buildSentence() + "<br/><br/>" +
+                        buildSentence() + "<br/><br/>" +
+                        buildSentence() + "<br/><br/>" +
+                        buildSentence() + "<br/><br/>" +
+                        buildSentence() + "<br/><br/>"
+                ;
+    }
+
+    public String buildSentence() {
+        String sentence = "There was a problem assembling the sentence!";
+        try{
+            sentence = tradeClient.getWord();
+        } catch ( Exception e ) {
+            System.out.println(e);
+        }
+        return sentence;
     }
 }
