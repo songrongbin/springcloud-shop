@@ -30,6 +30,7 @@
         <module>eureka-trade</module>
         <module>eureka-order</module>
         <module>eureka-user</module>
+        <module>eureka-gateway</module>
     </modules>
     <packaging>pom</packaging>
 

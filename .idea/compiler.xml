@@ -10,6 +10,7 @@
         <module name="com.bins.configserver" />
         <module name="com.bins.eurekaclient" />
         <module name="com.bins.eurekaserver" />
+        <module name="eureka-gateway" />
         <module name="eureka-order" />
         <module name="eureka-trade" />
         <module name="eureka-user" />
@@ -25,6 +26,7 @@
       <module name="config-client" target="1.7" />
       <module name="config-server" target="1.7" />
       <module name="eureka-client" target="1.7" />
+      <module name="eureka-gateway" target="1.7" />
       <module name="eureka-order" target="1.7" />
       <module name="eureka-server" target="1.7" />
       <module name="eureka-trade" target="1.7" />
