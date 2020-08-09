@@ -1,0 +1,12 @@
+server:
+  port: 8020
+
+user:
+  userServiceUrl: http://localhost:8000/
+
+info:
+  app:
+    name: @project.artifactId@
+    java:
+      source: @java.version@
+      target: @java.version@

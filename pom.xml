@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-starter-parent</artifactId>
-        <version>Brixton.SR7</version>
+        <version>Camden.SR4</version>
         <relativePath/>
     </parent>
 
@@ -16,12 +16,6 @@
     <artifactId>com.bins.springcloud</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <modules>
-        <!--<module>springcloudconfig</module>
-
-
-
-
-        <module>netflix-hystrix</module>-->
         <module>config-server</module>
         <module>eureka-server</module>
         <module>eureka-client</module>
@@ -31,13 +25,18 @@
         <module>eureka-order</module>
         <module>eureka-user</module>
         <module>eureka-gateway</module>
+        <module>eureka-feign</module>
+        <module>eureka-authenticating</module>
+        <module>eureka-user-feign</module>
+        <module>eureka-user-provider</module>
+        <module>eureka-movie</module>
     </modules>
     <packaging>pom</packaging>
 
     <properties>
         <!--设置字符编码及java版本-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.7</java.version>
+        <java.version>1.8</java.version>
     </properties>
 
     <dependencies>
@@ -62,7 +61,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Brixton.SR7</version>
+                <version>Camden.SR4</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

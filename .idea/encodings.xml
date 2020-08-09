@@ -4,12 +4,18 @@
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/config-client" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/config-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka-authenticating" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/eureka-client" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka-feign" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/eureka-gateway" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka-movie" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/eureka-order" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/eureka-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka-server-authenticating" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/eureka-trade" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/eureka-user" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka-user-feign" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka-user-provider" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/netflix-hystrix" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/sentence" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springcloudconfig" charset="UTF-8" />

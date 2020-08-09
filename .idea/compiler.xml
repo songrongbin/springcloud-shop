@@ -6,34 +6,44 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="com.bins.configclient" />
         <module name="com.bins.configserver" />
-        <module name="com.bins.eurekaclient" />
-        <module name="com.bins.eurekaserver" />
+        <module name="eureka-trade" />
+        <module name="sentence" />
+        <module name="com.bins.configclient" />
         <module name="eureka-gateway" />
         <module name="eureka-order" />
-        <module name="eureka-trade" />
         <module name="eureka-user" />
-        <module name="netflix-hystrix" />
-        <module name="sentence" />
+        <module name="com.bins.eurekaserver" />
+        <module name="eurekafeign" />
+        <module name="eureka-user-feign" />
+        <module name="eurekamovie" />
+        <module name="eureka-user-provider" />
+        <module name="eureka-authenticating" />
+        <module name="com.bins.eurekaclient" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="com.bins.configclient" target="1.7" />
-      <module name="com.bins.configserver" target="1.7" />
-      <module name="com.bins.eurekaclient" target="1.7" />
-      <module name="com.bins.eurekaserver" target="1.7" />
+      <module name="com.bins.configclient" target="1.8" />
+      <module name="com.bins.configserver" target="1.8" />
+      <module name="com.bins.eurekaclient" target="1.8" />
+      <module name="com.bins.eurekaserver" target="1.8" />
       <module name="config-client" target="1.7" />
       <module name="config-server" target="1.7" />
+      <module name="eureka-authenticating" target="1.8" />
       <module name="eureka-client" target="1.7" />
-      <module name="eureka-gateway" target="1.7" />
-      <module name="eureka-order" target="1.7" />
+      <module name="eureka-gateway" target="1.8" />
+      <module name="eureka-order" target="1.8" />
       <module name="eureka-server" target="1.7" />
-      <module name="eureka-trade" target="1.7" />
-      <module name="eureka-user" target="1.7" />
+      <module name="eureka-trade" target="1.8" />
+      <module name="eureka-user" target="1.8" />
+      <module name="eureka-user-feign" target="1.8" />
+      <module name="eureka-user-provider" target="1.8" />
+      <module name="eurekafeign" target="1.8" />
+      <module name="eurekamovie" target="1.8" />
+      <module name="eurekaserverauthenticating" target="1.8" />
       <module name="netflix-hystrix" target="1.7" />
-      <module name="sentence" target="1.7" />
-      <module name="springcloud" target="1.7" />
+      <module name="sentence" target="1.8" />
+      <module name="springcloud" target="1.8" />
       <module name="springcloudconfig" target="1.7" />
     </bytecodeTargetLevel>
   </component>

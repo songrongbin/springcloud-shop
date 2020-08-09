@@ -1,0 +1,31 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: userprovider
+  jpa:
+    generate-ddl: false
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  datasource:
+    platform: h2
+    schema: classpath:schema.sql
+    data: classpath:data.sql
+eureka:
+  instance:
+    appname: userprovider
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka/
+
+ribbon:
+  eureka:
+    enabled: true
+
+logging:
+  level:
+    root: INFO
+    org.hibernate: INFO

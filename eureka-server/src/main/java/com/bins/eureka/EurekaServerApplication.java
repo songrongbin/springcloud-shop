@@ -14,7 +14,6 @@ public class EurekaServerApplication {
 
     public static void main(String[] args) {
         //下面两行代码都可以用来启动
-        // SpringApplication.run(ServerApplication.class, args);
         new SpringApplicationBuilder(EurekaServerApplication.class).web(true).run(args);
     }
 }
