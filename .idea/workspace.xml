@@ -75,7 +75,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.MovieApplication">
+  <component name="RunManager" selected="Spring Boot.GatewayApplication">
     <configuration default="true" type="AndroidRunConfigurationType">
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
@@ -465,10 +465,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MovieApplication" />
-        <item itemvalue="Spring Boot.UserApplication" />
         <item itemvalue="Spring Boot.UserProviderApplication" />
         <item itemvalue="Spring Boot.EurekaServerApplication" />
+        <item itemvalue="Application.MovieApplication" />
+        <item itemvalue="Spring Boot.UserApplication" />
         <item itemvalue="Spring Boot.UserFeignApplication" />
       </list>
     </recent_temporary>
@@ -538,7 +538,11 @@
       <workItem from="1596969967549" duration="1614000" />
       <workItem from="1596972017923" duration="1171000" />
       <workItem from="1596973843493" duration="1440000" />
-      <workItem from="1596976125813" duration="606000" />
+      <workItem from="1596976125813" duration="935000" />
+      <workItem from="1596981230667" duration="640000" />
+      <workItem from="1596984194613" duration="1403000" />
+      <workItem from="1596986120975" duration="661000" />
+      <workItem from="1596987366274" duration="455000" />
     </task>
     <servers />
   </component>

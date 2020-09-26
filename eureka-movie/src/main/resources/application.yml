@@ -1,6 +1,8 @@
 server:
   port: 8020
-
+spring:
+  application:
+    name: movieprovider
 user:
   userServiceUrl: http://localhost:8000/
 

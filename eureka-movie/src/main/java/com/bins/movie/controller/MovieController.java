@@ -1,6 +1,7 @@
 package com.bins.movie.controller;
 
 import com.bins.movie.model.UserModel;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
@@ -24,9 +25,18 @@ public class MovieController {
     @Value("${user.userServiceUrl}")
     private String userServiceUrl;
 
+    @HystrixCommand(fallbackMethod = "findByIdFailBack")
     @GetMapping("/user/{id}")
     public UserModel findById(@PathVariable Long id) {
         return this.restTemplate.getForObject("http://userprovider/" + id, UserModel.class);
+    }
+
+    public UserModel findByIdFailBack(Long id) {
+        UserModel user = new UserModel();
+        user.setId(-1L);
+        user.setName("默认用户");
+        return user;
+
     }
 
     @GetMapping("/log-instance")

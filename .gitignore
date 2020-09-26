@@ -4,3 +4,7 @@ config-client/target/
 config-server/com.bins.configserver.iml
 eureka-client/com.bins.eurekaclient.iml
 eureka-server/target/
+eureka-gateway/target/
+eureka-movie/target/
+.idea/workspace.xml
+eureka-movie/eurekamovie.iml
