@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05f2a3f9-9c2e-4f34-926a-5a80f42aab1c" name="Default" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,9 +9,6 @@
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
-  </component>
-  <component name="FavoritesManager">
-    <favorites_list name="springcloud" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -22,14 +18,11 @@
       </list>
     </option>
   </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
-      </MavenImportingSettings>
-    </option>
-  </component>
   <component name="ProjectId" id="1bzMQS7CR2Mo5a2GCJeobksfZ4u" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
@@ -37,16 +30,17 @@
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RequestMappingsPanelWidth2" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Facets" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.37011495" />
     <property name="recentsLimit" value="5" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
-    <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -64,19 +58,20 @@
     </key>
   </component>
   <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.GatewayApplication">
-    <configuration default="true" type="AndroidRunConfigurationType">
+  <component name="RunManager" selected="Spring Boot.SentenceApplication (1)">
+    <configuration default="true" type="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
       <option name="DEPLOY_AS_INSTANT" value="false" />
@@ -90,8 +85,6 @@
       <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
       <option name="FORCE_STOP_RUNNING_APP" value="true" />
       <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
       <option name="DEBUGGER_TYPE" value="Java" />
       <Java />
       <Profilers>
@@ -105,20 +98,19 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="AndroidTestRunConfigurationType">
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
       <option name="TESTING_TYPE" value="0" />
-      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
       <option name="METHOD_NAME" value="" />
       <option name="CLASS_NAME" value="" />
       <option name="PACKAGE_NAME" value="" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
       <option name="EXTRA_OPTIONS" value="" />
+      <option name="INCLUDE_GRADLE_EXTRA_OPTIONS" value="true" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
       <option name="FORCE_STOP_RUNNING_APP" value="true" />
       <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
       <option name="DEBUGGER_TYPE" value="Java" />
       <Java />
       <Profilers>
@@ -129,26 +121,6 @@
       <method v="2">
         <option name="Make" enabled="true" />
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="Applet">
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MovieApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.bins.movie.MovieApplication" />
-      <module name="eurekamovie" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.bins.movie.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -244,6 +216,7 @@
       <setting name="vmparams" value="" />
       <setting name="cmdLine" value="run-app" />
       <setting name="passParentEnv" value="true" />
+      <setting name="grailsApplicationRoot" value="" />
       <setting name="launchBrowser" value="false" />
       <setting name="launchBrowserUrl" value="" />
       <setting name="depsClasspath" value="false" />
@@ -257,7 +230,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+    <configuration default="true" type="JetRunConfigurationType">
       <module name="config-client" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
@@ -270,7 +243,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
       <option name="filePath" />
       <option name="vmParameters" />
       <option name="alternativeJrePath" />
@@ -332,15 +305,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EurekaServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="com.bins.eurekaserver" />
+    <configuration name="EurekaServerApplication (2)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="shop-eureka-server" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.bins.eureka.*" />
+          <option name="PATTERN" value="com.bins.movie.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.eureka.EurekaServerApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.movie.EurekaServerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EurekaServerApplication (3)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="shop-eureka-server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bins.eurekaserver.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.eurekaserver.EurekaServerApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -366,9 +352,35 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SentenceApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="shop-search" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bins.sentence.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.sentence.SentenceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SentenceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="sentence" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.sentence.SentenceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TradeApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="shop-trade" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bins.trade.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.trade.TradeApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -381,34 +393,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="eureka-user" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.bins.user.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+    <configuration name="UserApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="shop-user" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.user.UserApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserFeignApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="eureka-user-feign" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.bins.userfeign.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+    <configuration name="UserFeignApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="shop-monitor" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.userfeign.UserFeignApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="UserProviderApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="eureka-user-provider" />
+      <module name="shop-product" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.bins.userprovider.*" />
@@ -448,7 +448,6 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.MovieApplication" />
       <item itemvalue="Spring Boot.TradeApplication" />
       <item itemvalue="Spring Boot.Application" />
       <item itemvalue="Spring Boot.GatewayApplication" />
@@ -458,18 +457,21 @@
       <item itemvalue="Spring Boot.OrderApplication" />
       <item itemvalue="Spring Boot.MovieApplication" />
       <item itemvalue="Spring Boot.EurekaServerApplication (1)" />
-      <item itemvalue="Spring Boot.EurekaServerApplication" />
       <item itemvalue="Spring Boot.UserApplication" />
       <item itemvalue="Spring Boot.UserFeignApplication" />
       <item itemvalue="Spring Boot.UserProviderApplication" />
+      <item itemvalue="Spring Boot.EurekaServerApplication (2)" />
+      <item itemvalue="Spring Boot.EurekaServerApplication (3)" />
+      <item itemvalue="Spring Boot.TradeApplication (1)" />
+      <item itemvalue="Spring Boot.SentenceApplication (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.SentenceApplication (1)" />
+        <item itemvalue="Spring Boot.TradeApplication (1)" />
+        <item itemvalue="Spring Boot.EurekaServerApplication (3)" />
+        <item itemvalue="Spring Boot.EurekaServerApplication (2)" />
         <item itemvalue="Spring Boot.UserProviderApplication" />
-        <item itemvalue="Spring Boot.EurekaServerApplication" />
-        <item itemvalue="Application.MovieApplication" />
-        <item itemvalue="Spring Boot.UserApplication" />
-        <item itemvalue="Spring Boot.UserFeignApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -543,11 +545,77 @@
       <workItem from="1596984194613" duration="1403000" />
       <workItem from="1596986120975" duration="661000" />
       <workItem from="1596987366274" duration="455000" />
+      <workItem from="1608559226605" duration="695000" />
+      <workItem from="1611237949182" duration="1883000" />
+      <workItem from="1611239907706" duration="1028000" />
+      <workItem from="1611268285036" duration="65000" />
+      <workItem from="1611268373833" duration="20000" />
+      <workItem from="1611268803297" duration="517000" />
+      <workItem from="1611269386449" duration="424000" />
+      <workItem from="1611269850768" duration="2313000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="208" y="43" key="#Project_Structure" timestamp="1611269564041">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="208" y="43" key="#Project_Structure/0.23.1440.877@0.23.1440.877" timestamp="1611269564041" />
+    <state x="533" y="175" key="#com.intellij.ide.util.MemberChooser" timestamp="1611270405811">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="533" y="175" key="#com.intellij.ide.util.MemberChooser/0.23.1440.877@0.23.1440.877" timestamp="1611270405811" />
+    <state x="441" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1611270247453">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="441" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1440.877@0.23.1440.877" timestamp="1611270247453" />
+    <state width="958" height="203" key="GridCell.Tab.0.bottom" timestamp="1611272935103">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="958" height="203" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1611272935103" />
+    <state width="958" height="203" key="GridCell.Tab.0.center" timestamp="1611272935101">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="958" height="203" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1611272935101" />
+    <state width="958" height="203" key="GridCell.Tab.0.left" timestamp="1611272935100">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="958" height="203" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1611272935100" />
+    <state width="958" height="203" key="GridCell.Tab.0.right" timestamp="1611272935102">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="958" height="203" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1611272935102" />
+    <state width="958" height="203" key="GridCell.Tab.1.bottom" timestamp="1611272935106">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="958" height="203" key="GridCell.Tab.1.bottom/0.23.1440.877@0.23.1440.877" timestamp="1611272935106" />
+    <state width="958" height="203" key="GridCell.Tab.1.center" timestamp="1611272935105">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="958" height="203" key="GridCell.Tab.1.center/0.23.1440.877@0.23.1440.877" timestamp="1611272935105" />
+    <state width="958" height="203" key="GridCell.Tab.1.left" timestamp="1611272935104">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="958" height="203" key="GridCell.Tab.1.left/0.23.1440.877@0.23.1440.877" timestamp="1611272935104" />
+    <state width="958" height="203" key="GridCell.Tab.1.right" timestamp="1611272935105">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="958" height="203" key="GridCell.Tab.1.right/0.23.1440.877@0.23.1440.877" timestamp="1611272935105" />
+    <state x="349" y="168" width="812" height="587" key="NewModule_or_Project.wizard" timestamp="1611239832650">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="349" y="168" width="812" height="587" key="NewModule_or_Project.wizard/0.23.1440.877@0.23.1440.877" timestamp="1611239832650" />
+    <state x="208" y="43" key="SettingsEditor" timestamp="1611270577967">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="208" y="43" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1611270577967" />
+    <state x="114" y="124" key="new project wizard" timestamp="1611268198371">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="114" y="124" key="new project wizard/0.23.1440.877@0.23.1440.877" timestamp="1611268198371" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -558,7 +626,7 @@
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/eureka-user-provider/src/main/java/com/bins/userprovider/controller/UserController.java</url>
+          <url>file://$PROJECT_DIR$/shop-product/src/main/java/com/bins/userprovider/controller/UserController.java</url>
           <line>18</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>

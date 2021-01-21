@@ -16,20 +16,15 @@
     <artifactId>com.bins.springcloud</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <modules>
-        <module>config-server</module>
-        <module>eureka-server</module>
-        <module>eureka-client</module>
-        <module>config-client</module>
-        <module>sentence</module>
-        <module>eureka-trade</module>
-        <module>eureka-order</module>
-        <module>eureka-user</module>
-        <module>eureka-gateway</module>
-        <module>eureka-feign</module>
-        <module>eureka-authenticating</module>
-        <module>eureka-user-feign</module>
-        <module>eureka-user-provider</module>
-        <module>eureka-movie</module>
+        <module>shop-product</module>
+        <module>shop-search</module>
+        <module>shop-trade</module>
+        <module>shop-order</module>
+        <module>shop-user</module>
+        <module>shop-gateway</module>
+        <module>shop-statistics</module>
+        <module>shop-monitor</module>
+        <module>shop-eureka-server</module>
     </modules>
     <packaging>pom</packaging>
 

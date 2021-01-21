@@ -6,20 +6,15 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="com.bins.configserver" />
-        <module name="eureka-trade" />
-        <module name="sentence" />
-        <module name="com.bins.configclient" />
-        <module name="eureka-gateway" />
-        <module name="eureka-order" />
-        <module name="eureka-user" />
-        <module name="com.bins.eurekaserver" />
-        <module name="eurekafeign" />
-        <module name="eureka-user-feign" />
-        <module name="eurekamovie" />
-        <module name="eureka-user-provider" />
-        <module name="eureka-authenticating" />
-        <module name="com.bins.eurekaclient" />
+        <module name="shop-user" />
+        <module name="shop-search" />
+        <module name="shop-statistics" />
+        <module name="shop-monitor" />
+        <module name="shop-gateway" />
+        <module name="shop-eureka-server" />
+        <module name="shop-product" />
+        <module name="shop-order" />
+        <module name="shop-trade" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -36,14 +31,21 @@
       <module name="eureka-server" target="1.7" />
       <module name="eureka-trade" target="1.8" />
       <module name="eureka-user" target="1.8" />
-      <module name="eureka-user-feign" target="1.8" />
-      <module name="eureka-user-provider" target="1.8" />
-      <module name="eurekafeign" target="1.8" />
       <module name="eurekamovie" target="1.8" />
       <module name="eurekaserverauthenticating" target="1.8" />
       <module name="netflix-hystrix" target="1.7" />
       <module name="sentence" target="1.8" />
+      <module name="shop-eureka-server" target="1.8" />
+      <module name="shop-gateway" target="1.8" />
+      <module name="shop-monitor" target="1.8" />
+      <module name="shop-order" target="1.8" />
+      <module name="shop-product" target="1.8" />
+      <module name="shop-search" target="1.8" />
+      <module name="shop-statistics" target="1.8" />
+      <module name="shop-trade" target="1.8" />
+      <module name="shop-user" target="1.8" />
       <module name="springcloud" target="1.8" />
+      <module name="springcloud-shop" target="1.8" />
       <module name="springcloudconfig" target="1.7" />
     </bytecodeTargetLevel>
   </component>
