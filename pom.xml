@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <parent>
         <groupId>org.springframework.cloud</groupId>
@@ -11,9 +9,8 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>springcloud</groupId>
-    <artifactId>com.bins.springcloud</artifactId>
+    <groupId>com.bins.springcloud.shop</groupId>
+    <artifactId>springcloud-shop</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <modules>
         <module>shop-product</module>
@@ -25,6 +22,12 @@
         <module>shop-statistics</module>
         <module>shop-monitor</module>
         <module>shop-eureka-server</module>
+    <module>shop-trade-api</module>
+        <module>shop-product-api</module>
+        <module>shop-search-api</module>
+        <module>shop-user-api</module>
+        <module>shop-order-api</module>
+        <module>shop-common</module>
     </modules>
     <packaging>pom</packaging>
 

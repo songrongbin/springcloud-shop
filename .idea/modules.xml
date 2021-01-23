@@ -2,15 +2,22 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/shop-common/shop-common.iml" filepath="$PROJECT_DIR$/shop-common/shop-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/shop-eureka-server/shop-eureka-server.iml" filepath="$PROJECT_DIR$/shop-eureka-server/shop-eureka-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/shop-gateway/shop-gateway.iml" filepath="$PROJECT_DIR$/shop-gateway/shop-gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/shop-monitor/shop-monitor.iml" filepath="$PROJECT_DIR$/shop-monitor/shop-monitor.iml" />
       <module fileurl="file://$PROJECT_DIR$/shop-order/shop-order.iml" filepath="$PROJECT_DIR$/shop-order/shop-order.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shop-order-api/shop-order-api.iml" filepath="$PROJECT_DIR$/shop-order-api/shop-order-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/shop-product/shop-product.iml" filepath="$PROJECT_DIR$/shop-product/shop-product.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shop-product-api/shop-product-api.iml" filepath="$PROJECT_DIR$/shop-product-api/shop-product-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/shop-search/shop-search.iml" filepath="$PROJECT_DIR$/shop-search/shop-search.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shop-search-api/shop-search-api.iml" filepath="$PROJECT_DIR$/shop-search-api/shop-search-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/shop-statistics/shop-statistics.iml" filepath="$PROJECT_DIR$/shop-statistics/shop-statistics.iml" />
       <module fileurl="file://$PROJECT_DIR$/shop-trade/shop-trade.iml" filepath="$PROJECT_DIR$/shop-trade/shop-trade.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shop-trade-api/shop-trade-api.iml" filepath="$PROJECT_DIR$/shop-trade-api/shop-trade-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/shop-user/shop-user.iml" filepath="$PROJECT_DIR$/shop-user/shop-user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shop-user-api/shop-user-api.iml" filepath="$PROJECT_DIR$/shop-user-api/shop-user-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springcloud-shop.iml" filepath="$PROJECT_DIR$/springcloud-shop.iml" />
     </modules>
   </component>
 </project>

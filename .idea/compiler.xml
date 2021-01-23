@@ -6,15 +6,21 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="shop-user" />
-        <module name="shop-search" />
-        <module name="shop-statistics" />
-        <module name="shop-monitor" />
-        <module name="shop-gateway" />
-        <module name="shop-eureka-server" />
-        <module name="shop-product" />
+        <module name="shop-trade-api" />
+        <module name="shop-product-api" />
         <module name="shop-order" />
+        <module name="shop-search-api" />
+        <module name="shop-user" />
         <module name="shop-trade" />
+        <module name="shop-eureka-server" />
+        <module name="shop-order-api" />
+        <module name="shop-user-api" />
+        <module name="shop-gateway" />
+        <module name="shop-product" />
+        <module name="shop-monitor" />
+        <module name="shop-statistics" />
+        <module name="shop-search" />
+        <module name="shop-common" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -35,15 +41,21 @@
       <module name="eurekaserverauthenticating" target="1.8" />
       <module name="netflix-hystrix" target="1.7" />
       <module name="sentence" target="1.8" />
+      <module name="shop-common" target="1.8" />
       <module name="shop-eureka-server" target="1.8" />
       <module name="shop-gateway" target="1.8" />
-      <module name="shop-monitor" target="1.8" />
+      <module name="shop-monitor" target="1.5" />
       <module name="shop-order" target="1.8" />
-      <module name="shop-product" target="1.8" />
+      <module name="shop-order-api" target="1.8" />
+      <module name="shop-product" target="1.5" />
+      <module name="shop-product-api" target="1.8" />
       <module name="shop-search" target="1.8" />
-      <module name="shop-statistics" target="1.8" />
-      <module name="shop-trade" target="1.8" />
+      <module name="shop-search-api" target="1.8" />
+      <module name="shop-statistics" target="1.5" />
+      <module name="shop-trade" target="1.5" />
+      <module name="shop-trade-api" target="1.5" />
       <module name="shop-user" target="1.8" />
+      <module name="shop-user-api" target="1.8" />
       <module name="springcloud" target="1.8" />
       <module name="springcloud-shop" target="1.8" />
       <module name="springcloudconfig" target="1.7" />

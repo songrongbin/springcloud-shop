@@ -10,7 +10,6 @@
       <set>
         <option value="$PROJECT_DIR$/eureka-server-authenticating/pom.xml" />
         <option value="$PROJECT_DIR$/netflix-hystrix/pom.xml" />
-        <option value="$PROJECT_DIR$/pom.xml" />
       </set>
     </option>
   </component>
