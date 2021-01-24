@@ -3,13 +3,12 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>com.bins.springcloud</artifactId>
-        <groupId>springcloud</groupId>
+        <artifactId>springcloud-shop</artifactId>
+        <groupId>com.bins.springcloud.shop</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
-    <artifactId>eureka-user-provider</artifactId>
+    <artifactId>shop-product</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>
@@ -31,17 +30,6 @@
             <version>1.4.187</version>
         </dependency>
     </dependencies>
-
-<!--    <build>-->
-<!--        <plugins>-->
-<!--            <plugin>-->
-<!--                <groupId>org.springframework.boot</groupId>-->
-<!--                <artifactId>spring-boot</artifactId>-->
-<!--                <version>1.4.2.RELEASE</version>-->
-<!--            </plugin>-->
-
-<!--        </plugins>-->
-<!--    </build>-->
 
 
 </project>

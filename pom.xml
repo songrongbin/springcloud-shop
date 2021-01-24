@@ -22,7 +22,7 @@
         <module>shop-statistics</module>
         <module>shop-monitor</module>
         <module>shop-eureka-server</module>
-    <module>shop-trade-api</module>
+        <module>shop-trade-api</module>
         <module>shop-product-api</module>
         <module>shop-search-api</module>
         <module>shop-user-api</module>

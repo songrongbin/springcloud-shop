@@ -1,0 +1,5 @@
+com/bins/springcloud/user/dto/RolePageDto.class
+com/bins/springcloud/user/dto/RoleDto.class
+com/bins/springcloud/user/dto/UserDto.class
+com/bins/springcloud/user/ShopUserApiApplication.class
+com/bins/springcloud/user/configuaration/FeignConfiguration.class

@@ -1,7 +1,6 @@
 package com.bins.user.controller;
 
-import com.bins.user.dto.UserDto;
-import org.springframework.web.bind.annotation.PathVariable;
+import com.bins.springcloud.user.dto.UserDto;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,7 +9,17 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class UserController {
-    @RequestMapping("/user")
+
+    @RequestMapping("/getPersonInfo")
+    public UserDto getPersonInfo(Long userId) {
+        UserDto user = new UserDto();
+        user.setId(11l);
+        user.setUserCode("admin1");
+        user.setUserName("admin1");
+        return user;
+    }
+
+    /*@RequestMapping("/user")
     public String home() {
         return "Hello user";
     }
@@ -29,6 +38,7 @@ public class UserController {
         user.setId(11l);
         user.setName("andy");
         return user;
-    }
+    }*/
+
 
 }

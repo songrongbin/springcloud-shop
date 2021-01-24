@@ -1,8 +1,10 @@
 package com.bins.sentence.controller;
 
 import com.bins.sentence.api.TradeClient;
+import com.bins.sentence.api.UserApi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +21,15 @@ public class SentenceController {
 
     @Resource
     private TradeClient tradeClient;
+
+    @Resource
+    private UserApi shopUserApi;
+
+    @RequestMapping("/search/user/personInfo")
+    public @ResponseBody String getPersonInfo() {
+        return shopUserApi.getPersonInfo(0l).getUserName();
+
+    }
 
     @RequestMapping("/sentence")
     public @ResponseBody String getTrade() {

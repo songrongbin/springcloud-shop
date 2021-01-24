@@ -41,19 +41,19 @@
       <module name="eurekaserverauthenticating" target="1.8" />
       <module name="netflix-hystrix" target="1.7" />
       <module name="sentence" target="1.8" />
-      <module name="shop-common" target="1.8" />
+      <module name="shop-common" target="1.5" />
       <module name="shop-eureka-server" target="1.8" />
       <module name="shop-gateway" target="1.8" />
-      <module name="shop-monitor" target="1.5" />
+      <module name="shop-monitor" target="1.8" />
       <module name="shop-order" target="1.8" />
       <module name="shop-order-api" target="1.8" />
-      <module name="shop-product" target="1.5" />
+      <module name="shop-product" target="1.8" />
       <module name="shop-product-api" target="1.8" />
       <module name="shop-search" target="1.8" />
       <module name="shop-search-api" target="1.8" />
-      <module name="shop-statistics" target="1.5" />
-      <module name="shop-trade" target="1.5" />
-      <module name="shop-trade-api" target="1.5" />
+      <module name="shop-statistics" target="1.8" />
+      <module name="shop-trade" target="1.8" />
+      <module name="shop-trade-api" target="1.8" />
       <module name="shop-user" target="1.8" />
       <module name="shop-user-api" target="1.8" />
       <module name="springcloud" target="1.8" />
