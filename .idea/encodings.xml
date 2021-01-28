@@ -6,12 +6,9 @@
     <file url="file://$PROJECT_DIR$/shop-gateway/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/shop-monitor" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/shop-monitor/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/shop-order-api/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/shop-order/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/shop-product" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/shop-product-api/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/shop-product/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/shop-search-api/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/shop-search/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/shop-statistics" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/shop-trade-api/src/main/java" charset="UTF-8" />

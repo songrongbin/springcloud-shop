@@ -492,12 +492,12 @@
       <item itemvalue="Spring Boot.EurekaServerApplication (1)" />
       <item itemvalue="Spring Boot.UserApplication" />
       <item itemvalue="Spring Boot.UserFeignApplication" />
+      <item itemvalue="Spring Boot.ShopCommonApplication" />
+      <item itemvalue="Spring Boot.ShopUserApiApplication" />
       <item itemvalue="Spring Boot.UserProviderApplication" />
       <item itemvalue="Spring Boot.EurekaServerApplication (2)" />
       <item itemvalue="Spring Boot.EurekaServerApplication (3)" />
       <item itemvalue="Spring Boot.TradeApplication (1)" />
-      <item itemvalue="Spring Boot.ShopCommonApplication" />
-      <item itemvalue="Spring Boot.ShopUserApiApplication" />
       <item itemvalue="Spring Boot.ShopSearchApplication" />
     </list>
     <recent_temporary>
@@ -594,6 +594,7 @@
       <workItem from="1611389318298" duration="2803000" />
       <workItem from="1611450337178" duration="390000" />
       <workItem from="1611451030511" duration="12489000" />
+      <workItem from="1611792173526" duration="1325000" />
     </task>
     <servers />
   </component>

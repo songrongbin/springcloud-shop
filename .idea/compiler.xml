@@ -61,4 +61,22 @@
       <module name="springcloudconfig" target="1.7" />
     </bytecodeTargetLevel>
   </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="shop-eureka-server" options="-parameters" />
+      <module name="shop-gateway" options="-parameters" />
+      <module name="shop-monitor" options="-parameters" />
+      <module name="shop-order" options="-parameters" />
+      <module name="shop-order-api" options="-parameters" />
+      <module name="shop-product" options="-parameters" />
+      <module name="shop-product-api" options="-parameters" />
+      <module name="shop-search" options="-parameters" />
+      <module name="shop-search-api" options="-parameters" />
+      <module name="shop-statistics" options="-parameters" />
+      <module name="shop-trade" options="-parameters" />
+      <module name="shop-trade-api" options="-parameters" />
+      <module name="shop-user" options="-parameters" />
+      <module name="shop-user-api" options="-parameters" />
+    </option>
+  </component>
 </project>
