@@ -10,6 +10,6 @@ public class TradeApplication {
 
     public static void main(String[] args) {
 
-        new SpringApplicationBuilder(TradeApplication.class).web(true).run(args);
+        new SpringApplicationBuilder(TradeApplication.class).run(args);
     }
 }

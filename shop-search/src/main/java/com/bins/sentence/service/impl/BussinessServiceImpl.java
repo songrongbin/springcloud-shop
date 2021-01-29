@@ -42,11 +42,11 @@ public class BussinessServiceImpl implements BussinessService {
             }
         });*/
 
-        try {
-            return String.format("%s %s %s %s %s.", sentenceService.getOrder(), nounList.get(0));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            return String.format("%s %s %s %s %s.", sentenceService.getOrder(), nounList.get(0));
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
         return "error";
     }
 

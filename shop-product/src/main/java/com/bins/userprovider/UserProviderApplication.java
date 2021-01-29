@@ -10,6 +10,6 @@ public class UserProviderApplication {
 
     public static void main(String[] args) {
 
-        new SpringApplicationBuilder(UserProviderApplication.class).web(true).run(args);
+        new SpringApplicationBuilder(UserProviderApplication.class).run(args);
     }
 }

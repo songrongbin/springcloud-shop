@@ -13,6 +13,6 @@ public class OrderApplication {
 
     public static void main(String[] args) {
 
-        new SpringApplicationBuilder(OrderApplication.class).web(true).run(args);
+        new SpringApplicationBuilder(OrderApplication.class).run(args);
     }
 }

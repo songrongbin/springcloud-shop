@@ -9,6 +9,6 @@ import org.springframework.context.annotation.ComponentScan;
 public class ShopUserApiApplication {
 
     public static void main(String[] args) {
-        new SpringApplicationBuilder(ShopUserApiApplication.class).web(true).run(args);
+        new SpringApplicationBuilder(ShopUserApiApplication.class).run(args);
     }
 }
