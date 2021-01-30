@@ -17,7 +17,7 @@ import javax.servlet.Filter;
 @EnableEurekaClient
 @EnableFeignClients
 // @EnableZuulProxy
-@EnableHystrix
+// @EnableHystrix
 // @EnableHystrixDashboard
 public class ShopSearchApplication {
     public static void main(String[] args) {
