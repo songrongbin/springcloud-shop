@@ -27,10 +27,22 @@
     <option name="generalSettings">
       <MavenGeneralSettings>
         <option name="localRepository" value="$PROJECT_DIR$/../../maven/repo" />
-        <option name="mavenHome" value="$USER_HOME$/tools/apache-maven-3.5.4" />
-        <option name="userSettingsFile" value="$USER_HOME$/tools/apache-maven-3.5.4/conf/settings.xml" />
+        <option name="mavenHome" value="/usr/local/apache-maven-3.6.3" />
+        <option name="userSettingsFile" value="/usr/local/apache-maven-3.6.3/conf/settings.xml" />
+        <option name="workOffline" value="true" />
       </MavenGeneralSettings>
     </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="jdkForImporter" value="1.8" />
+        <option name="vmOptionsForImporter" value=" -Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="1.8" />
+    <option name="skipTests" value="true" />
+    <option name="vmOptions" value="-DarchetypeCatalog=internal" />
   </component>
   <component name="ProjectId" id="1bzMQS7CR2Mo5a2GCJeobksfZ4u" />
   <component name="ProjectViewState">
@@ -56,7 +68,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.37011495" />
     <property name="recentsLimit" value="5" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.importing" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -76,6 +88,12 @@
       <recent name="$PROJECT_DIR$/sentence/src/main/resources" />
     </key>
   </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean" />
+      <command value="mvn compile" />
+    </option>
+  </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -83,7 +101,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.EurekaServerApplication (3)">
+  <component name="RunManager" selected="Spring Boot.UserApplication">
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -597,6 +615,7 @@
       <workItem from="1611792173526" duration="4712000" />
       <workItem from="1611870310775" duration="1063000" />
       <workItem from="1611880825303" duration="224000" />
+      <workItem from="1611965933916" duration="8491000" />
     </task>
     <servers />
   </component>
@@ -620,50 +639,54 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="441" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1440.877@0.23.1440.877" timestamp="1611270247453" />
-    <state width="958" height="348" key="GridCell.Tab.0.bottom" timestamp="1611962232712">
+    <state width="958" height="381" key="GridCell.Tab.0.bottom" timestamp="1612451347187">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="958" height="348" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1611962232712" />
-    <state width="958" height="348" key="GridCell.Tab.0.center" timestamp="1611962232710">
+    <state width="958" height="381" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1612451347187" />
+    <state width="958" height="381" key="GridCell.Tab.0.center" timestamp="1612451347186">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="958" height="348" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1611962232710" />
-    <state width="958" height="348" key="GridCell.Tab.0.left" timestamp="1611962232708">
+    <state width="958" height="381" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1612451347186" />
+    <state width="958" height="381" key="GridCell.Tab.0.left" timestamp="1612451347184">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="958" height="348" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1611962232708" />
-    <state width="958" height="348" key="GridCell.Tab.0.right" timestamp="1611962232711">
+    <state width="958" height="381" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1612451347184" />
+    <state width="958" height="381" key="GridCell.Tab.0.right" timestamp="1612451347186">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="958" height="348" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1611962232711" />
-    <state width="958" height="348" key="GridCell.Tab.1.bottom" timestamp="1611962232714">
+    <state width="958" height="381" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1612451347186" />
+    <state width="958" height="381" key="GridCell.Tab.1.bottom" timestamp="1612451347189">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="958" height="348" key="GridCell.Tab.1.bottom/0.23.1440.877@0.23.1440.877" timestamp="1611962232714" />
-    <state width="958" height="348" key="GridCell.Tab.1.center" timestamp="1611962232713">
+    <state width="958" height="381" key="GridCell.Tab.1.bottom/0.23.1440.877@0.23.1440.877" timestamp="1612451347189" />
+    <state width="958" height="381" key="GridCell.Tab.1.center" timestamp="1612451347188">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="958" height="348" key="GridCell.Tab.1.center/0.23.1440.877@0.23.1440.877" timestamp="1611962232713" />
-    <state width="958" height="348" key="GridCell.Tab.1.left" timestamp="1611962232712">
+    <state width="958" height="381" key="GridCell.Tab.1.center/0.23.1440.877@0.23.1440.877" timestamp="1612451347188" />
+    <state width="958" height="381" key="GridCell.Tab.1.left" timestamp="1612451347187">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="958" height="348" key="GridCell.Tab.1.left/0.23.1440.877@0.23.1440.877" timestamp="1611962232712" />
-    <state width="958" height="348" key="GridCell.Tab.1.right" timestamp="1611962232714">
+    <state width="958" height="381" key="GridCell.Tab.1.left/0.23.1440.877@0.23.1440.877" timestamp="1612451347187" />
+    <state width="958" height="381" key="GridCell.Tab.1.right" timestamp="1612451347188">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="958" height="348" key="GridCell.Tab.1.right/0.23.1440.877@0.23.1440.877" timestamp="1611962232714" />
+    <state width="958" height="381" key="GridCell.Tab.1.right/0.23.1440.877@0.23.1440.877" timestamp="1612451347188" />
     <state x="349" y="168" width="812" height="587" key="NewModule_or_Project.wizard" timestamp="1611239832650">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="349" y="168" width="812" height="587" key="NewModule_or_Project.wizard/0.23.1440.877@0.23.1440.877" timestamp="1611239832650" />
-    <state x="208" y="43" key="SettingsEditor" timestamp="1611455856914">
+    <state x="208" y="43" key="SettingsEditor" timestamp="1612397741390">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="208" y="43" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1611455856914" />
+    <state x="208" y="43" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1612397741390" />
     <state x="228" y="143" key="new project wizard" timestamp="1611390969815">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="228" y="143" key="new project wizard/0.23.1440.877@0.23.1440.877" timestamp="1611390969815" />
+    <state x="385" y="211" width="670" height="675" key="run.anything.popup" timestamp="1612396116842">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="385" y="211" width="670" height="675" key="run.anything.popup/0.23.1440.877@0.23.1440.877" timestamp="1612396116842" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

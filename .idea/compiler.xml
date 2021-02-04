@@ -41,7 +41,7 @@
       <module name="eurekaserverauthenticating" target="1.8" />
       <module name="netflix-hystrix" target="1.7" />
       <module name="sentence" target="1.8" />
-      <module name="shop-common" target="1.5" />
+      <module name="shop-common" target="1.8" />
       <module name="shop-eureka-server" target="1.8" />
       <module name="shop-gateway" target="1.8" />
       <module name="shop-monitor" target="1.8" />
@@ -63,6 +63,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="shop-common" options="-parameters" />
       <module name="shop-eureka-server" options="-parameters" />
       <module name="shop-gateway" options="-parameters" />
       <module name="shop-monitor" options="-parameters" />

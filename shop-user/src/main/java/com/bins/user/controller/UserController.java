@@ -14,8 +14,8 @@ public class UserController {
     public UserDto getPersonInfo(Long userId) {
         UserDto user = new UserDto();
         user.setId(11l);
-        user.setUserCode("admin1");
-        user.setUserName("admin1");
+        user.setUserCode("admin2");
+        user.setUserName("admin2");
         return user;
     }
 
