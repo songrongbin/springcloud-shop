@@ -1,2 +1,6 @@
-/Users/songrongbin/workspaces/eclipse/springcloud-shop/shop-user/src/main/java/com/bins/user/ShopUserApplication.java
-/Users/songrongbin/workspaces/eclipse/springcloud-shop/shop-user/src/main/java/com/bins/user/controller/UserController.java
+/Users/songrongbin/workspaces/eclipse/springcloud-shop/shop-user/src/main/java/com/bins/springcloud/shop/user/controller/UserController.java
+/Users/songrongbin/workspaces/eclipse/springcloud-shop/shop-user/src/main/java/com/bins/springcloud/shop/user/entity/UserEntity.java
+/Users/songrongbin/workspaces/eclipse/springcloud-shop/shop-user/src/main/java/com/bins/springcloud/shop/user/service/impl/UserServiceImpl.java
+/Users/songrongbin/workspaces/eclipse/springcloud-shop/shop-user/src/main/java/com/bins/springcloud/shop/user/ShopUserApplication.java
+/Users/songrongbin/workspaces/eclipse/springcloud-shop/shop-user/src/main/java/com/bins/springcloud/shop/user/controller/LoginController.java
+/Users/songrongbin/workspaces/eclipse/springcloud-shop/shop-user/src/main/java/com/bins/springcloud/shop/user/service/UserService.java

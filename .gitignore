@@ -1,4 +1,7 @@
 .idea/
+shop-common/target/
+shop-user/target/
+shop-user-api/target/
 config-client/com.bins.configclient.iml
 config-client/target/
 config-server/com.bins.configserver.iml

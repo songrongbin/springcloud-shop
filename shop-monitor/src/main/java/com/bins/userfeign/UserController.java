@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bins.springcloud.user.dto.UserDto;
+import com.bins.springcloud.shop.user.dto.UserDto;
 
 @RestController
 public class UserController {

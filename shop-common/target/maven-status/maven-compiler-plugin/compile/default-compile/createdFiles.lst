@@ -1,1 +1,2 @@
-com/bins/springcloud/common/dto/PageDto.class
+com/bins/springcloud/shop/common/dto/PageDto.class
+com/bins/springcloud/shop/common/vo/ResultVo.class
