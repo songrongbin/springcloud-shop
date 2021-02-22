@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bins.springcloud.shop.user.mapper.UserMapper">
+    
+    <resultMap id="BaseResultMap" type="com.bins.springcloud.shop.user.entity.UserEntity" >
+   		<id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="user_code" property="userCode" jdbcType="VARCHAR"/>
+        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <result column="phone" property="phone" jdbcType="VARCHAR"/>
+        <result column="email" property="email" jdbcType="VARCHAR"/>
+        <result column="operator_id" property="operatorId" jdbcType="BIGINT"/>
+        <result column="dept_id" property="deptId" jdbcType="BIGINT"/>
+        <result column="user_group_id" property="userGroupId" jdbcType="BIGINT"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+        <result column="is_del" property="isDel" jdbcType="INTEGER"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    
+    
+    <select id="findByUserCode" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select * from t_user where user_code = #{userCode}
+    </select>
+    
+    <select id="findByUserInfo" parameterType="com.bins.springcloud.shop.user.dto.UserDto" resultMap="BaseResultMap">
+        select * from t_user where user_code = #{userCode} and user_name = #{userName}
+    </select>
+    
+    <insert id="insertUser" parameterType="com.bins.springcloud.shop.user.entity.UserEntity">
+    	INSERT INTO `t_user` (user_code, user_name, password, operator_id, phone, email, dept_id, user_group_id, status) VALUES 
+    	(#{userCode}, #{userName}, #{password}, #{operatorId}, #{phone}, #{email}, #{deptId}, #{userGroupId}, #{status})
+    </insert>
+    
+    <select id="getAllUserList" resultMap="BaseResultMap">
+        select * from t_user where is_del = 0
+    </select>
+    
+    <select id="getById" parameterType="Long" resultMap="BaseResultMap">
+        select * from t_user where id = #{id}
+    </select>
+    
+    <select id="getByIds" resultMap="BaseResultMap" parameterType="Long">
+        select * from t_user where id in
+	      <foreach collection="list" separator="," open="(" close=")" item="id">
+	       #{id}
+	      </foreach>
+    </select>
+    
+    <update id="updateUser" parameterType="com.bins.springcloud.shop.user.dto.UserDto">
+    	update `t_user` set user_code = #{userCode}, user_name = #{userName},
+    	phone = #{phone}, email = #{email},
+    	dept_id = #{deptId}, user_group_id = #{userGroupId} where id = #{id}
+    </update>
+    
+    <update id="changePersonInfo" parameterType="com.bins.springcloud.shop.user.dto.UserDto">
+    	update `t_user` set user_name = #{userName}, phone = #{phone}, email = #{email} where id = #{id}
+    </update>
+    
+    <update id="changeUserStatus" parameterType="com.bins.springcloud.shop.user.entity.UserEntity">
+    	update `t_user` set status = #{status} where id = #{id}
+    </update>
+    
+    <update id="changeUserPassword" parameterType="com.bins.springcloud.shop.user.entity.UserEntity">
+    	update `t_user` set password = #{password} where id = #{id}
+    </update>
+    
+    <update id="deleteUser" parameterType="com.bins.springcloud.shop.user.dto.UserDto">
+    	update `t_user` set is_del = 1, status = #{status} where id = #{id}
+    </update>
+
+</mapper>
