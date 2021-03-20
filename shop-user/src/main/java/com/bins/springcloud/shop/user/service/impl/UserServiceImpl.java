@@ -2,7 +2,6 @@ package com.bins.springcloud.shop.user.service.impl;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
@@ -11,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import com.bins.springcloud.shop.common.utils.PageUtil;
+import com.bins.springcloud.shop.common.vo.SelectVo;
 import com.bins.springcloud.shop.user.dto.LoginDto;
 import com.bins.springcloud.shop.user.dto.UserPageDto;
 import com.bins.springcloud.shop.user.entity.UserEntity;
@@ -64,6 +64,58 @@ public class UserServiceImpl implements UserService {
 		}
 		pageInfo.setList(list);
 		return pageInfo;
+	}
+
+	@Override
+	public List<UserEntity> findByIds(List<Long> ids) {
+		return userMapper.findByIds(ids);
+	}
+
+	@Override
+	public List<SelectVo> getUserSelectList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public UserEntity findById(Long id) {
+		return userMapper.findById(id);
+	}
+
+	@Override
+	public List<UserVo> getByIds(List<Long> ids) {
+		List<UserEntity> list = userMapper.findByIds(ids);
+		if (CollectionUtils.isEmpty(list)) {
+			return Collections.emptyList();
+		}
+		List<UserVo> voList = list.stream().map(temp -> {
+			UserVo vo = new UserVo();
+			vo.setId(temp.getId());
+			vo.setUserName(temp.getUserName());
+			vo.setUserCode(temp.getUserCode());
+			vo.setIsDel(temp.getIsDel());
+			vo.setCreateTime(temp.getCreateTime());
+			vo.setUpdateTime(temp.getUpdateTime());
+            return vo;
+        }).collect(Collectors.toList());
+		return voList;
+	}
+
+	@Override
+	public UserVo getById(Long id) {
+		UserEntity entity = userMapper.findById(id);
+		UserVo vo = new UserVo();
+		BeanUtils.copyProperties(entity, vo);
+		return vo;
+	}
+
+	@Override
+	public String getUserName(Long id) {
+		UserEntity entity = userMapper.findById(id);
+		if (entity == null) {
+			return "";
+		}
+		return entity.getUserName();
 	}
 
 }

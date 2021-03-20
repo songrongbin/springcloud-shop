@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bins.springcloud.shop.supplier.mapper.BrandMapper">
+    
+    <resultMap id="BaseResultMap" type="com.bins.springcloud.shop.supplier.entity.BrandEntity" >
+   		<id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="brand_name" property="brandName" jdbcType="VARCHAR"/>
+        <result column="brand_desc" property="brandDesc" jdbcType="VARCHAR"/>
+        <result column="pic_url" property="picUrl" jdbcType="VARCHAR"/>
+        <result column="status" property="status" jdbcType="INTEGER" />
+        <result column="sort" property="sort" jdbcType="INTEGER"/>
+        <result column="is_del" property="isDel" jdbcType="INTEGER"/>
+        <result column="create_by" property="createBy" jdbcType="BIGINT"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>    
+    </resultMap>
+    
+    <select id="findList" resultMap="BaseResultMap">
+        select * from t_brand where is_del = 0
+    </select>
+    
+    <select id="findById" resultMap="BaseResultMap" parameterType="Long">
+        select * from t_brand where id = #{id}
+    </select>
+    
+    <insert id="insert" parameterType="com.bins.springcloud.shop.supplier.dto.BrandDto">
+    	INSERT INTO `t_brand` (brand_name, brand_desc, pic_url, status, sort, is_del, create_by) VALUES 
+    	(#{brandName}, #{brandDesc}, #{pic_url}, #{status}, #{sort}, #{isDel}, #{createBy})
+    </insert>
+    
+    <update id="updateById" parameterType="com.bins.springcloud.shop.supplier.dto.BrandDto">
+    	update `t_brand` set brand_name = #{brandName}, brand_desc = #{brandDesc},
+    	pic_url = #{picUrl}, status = #{status}, sort = #{sort} where id = #{id}
+    </update>
+    
+    <select id="getByIds" parameterType="Long" resultMap="BaseResultMap">
+        select * from t_brand where is_del = 0 and id in
+	      <foreach collection="list" separator="," open="(" close=")" item="id">
+	       #{id}
+	      </foreach>
+    </select>
+    
+    <update id="deleteById" parameterType="com.bins.springcloud.shop.supplier.dto.BrandDto">
+    	update `t_brand` set is_del = 1 where id = #{id}
+    </update>
+
+</mapper>

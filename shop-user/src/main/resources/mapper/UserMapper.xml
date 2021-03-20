@@ -36,11 +36,11 @@
         select * from t_user where is_del = 0
     </select>
     
-    <select id="getById" parameterType="Long" resultMap="BaseResultMap">
+    <select id="findById" parameterType="Long" resultMap="BaseResultMap">
         select * from t_user where id = #{id}
     </select>
     
-    <select id="getByIds" resultMap="BaseResultMap" parameterType="Long">
+    <select id="findByIds" resultMap="BaseResultMap" parameterType="Long">
         select * from t_user where id in
 	      <foreach collection="list" separator="," open="(" close=")" item="id">
 	       #{id}

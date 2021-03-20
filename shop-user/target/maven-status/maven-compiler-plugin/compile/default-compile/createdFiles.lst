@@ -1,6 +1,6 @@
 com/bins/springcloud/shop/user/controller/LoginController.class
 com/bins/springcloud/shop/user/entity/UserEntity.class
-com/bins/springcloud/shop/user/service/impl/UserServiceImpl.class
 com/bins/springcloud/shop/user/service/UserService.class
 com/bins/springcloud/shop/user/ShopUserApplication.class
 com/bins/springcloud/shop/user/controller/UserController.class
+com/bins/springcloud/shop/user/service/impl/UserServiceImpl.class

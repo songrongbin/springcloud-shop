@@ -10,7 +10,7 @@
     <!-- 动态日志级别 -->
     <jmxConfigurator />
     <!-- 定义日志文件 输出位置 -->
-    <property name="log_dir" value="shop_log" />
+    <property name="log_dir" value="/Users/songrongbin/workspaces/logs/springcloudshop/user" />
     <!-- 日志最大的历史 30天 -->
     <property name="maxHistory" value="30" /> 
     <!-- ConsoleAppender 控制台输出日志 -->

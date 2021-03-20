@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bins.springcloud.shop.user.mapper.DeptMapper">
+    
+    <resultMap id="BaseResultMap" type="com.bins.springcloud.shop.user.entity.DeptEntity" >
+   		<id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="dept_code" property="deptCode" jdbcType="VARCHAR"/>
+        <result column="dept_name" property="deptName" jdbcType="VARCHAR"/>
+        <result column="pid" property="pid" jdbcType="BIGINT" />
+        <result column="sort" property="sort" jdbcType="INTEGER"/>
+        <result column="is_del" property="isDel" jdbcType="INTEGER"/>
+        <result column="create_by" property="createBy" jdbcType="BIGINT"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>    
+    </resultMap>
+    
+    <select id="findDeptList" resultMap="BaseResultMap">
+        select * from t_dept where is_del = 0
+    </select>
+    
+    <select id="findById" resultMap="BaseResultMap" parameterType="Long">
+        select * from t_dept where id = #{id}
+    </select>
+    
+    <insert id="insertDept" parameterType="com.bins.springcloud.shop.user.dto.DeptDto">
+    	INSERT INTO `t_dept` (dept_code, dept_name, pid, sort, is_del, create_by) VALUES 
+    	(#{deptCode}, #{deptName}, #{pid}, #{sort}, #{isDel}, #{createBy})
+    </insert>
+    
+    <update id="updateDept" parameterType="com.bins.springcloud.shop.user.dto.DeptDto">
+    	update `t_dept` set dept_code = #{deptCode}, dept_name = #{deptName},
+    	pid = #{pid}, sort = #{sort}, is_del =  #{isDel} where id = #{id}
+    </update>
+    
+    <select id="getDeptByIds" parameterType="Long" resultMap="BaseResultMap">
+        select * from t_dept where is_del = 0 and id in
+	      <foreach collection="list" separator="," open="(" close=")" item="id">
+	       #{id}
+	      </foreach>
+    </select>
+    
+    <update id="deleteDept" parameterType="com.bins.springcloud.shop.user.dto.DeptDto">
+    	update `t_dept` set is_del = 1 where id = #{id}
+    </update>
+
+</mapper>

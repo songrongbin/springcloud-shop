@@ -30,8 +30,9 @@ eureka-gateway/.project
 eureka-gateway/.settings/
 eureka-movie/.project
 eureka-movie/.settings/
-eureka-order/.project
-eureka-order/.settings/
+shop-order/.project
+shop-order/.settings/
+shop-order-api/.classpath
 eureka-server/.project
 eureka-server/.settings/
 eureka-trade/.project
@@ -68,3 +69,7 @@ eureka-user/.classpath
 eureka-user/.gitignore
 sentence/.classpath
 sentence/.gitignore
+
+shop-product-api/.classpath
+shop-product-api/pom.xml
+shop-product/.classpath

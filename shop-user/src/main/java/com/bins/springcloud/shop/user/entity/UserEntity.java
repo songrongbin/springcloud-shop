@@ -26,7 +26,7 @@ public class UserEntity {
     private Long userGroupId;
     
     private Integer status;
-    
+        
     private Long operatorId;
     
     private Integer isDel;

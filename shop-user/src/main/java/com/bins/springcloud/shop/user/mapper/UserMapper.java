@@ -7,7 +7,6 @@ import org.apache.ibatis.annotations.Mapper;
 import com.bins.springcloud.shop.user.dto.UserDto;
 import com.bins.springcloud.shop.user.entity.UserEntity;
 
-
 @Mapper
 public interface UserMapper {
 
@@ -15,11 +14,11 @@ public interface UserMapper {
 
 	List<UserEntity> getAllUserList();
 
-	UserEntity getById(Long id);
+	UserEntity findById(Long id);
 
-	int updateUser(UserDto userDto);
+	int updateById(UserDto userDto);
 
-	int insertUser(UserEntity userEntity);
+	int inser(UserEntity userEntity);
 
 	List<UserEntity> findByUserInfo(UserDto dto);
 
@@ -29,7 +28,7 @@ public interface UserMapper {
 
 	int deleteUser(UserDto dto);
 
-	List<UserEntity> getByIds(List<Long> ids);
+	List<UserEntity> findByIds(List<Long> ids);
 
 	int changePersonInfo(UserDto userDto);
 

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bins.springcloud.shop.product.mapper.GoodsMapper">
+    
+    <resultMap id="BaseResultMap" type="com.bins.springcloud.shop.product.entity.GoodsEntity" >
+   		<id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="goods_code" property="goodsCode" jdbcType="VARCHAR"/>
+        <result column="goods_name" property="goodsName" jdbcType="VARCHAR"/>
+        <result column="brand_id" property="brandId" jdbcType="BIGINT"/>
+        <result column="category_id" property="categoryId" jdbcType="BIGINT" />
+        <result column="goods_brief" property="goodsBrief" jdbcType="VARCHAR"/>
+        <result column="goods_price" property="goodsPrice" jdbcType="INTEGER"/>
+        <result column="pic_url" property="picUrl" jdbcType="VARCHAR"/>
+        <result column="keywords" property="keywords" jdbcType="VARCHAR" />
+        <result column="is_on_sale" property="isOnSale" jdbcType="INTEGER"/>
+        <result column="is_del" property="isDel" jdbcType="INTEGER"/>
+        <result column="create_by" property="createBy" jdbcType="BIGINT"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>    
+    </resultMap>
+    
+    <select id="findList" resultMap="BaseResultMap">
+        select * from t_goods where is_del = 0
+    </select>
+    
+    <select id="findById" resultMap="BaseResultMap" parameterType="Long">
+        select * from t_goods where id = #{id}
+    </select>
+    
+    <insert id="insertGoods" parameterType="com.bins.springcloud.shop.product.dto.GoodsDto">
+    	INSERT INTO `t_goods` (goods_code, goods_name, brand_id, category_id, goods_brief, goods_price, pic_url, keywords, is_on_sale, is_del, create_by) VALUES 
+    	(#{goodsCode}, #{goodsName}, #{brandId}, #{categoryId}, #{goodsBrief}, #{goodsPrice}, #{picUrl}, #{keywords}, #{isOnSale}, #{isDel}, #{createBy})
+    </insert>
+    
+    <update id="updateGoods" parameterType="com.bins.springcloud.shop.product.dto.GoodsDto">
+    	update `t_goods` set goods_code = #{goodsCode}, goods_name = #{goodsName},
+    	goods_brief = #{goodsBrief}, brand_id = #{brandId}, category_id = #{categoryId}, pic_url =  #{picUrl} where id = #{id}
+    </update>
+    
+    <select id="getGoodsByIds" parameterType="Long" resultMap="BaseResultMap">
+        select * from t_goods where is_del = 0 and id in
+	      <foreach collection="list" separator="," open="(" close=")" item="id">
+	       #{id}
+	      </foreach>
+    </select>
+    
+    <update id="deleteGoods" parameterType="com.bins.springcloud.shop.product.dto.GoodsDto">
+    	update `t_goods` set is_del = 1 where id = #{id}
+    </update>
+
+</mapper>

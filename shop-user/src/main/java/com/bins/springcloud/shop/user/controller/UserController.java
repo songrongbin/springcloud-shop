@@ -1,20 +1,14 @@
 package com.bins.springcloud.shop.user.controller;
 
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.bins.springcloud.shop.common.vo.ResultVo;
 import com.bins.springcloud.shop.user.dto.UserDto;
 import com.bins.springcloud.shop.user.dto.UserPageDto;
 import com.bins.springcloud.shop.user.service.UserService;
-import com.bins.springcloud.shop.user.vo.LoginVo;
 import com.bins.springcloud.shop.user.vo.UserVo;
 import com.github.pagehelper.PageInfo;
 
