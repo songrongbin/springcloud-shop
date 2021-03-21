@@ -26,4 +26,6 @@ public class LoginVo implements Serializable {
 
 	private Long userGroupId;
 	
+	private String errorMsg;
+	
 }

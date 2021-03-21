@@ -2,6 +2,7 @@ package com.bins.springcloud.shop.user.service;
 
 import java.util.List;
 
+import com.bins.springcloud.shop.common.vo.ResultVo;
 import com.bins.springcloud.shop.common.vo.SelectVo;
 import com.bins.springcloud.shop.user.dto.LoginDto;
 import com.bins.springcloud.shop.user.dto.UserPageDto;
@@ -12,7 +13,7 @@ import com.github.pagehelper.PageInfo;
 
 public interface UserService {
 
-	LoginVo login(LoginDto dto);
+	ResultVo<LoginVo> login(LoginDto dto);
 
 	PageInfo<UserVo> getUserPagination(UserPageDto userPageDto);
 

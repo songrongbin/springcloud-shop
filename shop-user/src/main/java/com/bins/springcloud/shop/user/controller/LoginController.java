@@ -1,6 +1,8 @@
 package com.bins.springcloud.shop.user.controller;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,10 +18,15 @@ public class LoginController {
 	private UserService userService;
 	
 	@RequestMapping("/login")
-	public ResultVo<LoginVo> login(LoginDto dto) {
-		LoginVo vo = userService.login(dto);
+	public ResultVo<LoginVo> login(@RequestBody LoginDto dto) {
 		ResultVo<LoginVo> result = new ResultVo<LoginVo>();
-		result.isOk(vo);
+		if (StringUtils.isEmpty(dto.getUserName())) {
+			result.isFail("用户名不能空", null);
+		}
+		if (StringUtils.isEmpty(dto.getPassword())) {
+			result.isFail("密码不能空", null);
+		}
+		result = userService.login(dto);
 		return result;
 	}
 	

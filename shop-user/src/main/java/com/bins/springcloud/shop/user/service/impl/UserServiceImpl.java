@@ -6,10 +6,12 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import com.bins.springcloud.shop.common.utils.PageUtil;
+import com.bins.springcloud.shop.common.vo.ResultVo;
 import com.bins.springcloud.shop.common.vo.SelectVo;
 import com.bins.springcloud.shop.user.dto.LoginDto;
 import com.bins.springcloud.shop.user.dto.UserPageDto;
@@ -29,11 +31,25 @@ public class UserServiceImpl implements UserService {
 	private UserMapper userMapper;
 
 	@Override
-	public LoginVo login(LoginDto dto) {
+	public ResultVo<LoginVo> login(LoginDto dto) {
+		ResultVo<LoginVo> result = new ResultVo<LoginVo>();
+		List<UserEntity> userList = userMapper.findByUserName(dto.getUserName());
+		if (CollectionUtils.isEmpty(userList)) {
+			result.isFail("未找到用户", null);
+			return result;
+		}
+		UserEntity userEntity = userList.get(0);
+		// TODO 增加密码锁定功能
+//		BCryptPasswordEncoder bcryptPasswordEncoder = new BCryptPasswordEncoder();
+//		boolean isMatch = bcryptPasswordEncoder.matches(dto.getPassword(), userEntity.getPassword());
+//		if (!isMatch) {
+//			result.isFail("密码错误", null);
+//			return result;
+//		}
 		LoginVo vo = new LoginVo();
-		vo.setUserName("admin");
-		vo.setUserCode("admin");
-		return vo;
+		BeanUtils.copyProperties(userEntity, vo);
+		result.isOk(vo);
+		return result;
 	}
 
 	@Override

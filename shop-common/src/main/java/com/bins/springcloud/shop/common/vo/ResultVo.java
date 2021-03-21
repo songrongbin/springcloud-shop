@@ -25,14 +25,15 @@ public class ResultVo<T> implements Serializable {
 		this.data = data;
 	}
 	
-	public ResultVo<T> isOk(T data) {
-		ResultVo<T> vo = new ResultVo<T>(0, "", data);
-		return vo;
+	public void isOk(T data) {
+		this.code = 0;
+		this.data = data;
 	}
 	
-	public ResultVo<T> isFail(String msg, T data) {
-		ResultVo<T> vo = new ResultVo<T>(1, msg, data);
-		return vo;
+	public void isFail(String msg, T data) {
+		this.code = 1;
+		this.msg = msg;
+		this.data = data;
 	}
 	
 }

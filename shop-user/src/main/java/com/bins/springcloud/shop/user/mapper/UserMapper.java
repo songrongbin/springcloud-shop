@@ -32,4 +32,6 @@ public interface UserMapper {
 
 	int changePersonInfo(UserDto userDto);
 
+	List<UserEntity> findByUserName(String userName);
+
 }

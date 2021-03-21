@@ -47,6 +47,10 @@
 	      </foreach>
     </select>
     
+    <select id="findByUserName" parameterType="String" resultMap="BaseResultMap">
+        select * from t_user where status = 1 and is_del = 0 and user_name = #{userName}
+    </select>
+    
     <update id="updateUser" parameterType="com.bins.springcloud.shop.user.dto.UserDto">
     	update `t_user` set user_code = #{userCode}, user_name = #{userName},
     	phone = #{phone}, email = #{email},
