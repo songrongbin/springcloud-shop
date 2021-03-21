@@ -1,24 +1,22 @@
-package com.bins.springcloud.shop.order.vo;
+package com.bins.springcloud.shop.order.dto;
+
+import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-import lombok.Data;
-
 @Data
-public class OrderGoodsVo implements Serializable {
-	
+public class OrderGoodsDto implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
 
-	private Long orderId;
+	private String orderId;
 
 	private String orderCode;
-	
-	private Long supplierId;
 
-	private Long goodsId;
+	private Integer goodsId;
 
 	private String goodsCode;
 	
@@ -26,21 +24,17 @@ public class OrderGoodsVo implements Serializable {
 	
 	private String picUrl;
 	
-	private Integer goodsPrice;
+	private String goodsPrice;
 
 	private Integer goodsNumber;
 
-	private Integer goodsAmount;
+	private String goodsAmount;
 	
 	private Integer couponAmount;
 	
 	private Integer discountAmount;
 	
 	private Integer shoppingAmount;
-	
-	private Integer status;
-
-	private String statusName;
 	
 	private Integer isDel;
 	
@@ -49,5 +43,4 @@ public class OrderGoodsVo implements Serializable {
 	private LocalDateTime createTime;
 	
 	private LocalDateTime updateTime;
-
 }

@@ -1,24 +1,32 @@
 package com.bins.springcloud.shop.order.entity;
+
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import lombok.Data;
 
 @Data
-public class OrderEntity implements Serializable {
+public class OrderGoodsEntity implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
-
+	
 	private Long id;
 
-	private Long userId;
-	
-	private Long supplierId;
+	private String orderId;
 
 	private String orderCode;
+
+	private Integer goodsId;
+
+	private String goodsCode;
 	
-	private Integer orderAmount;
+	private String goodsName;
+	
+	private String goodsPrice;
+
+	private Integer goodsNumber;
+
+	private String goodsAmount;
 	
 	private Integer couponAmount;
 	
@@ -26,15 +34,9 @@ public class OrderEntity implements Serializable {
 	
 	private Integer shoppingAmount;
 	
-	private LocalDate payDate;
-	
-	private LocalDate confirmDate;
-	
-	private LocalDate deliveryDate;
-
-	private Integer status;
-
 	private String picUrl;
+	
+	private Integer status;
 	
 	private Integer isDel;
 	

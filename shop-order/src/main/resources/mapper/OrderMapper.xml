@@ -10,6 +10,7 @@
         <result column="discount_amount" property="discountAmount" jdbcType="INTEGER" />
         <result column="shopping_amount" property="shoppingAmount" jdbcType="INTEGER" />
         <result column="user_id" property="userId" jdbcType="BIGINT"/>
+        <result column="supplier_id" property="supplierId" jdbcType="BIGINT"/>
         <result column="pay_date" property="payDate" jdbcType="DATE"/>
         <result column="confirm_date" property="confirmDate" jdbcType="DATE"/>
         <result column="delivery_date" property="deliveryDate" jdbcType="DATE"/>

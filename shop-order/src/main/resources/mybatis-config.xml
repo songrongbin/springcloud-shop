@@ -6,5 +6,6 @@
 	<!-- 类与表的映射文件 -->
 	<mappers>
 		<mapper resource="mapper/OrderMapper.xml" />
+		<mapper resource="mapper/OrderGoodsMapper.xml" />
 	</mappers>
 </configuration>

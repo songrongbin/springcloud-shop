@@ -7,11 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bins.springcloud.shop.common.vo.ResultVo;
 import com.bins.springcloud.shop.supplier.dto.BrandPageDto;
-import com.bins.springcloud.shop.supplier.dto.SupplierPageDto;
 import com.bins.springcloud.shop.supplier.service.BrandService;
-import com.bins.springcloud.shop.supplier.service.SupplierService;
 import com.bins.springcloud.shop.supplier.vo.BrandVo;
-import com.bins.springcloud.shop.supplier.vo.SupplierVo;
 import com.github.pagehelper.PageInfo;
 
 @RestController

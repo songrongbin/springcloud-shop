@@ -1,12 +1,12 @@
-package com.bins.springcloud.shop.order.entity;
+package com.bins.springcloud.shop.order.vo;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import lombok.Data;
 
 @Data
-public class OrderEntity implements Serializable {
+public class OrderDetailVo implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
@@ -14,7 +14,13 @@ public class OrderEntity implements Serializable {
 
 	private Long userId;
 	
+	private String userName;
+	
 	private Long supplierId;
+	
+	private String supplierName;
+	
+	private Long orderId;
 
 	private String orderCode;
 	
@@ -25,20 +31,18 @@ public class OrderEntity implements Serializable {
 	private Integer discountAmount;
 	
 	private Integer shoppingAmount;
-	
-	private LocalDate payDate;
-	
-	private LocalDate confirmDate;
-	
-	private LocalDate deliveryDate;
 
 	private Integer status;
+	
+	private String statusName;
 
 	private String picUrl;
 	
 	private Integer isDel;
 	
 	private Long createBy;
+	
+	private List<OrderGoodsVo> orderGoodsList;
 	
 	private LocalDateTime createTime;
 	

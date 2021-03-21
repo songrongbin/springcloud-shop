@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import com.bins.springcloud.shop.common.utils.PageUtil;
@@ -17,6 +18,7 @@ import com.bins.springcloud.shop.product.vo.CategoryVo;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
+@Service
 public class CategoryServiceImpl implements CategoryService {
 	
 	@Autowired

@@ -18,7 +18,7 @@ public interface SupplierMapper {
 
 	public List<SupplierEntity> findSupplierList();
 
-	public List<SupplierEntity> getSupplierByIds(List<Long> deptIds);
+	public List<SupplierEntity> findByIds(List<Long> ids);
 
 	public int deleteSupplier(SupplierDto dto);
 

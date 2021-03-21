@@ -13,13 +13,12 @@ import com.bins.springcloud.shop.supplier.vo.BrandVo;
  */
 
 @FeignClient("shop-supplier")
-@RequestMapping("/api/brand")
 public interface BrandApi {
 
-    @RequestMapping(value = "/getById", method = RequestMethod.GET)
-    public BrandVo getById(Long brandId);
+    @RequestMapping(value = "/getBrandById", method = RequestMethod.GET)
+    public BrandVo getBrandById(Long brandId);
     
-    @RequestMapping(value = "/getByIds", method = RequestMethod.GET)
-    public List<BrandVo> getByIds(List<Long> brandIds);
+    @RequestMapping(value = "/getBrandByIds", method = RequestMethod.GET)
+    public List<BrandVo> getBrandByIds(List<Long> brandIds);
 
 }

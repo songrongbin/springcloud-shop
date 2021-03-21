@@ -10,7 +10,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  */
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableFeignClients(basePackages = "com.bins.springcloud.shop.user.api")
+@EnableFeignClients(basePackages = {"com.bins.springcloud.shop.user.api", "com.bins.springcloud.shop.supplier.api"})
 public class ShopOrderApplication {
 
     public static void main(String[] args) {

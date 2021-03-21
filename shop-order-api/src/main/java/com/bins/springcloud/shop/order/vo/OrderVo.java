@@ -14,10 +14,22 @@ public class OrderVo implements Serializable {
 	private Long userId;
 	
 	private String userName;
+	
+	private Long supplierId;
 
 	private String orderCode;
+	
+	private Integer orderAmount;
+	
+	private Integer couponAmount;
+	
+	private Integer discountAmount;
+	
+	private Integer shoppingAmount;
 
 	private Integer status;
+	
+	private String statusName;
 
 	private String picUrl;
 	

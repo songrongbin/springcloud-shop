@@ -1,7 +1,6 @@
 /Users/songrongbin/workspaces/eclipse/springcloud-shop/shop-user/src/main/java/com/bins/springcloud/shop/user/mapper/RoleMapper.java
 /Users/songrongbin/workspaces/eclipse/springcloud-shop/shop-user/src/main/java/com/bins/springcloud/shop/user/controller/UserGroupController.java
 /Users/songrongbin/workspaces/eclipse/springcloud-shop/shop-user/src/main/java/com/bins/springcloud/shop/user/service/RoleService.java
-/Users/songrongbin/workspaces/eclipse/springcloud-shop/shop-user/src/main/java/com/bins/springcloud/shop/user/feign/FeignService.java
 /Users/songrongbin/workspaces/eclipse/springcloud-shop/shop-user/src/main/java/com/bins/springcloud/shop/user/entity/UserEntity.java
 /Users/songrongbin/workspaces/eclipse/springcloud-shop/shop-user/src/main/java/com/bins/springcloud/shop/user/service/PermissionService.java
 /Users/songrongbin/workspaces/eclipse/springcloud-shop/shop-user/src/main/java/com/bins/springcloud/shop/user/controller/SelectController.java
