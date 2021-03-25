@@ -18,6 +18,13 @@
         select * from t_user_group where id = #{id}
     </select>
     
+    <select id="findByIds" parameterType="Long" resultMap="BaseResultMap">
+        select * from t_user_group where is_del = 0 and id in
+	      <foreach collection="list" separator="," open="(" close=")" item="id">
+	       #{id}
+	      </foreach>
+    </select>
+    
     <insert id="insert" parameterType="com.bins.springcloud.shop.user.dto.UserGroupDto">
     	INSERT INTO `t_user_group` (group_name, is_del, create_by) VALUES 
     	(#{groupName}, #{isDel}, #{createBy})

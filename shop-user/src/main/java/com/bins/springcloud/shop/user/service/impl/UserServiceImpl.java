@@ -2,21 +2,26 @@ package com.bins.springcloud.shop.user.service.impl;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import com.bins.springcloud.shop.common.utils.PageUtil;
 import com.bins.springcloud.shop.common.vo.ResultVo;
 import com.bins.springcloud.shop.common.vo.SelectVo;
+import com.bins.springcloud.shop.user.common.UserHelper;
 import com.bins.springcloud.shop.user.dto.LoginDto;
 import com.bins.springcloud.shop.user.dto.UserPageDto;
+import com.bins.springcloud.shop.user.entity.DeptEntity;
 import com.bins.springcloud.shop.user.entity.UserEntity;
+import com.bins.springcloud.shop.user.entity.UserGroupEntity;
 import com.bins.springcloud.shop.user.mapper.UserMapper;
+import com.bins.springcloud.shop.user.service.DeptService;
+import com.bins.springcloud.shop.user.service.UserGroupService;
 import com.bins.springcloud.shop.user.service.UserService;
 import com.bins.springcloud.shop.user.vo.LoginVo;
 import com.bins.springcloud.shop.user.vo.UserVo;
@@ -29,6 +34,12 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private UserMapper userMapper;
+	
+	@Autowired
+	private DeptService deptService;
+	
+	@Autowired
+	private UserGroupService userGroupService;
 
 	@Override
 	public ResultVo<LoginVo> login(LoginDto dto) {
@@ -62,28 +73,36 @@ public class UserServiceImpl implements UserService {
 		}
 		PageInfo<UserEntity> originPageInfo = new PageInfo<UserEntity>(userList);
 		PageInfo<UserVo> pageInfo = PageUtil.pageInfoToPageInfoVo(originPageInfo);
-	    // List<Long> deptIds = userList.stream().map(UserEntity::getDeptId).distinct().collect(Collectors.toList());
-	    // List<Long> userGroupIds = userList.stream().map(UserEntity::getUserGroupId).distinct().collect(Collectors.toList());
-	    // List<DeptEntity> deptList = deptService.getDeptByIds(deptIds);
-	    // List<UserGroupEntity> userGroupList = userGroupService.getUserGroupByIds(userGroupIds);
-        // Map<Long, String> deptMap = deptList.stream().collect(Collectors.toMap(DeptEntity::getId, DeptEntity::getDeptName));
-        // Map<Long, String> userGroupMap = userGroupList.stream().collect(Collectors.toMap(UserGroupEntity::getId, UserGroupEntity::getGroupName));
+	    List<Long> deptIds = userList.stream().map(UserEntity::getDeptId).distinct().collect(Collectors.toList());
+	    List<Long> userGroupIds = userList.stream().map(UserEntity::getUserGroupId).distinct().collect(Collectors.toList());
+	    List<DeptEntity> deptList = deptService.findByIds(deptIds);
+	    List<UserGroupEntity> userGroupList = userGroupService.findByIds(userGroupIds);
+        Map<Long, String> deptMap = deptList.stream().collect(Collectors.toMap(DeptEntity::getId, DeptEntity::getDeptName));
+        Map<Long, String> userGroupMap = userGroupList.stream().collect(Collectors.toMap(UserGroupEntity::getId, UserGroupEntity::getGroupName));
 		UserVo vo;
 		List<UserVo> list = Lists.newArrayListWithCapacity(userList.size());
 		for (UserEntity entity : userList) {
 			vo = new UserVo();
 			BeanUtils.copyProperties(entity, vo);
-			// vo.setDeptName(deptMap.get(entity.getDeptId()));
-			// vo.setUserGroupName(userGroupMap.get(entity.getUserGroupId()));
-			// vo.setStatusName(UserHelper.Status.getStatusName(entity.getStatus()));
+			vo.setDeptName(deptMap.get(entity.getDeptId()));
+			vo.setUserGroupName(userGroupMap.get(entity.getUserGroupId()));
+			vo.setStatusName(UserHelper.Status.getStatusName(entity.getStatus()));
 			list.add(vo);
 		}
 		pageInfo.setList(list);
 		return pageInfo;
 	}
+	
+	@Override
+	public UserEntity findById(Long id) {
+		return userMapper.findById(id);
+	}
 
 	@Override
 	public List<UserEntity> findByIds(List<Long> ids) {
+		if (CollectionUtils.isEmpty(ids)) {
+			return Collections.emptyList();
+		}
 		return userMapper.findByIds(ids);
 	}
 
@@ -91,11 +110,6 @@ public class UserServiceImpl implements UserService {
 	public List<SelectVo> getUserSelectList() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public UserEntity findById(Long id) {
-		return userMapper.findById(id);
 	}
 
 	@Override

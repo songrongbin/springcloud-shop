@@ -34,41 +34,7 @@ public class UserGroupServiceImpl implements UserGroupService {
 	
 	@Autowired
 	private UserService userService;
-	 
-	public List<SelectVo> getUserGroupSelectList() {
-		List<UserGroupEntity> list = userGroupMapper.findList();
-		if (CollectionUtils.isEmpty(list)) {
-			return null;
-		}
-		List<SelectVo> voList = new ArrayList<SelectVo>(list.size());
-		SelectVo vo;
-		for (UserGroupEntity entity : list) {
-			vo = new SelectVo();
-			vo.setCode("" + entity.getId());
-			vo.setName(entity.getGroupName());
-	        voList.add(vo);
-		}
-		return voList;
-	}
-
-	public UserGroupVo getById(Long id) {
-		UserGroupEntity entity = userGroupMapper.findById(id);
-		if (entity == null) {
-			return null;
-		}
-		UserGroupVo vo = new UserGroupVo();
-		BeanUtils.copyProperties(entity, vo);
-		return vo;
-	}
 	
-	public UserGroupEntity findById(Long id) {
-		return userGroupMapper.findById(id);
-	}
-
-	public int updateUserGroup(UserGroupDto dto) {
-		return userGroupMapper.update(dto);
-	}
-        
 	public PageInfo<UserGroupVo> getUserGroupPagination(UserGroupPageDto pageDto) {
 		PageHelper.startPage(pageDto.getPageNum(), pageDto.getPageSize()).setOrderBy("id DESC");
 		List<UserGroupEntity> list = userGroupMapper.findList();
@@ -99,7 +65,53 @@ public class UserGroupServiceImpl implements UserGroupService {
 		return pageInfo;
 	}
 
+	public UserGroupVo getById(Long id) {
+		UserGroupEntity entity = userGroupMapper.findById(id);
+		if (entity == null) {
+			return null;
+		}
+		UserGroupVo vo = new UserGroupVo();
+		BeanUtils.copyProperties(entity, vo);
+		return vo;
+	}
+	
+	public UserGroupEntity findById(Long id) {
+		return userGroupMapper.findById(id);
+	}
+	
+	@Override
+	public List<UserGroupEntity> findByIds(List<Long> ids) {
+		if (CollectionUtils.isEmpty(ids)) {
+			return Collections.emptyList();
+		}
+		List<UserGroupEntity> list = userGroupMapper.findByIds(ids);
+		if (CollectionUtils.isEmpty(list)) {
+			return Collections.emptyList();
+		}
+		return list;
+	}
+	
+	@Override
+	public List<UserGroupVo> getByIds(List<Long> ids) {
+		if (CollectionUtils.isEmpty(ids)) {
+			return Collections.emptyList();
+		}
+		List<UserGroupEntity> list = userGroupMapper.findByIds(ids);
+		if (CollectionUtils.isEmpty(list)) {
+			return Collections.emptyList();
+		}
+		List<UserGroupVo> voList = list.stream().map(temp -> {
+			UserGroupVo vo = new UserGroupVo();
+			BeanUtils.copyProperties(temp, vo);
+            return vo;
+        }).collect(Collectors.toList());
+		return voList;
+	}
 
+	public int updateUserGroup(UserGroupDto dto) {
+		return userGroupMapper.update(dto);
+	}
+	
 	public boolean addNewUserGroup(UserGroupDto dto) {
 		int result = userGroupMapper.insert(dto);
 		if (result > 0) {
@@ -109,17 +121,6 @@ public class UserGroupServiceImpl implements UserGroupService {
 		}
 	}
 
-	public List<UserGroupEntity> getUserGroupByIds(List<Long> userGroupIds) {
-		if (CollectionUtils.isEmpty(userGroupIds)) {
-			return Collections.emptyList();
-		}
-		List<UserGroupEntity> list = userGroupMapper.getUserGroupByIds(userGroupIds);
-		if (CollectionUtils.isEmpty(list)) {
-			return Collections.emptyList();
-		}
-		return list;
-	}
-
 	public ResultVo<Boolean> delUserGroup(UserGroupDto dto) {
 		dto.setIsDel(CommonHelper.DeleteStatus.DELETED.getCode());
 		int num = userGroupMapper.deleteUserGroup(dto);
@@ -127,6 +128,22 @@ public class UserGroupServiceImpl implements UserGroupService {
 			return new ResultVo<Boolean>(0, "删除成功", true);
 		}
 		return new ResultVo<Boolean>(0, "删除失败", false);
+	}
+	
+	public List<SelectVo> getUserGroupSelectList() {
+		List<UserGroupEntity> list = userGroupMapper.findList();
+		if (CollectionUtils.isEmpty(list)) {
+			return null;
+		}
+		List<SelectVo> voList = new ArrayList<SelectVo>(list.size());
+		SelectVo vo;
+		for (UserGroupEntity entity : list) {
+			vo = new SelectVo();
+			vo.setCode("" + entity.getId());
+			vo.setName(entity.getGroupName());
+	        voList.add(vo);
+		}
+		return voList;
 	}
 
 }

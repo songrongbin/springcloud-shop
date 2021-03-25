@@ -5,15 +5,16 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bins.springcloud.shop.common.vo.ResultVo;
 import com.bins.springcloud.shop.common.vo.SelectVo;
 import com.bins.springcloud.shop.user.service.DeptService;
 import com.bins.springcloud.shop.user.service.UserGroupService;
 import com.bins.springcloud.shop.user.service.UserService;
+import com.bins.springcloud.shop.user.vo.DeptVo;
 
 @RestController
 @RequestMapping("/select")
@@ -30,8 +31,10 @@ public class SelectController {
 	
 	@RequestMapping("/deptList")
 	@ResponseBody
-	public List<SelectVo> deptList(HttpServletRequest req) {
-		return deptService.getDeptSelectList();
+	public ResultVo<List<SelectVo>> deptList(HttpServletRequest req) {
+		ResultVo<List<SelectVo>> result = new ResultVo<List<SelectVo>>();
+		result.isOk(deptService.getDeptSelectList());
+		return result;
 	}
 	
 	@RequestMapping("/userGroupList")

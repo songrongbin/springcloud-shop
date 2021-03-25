@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -84,7 +85,7 @@ public class PermissionController {
 	}
 	
 	@RequestMapping("/permission/edit")
-	public ResultVo<String> permissionEdit(PermissionDto permissionDto, HttpServletRequest req){
+	public ResultVo<String> permissionEdit(@RequestBody PermissionDto permissionDto, HttpServletRequest req){
 		boolean res = false;
 		String baseContent = null;
 		String baseUrl = "list";
@@ -104,7 +105,7 @@ public class PermissionController {
 	}
 	
 	@RequestMapping("/permission/add")
-	public ResultVo<PermissionVo> permissionAdd(PermissionDto permissionDto, HttpServletRequest req){
+	public ResultVo<PermissionVo> permissionAdd(@RequestBody PermissionDto permissionDto, HttpServletRequest req){
 		PermissionVo res = null;
 		res = permissionService.createPermission(permissionDto);
 		return new ResultVo<PermissionVo>(0, "添加成功", res);

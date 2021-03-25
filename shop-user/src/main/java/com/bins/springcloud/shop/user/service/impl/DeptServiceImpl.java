@@ -2,7 +2,6 @@ package com.bins.springcloud.shop.user.service.impl;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -12,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import com.bins.springcloud.shop.common.constants.BaseConstant;
 import com.bins.springcloud.shop.common.constants.CommonHelper;
 import com.bins.springcloud.shop.common.utils.PageUtil;
 import com.bins.springcloud.shop.common.vo.ResultVo;
@@ -26,7 +26,6 @@ import com.bins.springcloud.shop.user.service.UserService;
 import com.bins.springcloud.shop.user.vo.DeptVo;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.google.common.collect.Maps;
 
 @Service
 public class DeptServiceImpl implements DeptService {
@@ -39,26 +38,33 @@ public class DeptServiceImpl implements DeptService {
 
 	public PageInfo<DeptVo> getDeptPagination(DeptPageDto pageDto) {
 		PageHelper.startPage(pageDto.getPageNum(), pageDto.getPageSize()).setOrderBy("id DESC");
-		List<DeptEntity> list = deptMapper.findDeptList();
+		List<DeptEntity> list = deptMapper.findDeptList(pageDto);
 		PageInfo<DeptEntity> originPageInfo = new PageInfo<>(list);
 		PageInfo<DeptVo> pageInfo = PageUtil.pageInfoToPageInfoVo(originPageInfo);
+		
+		if (CollectionUtils.isEmpty(list)) {
+			pageInfo.setList(Collections.emptyList());
+			return pageInfo;
+		}
 		
 		List<Long> userIds = list.stream().map(DeptEntity::getCreateBy).distinct().collect(Collectors.toList());
 		List<UserEntity> userList = userService.findByIds(userIds);
 		Map<Long, UserEntity> userMap = userList.stream().collect(Collectors.toMap(UserEntity::getId, a -> a));
 		
+		List<Long> pids = list.stream().map(DeptEntity::getPid).distinct().collect(Collectors.toList());
+		List<DeptEntity> entityList = deptMapper.findByIds(pids);
+		Map<Long, DeptEntity> deptMap = entityList.stream().collect(Collectors.toMap(DeptEntity::getId, a -> a));
+		
 		List<DeptVo> deptList = list.stream().map(temp -> {
 			DeptVo dept = new DeptVo();
-			dept.setId(temp.getId());
-			dept.setDeptCode(temp.getDeptCode());
-			dept.setDeptName(temp.getDeptName());
-			dept.setIsDel(temp.getIsDel());
-			dept.setCreateBy(temp.getCreateBy());
-			dept.setCreateTime(temp.getCreateTime());
-			dept.setUpdateTime(temp.getUpdateTime());
+			BeanUtils.copyProperties(temp, dept);
 			UserEntity user = userMap.get(temp.getCreateBy());
 			if (user != null) {
-				dept.setCreateName(userMap.get(temp.getCreateBy()).getUserName());
+				dept.setCreateByName(user.getUserName());
+			}
+			DeptEntity pidDept = deptMap.get(temp.getPid());
+			if (pidDept != null) {
+				dept.setPidName(pidDept.getDeptName());
 			}
             return dept;
         }).collect(Collectors.toList());
@@ -67,7 +73,7 @@ public class DeptServiceImpl implements DeptService {
 	}
 	 
 	public List<SelectVo> getDeptSelectList() {
-		List<DeptEntity> list = deptMapper.findDeptList();
+		List<DeptEntity> list = deptMapper.findAll();
 		if (CollectionUtils.isEmpty(list)) {
 			return Collections.emptyList();
 		}
@@ -81,6 +87,10 @@ public class DeptServiceImpl implements DeptService {
 		}
 		return voList;
 	}
+	
+	public DeptEntity findById(Long id) {
+		return deptMapper.findById(id);
+	}
 
 	public DeptVo getById(Long id) {
 		DeptEntity entity = deptMapper.findById(id);
@@ -89,15 +99,61 @@ public class DeptServiceImpl implements DeptService {
 		}
 		DeptVo vo = new DeptVo();
 		BeanUtils.copyProperties(entity, vo);
+		
+		if (entity.getPid() == null || entity.getPid().longValue() == 0) {
+			vo.setPidName(BaseConstant.DEPT_ROOT);
+		} else {
+			DeptEntity pidEntity = deptMapper.findById(entity.getPid());
+			if (pidEntity != null) {
+				vo.setPidName(pidEntity.getDeptName());
+			}
+		}
+		UserEntity userEntity = userService.findById(entity.getCreateBy());
+		if (userEntity != null) {
+			vo.setCreateByName(userEntity.getUserName());
+		}
 		return vo;
 	}
 	
-	public DeptEntity findById(Long id) {
-		return deptMapper.findById(id);
+	@Override
+	public DeptVo getDetailById(DeptDto dto) {
+		if (dto.getId() == null) {
+			return null;
+		}
+		return getById(dto.getId());
+	}
+	
+	@Override
+	public List<DeptEntity> findByIds(List<Long> deptIds) {
+		if (CollectionUtils.isEmpty(deptIds)) {
+			return Collections.emptyList();
+		}
+		List<DeptEntity> list = deptMapper.findByIds(deptIds);
+		if (CollectionUtils.isEmpty(list)) {
+			return Collections.emptyList();
+		}
+		return list;
+	}
+	
+	@Override
+	public List<DeptVo> getByIds(List<Long> ids) {
+		if (CollectionUtils.isEmpty(ids)) {
+			return Collections.emptyList();
+		}
+		List<DeptEntity> list = deptMapper.findByIds(ids);
+		if (CollectionUtils.isEmpty(list)) {
+			return Collections.emptyList();
+		}
+		List<DeptVo> voList = list.stream().map(temp -> {
+			DeptVo vo = new DeptVo();
+			BeanUtils.copyProperties(temp, vo);
+            return vo;
+        }).collect(Collectors.toList());
+		return voList;
 	}
 
 	public int updateDept(DeptDto dto) {
-		return deptMapper.updateDept(dto);
+		return deptMapper.updateById(dto);
 	}
 
 	public DeptVo addNewDept(DeptDto dto) {
@@ -111,20 +167,9 @@ public class DeptServiceImpl implements DeptService {
 		return vo;
 	}
 
-	public List<DeptEntity> getDeptByIds(List<Long> deptIds) {
-		if (CollectionUtils.isEmpty(deptIds)) {
-			return Collections.emptyList();
-		}
-		List<DeptEntity> list = deptMapper.getDeptByIds(deptIds);
-		if (CollectionUtils.isEmpty(list)) {
-			return Collections.emptyList();
-		}
-		return list;
-	}
-
 	public ResultVo<Boolean> delDept(DeptDto dto) {
 		dto.setIsDel(CommonHelper.DeleteStatus.DELETED.getCode());
-		int num = deptMapper.deleteDept(dto);
+		int num = deptMapper.deleteById(dto);
 		if (num > 0) {
 			return new ResultVo<Boolean>(0, "删除成功", true);
 		}

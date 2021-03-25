@@ -19,7 +19,7 @@ public interface UserGroupMapper {
 
 	public List<UserGroupEntity> findList();
 
-	public List<UserGroupEntity> getUserGroupByIds(List<Long> userGroupIds);
+	public List<UserGroupEntity> findByIds(List<Long> userGroupIds);
 
 	public int deleteUserGroup(UserGroupDto dto);
 

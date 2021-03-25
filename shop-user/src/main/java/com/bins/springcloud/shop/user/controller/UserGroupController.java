@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,7 +36,7 @@ public class UserGroupController {
 	}
 	
 	@RequestMapping("/userGroupEdit")
-	public ResultVo<String> userGroupEdit(UserGroupDto dto, HttpServletRequest req) {
+	public ResultVo<String> userGroupEdit(@RequestBody UserGroupDto dto, HttpServletRequest req) {
 		UserGroupVo deptVo = userGroupService.getById(dto.getId());
 		String jumpUrl = "userGroupPagination";
 		// dto.setCreateBy(SecurityUtils.getUserId());
@@ -45,7 +46,7 @@ public class UserGroupController {
 	
 	
 	@RequestMapping("/userGroupAdd")
-	public ResultVo<String> userGroupAdd(UserGroupDto dto, HttpServletRequest req) {
+	public ResultVo<String> userGroupAdd(@RequestBody UserGroupDto dto, HttpServletRequest req) {
 		if (dto.getIsDel() == null) {
 			dto.setIsDel(0);
 		}

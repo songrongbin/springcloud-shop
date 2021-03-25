@@ -14,7 +14,17 @@
         <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>    
     </resultMap>
     
-    <select id="findDeptList" resultMap="BaseResultMap">
+    <select id="findDeptList" parameterType="com.bins.springcloud.shop.user.dto.DeptPageDto" resultMap="BaseResultMap">
+        select * from t_dept where is_del = 0
+        <if test="deptCode != null and deptCode != ''">
+          and dept_code like concat('%',#{deptCode},'%')
+    	</if >
+	    <if test="deptName != null and deptName !=''">
+	      and dept_name like concat('%',#{deptName},'%')
+	    </if >
+    </select>
+    
+    <select id="findAll" resultMap="BaseResultMap">
         select * from t_dept where is_del = 0
     </select>
     
@@ -22,24 +32,24 @@
         select * from t_dept where id = #{id}
     </select>
     
-    <insert id="insertDept" parameterType="com.bins.springcloud.shop.user.dto.DeptDto">
-    	INSERT INTO `t_dept` (dept_code, dept_name, pid, sort, is_del, create_by) VALUES 
-    	(#{deptCode}, #{deptName}, #{pid}, #{sort}, #{isDel}, #{createBy})
-    </insert>
-    
-    <update id="updateDept" parameterType="com.bins.springcloud.shop.user.dto.DeptDto">
-    	update `t_dept` set dept_code = #{deptCode}, dept_name = #{deptName},
-    	pid = #{pid}, sort = #{sort}, is_del =  #{isDel} where id = #{id}
-    </update>
-    
-    <select id="getDeptByIds" parameterType="Long" resultMap="BaseResultMap">
+    <select id="findByIds" parameterType="Long" resultMap="BaseResultMap">
         select * from t_dept where is_del = 0 and id in
 	      <foreach collection="list" separator="," open="(" close=")" item="id">
 	       #{id}
 	      </foreach>
     </select>
     
-    <update id="deleteDept" parameterType="com.bins.springcloud.shop.user.dto.DeptDto">
+    <insert id="insertDept" parameterType="com.bins.springcloud.shop.user.dto.DeptDto">
+    	INSERT INTO `t_dept` (dept_code, dept_name, pid, sort, is_del, create_by) VALUES 
+    	(#{deptCode}, #{deptName}, #{pid}, #{sort}, #{isDel}, #{createBy})
+    </insert>
+    
+    <update id="updateById" parameterType="com.bins.springcloud.shop.user.dto.DeptDto">
+    	update `t_dept` set dept_code = #{deptCode}, dept_name = #{deptName},
+    	pid = #{pid}, sort = #{sort}, is_del =  #{isDel} where id = #{id}
+    </update>
+    
+    <update id="deleteById" parameterType="com.bins.springcloud.shop.user.dto.DeptDto">
     	update `t_dept` set is_del = 1 where id = #{id}
     </update>
 

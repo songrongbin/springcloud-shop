@@ -6,6 +6,7 @@ import com.bins.springcloud.shop.common.vo.ResultVo;
 import com.bins.springcloud.shop.common.vo.SelectVo;
 import com.bins.springcloud.shop.user.dto.DeptDto;
 import com.bins.springcloud.shop.user.dto.DeptPageDto;
+import com.bins.springcloud.shop.user.entity.DeptEntity;
 import com.bins.springcloud.shop.user.vo.DeptVo;
 import com.github.pagehelper.PageInfo;
 
@@ -22,5 +23,11 @@ public interface DeptService {
 	int updateDept(DeptDto dto);
 
 	List<SelectVo> getDeptSelectList();
+
+	List<DeptEntity> findByIds(List<Long> ids);
+	
+	List<DeptVo> getByIds(List<Long> ids);
+
+	DeptVo getDetailById(DeptDto dto);
 
 }

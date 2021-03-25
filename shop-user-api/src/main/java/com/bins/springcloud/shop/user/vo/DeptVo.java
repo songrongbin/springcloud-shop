@@ -18,15 +18,15 @@ public class DeptVo implements Serializable {
 	
 	private Long pid;
 	
+	private String pidName;
+	
 	private Integer sort;
 	
 	private Integer isDel;
 	
-	private Long operateId;
-	
 	private Long createBy;
 	
-	private String createName;
+	private String createByName;
 	
 	private LocalDateTime createTime;
 	
