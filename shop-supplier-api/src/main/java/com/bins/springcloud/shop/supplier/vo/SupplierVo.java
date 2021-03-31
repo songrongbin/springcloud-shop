@@ -1,4 +1,5 @@
 package com.bins.springcloud.shop.supplier.vo;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -22,6 +23,8 @@ public class SupplierVo implements Serializable {
 	private Integer isDel;
 	
 	private Long createBy;
+	
+	private String createByName;
 	
 	private LocalDateTime createTime;
 	

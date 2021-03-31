@@ -25,6 +25,8 @@ public class PermissionDto implements Serializable {
     
     private Long pid;
     
-    private Long operatorId;
+    private Long createBy;
+    
+    private Long updateBy;
     
 }

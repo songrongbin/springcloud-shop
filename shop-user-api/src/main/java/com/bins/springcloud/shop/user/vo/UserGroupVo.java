@@ -12,13 +12,15 @@ public class UserGroupVo implements Serializable {
 
 	private Long id;
 	
+	private String groupCode;
+	
 	private String groupName;
 	
-	private Integer isDel;
+	private Integer sort;
 	
 	private Long createBy;
 	
-	private String createName;
+	private String createByName;
 	
 	private LocalDateTime createTime;
 

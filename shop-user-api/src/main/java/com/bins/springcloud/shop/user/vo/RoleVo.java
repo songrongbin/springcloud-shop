@@ -16,13 +16,15 @@ public class RoleVo implements Serializable {
 	
 	private String roleName;
 	
-	private Long operatorId;
-	
-	private String operatorName;
-	
 	private Integer sort;
 	
 	private Integer isDel;
+	
+	private Long createBy;
+	
+	private Long updateBy;
+	
+	private String createByName;
 	
 	private LocalDateTime createTime;
 	

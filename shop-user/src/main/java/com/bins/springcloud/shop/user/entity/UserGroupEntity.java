@@ -11,11 +11,17 @@ public class UserGroupEntity {
 	
 	private Long id;
 	
+	private String groupCode;
+	
 	private String groupName;
+	
+	private Integer sort;
 	
 	private Integer isDel;
 	
 	private Long createBy;
+	
+	private Long updateBy;
 	
 	private LocalDateTime createTime;
 	

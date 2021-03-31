@@ -28,6 +28,12 @@ public class UserDto implements Serializable {
 	private Long userGroupId;
 
 	private Integer isDel;
+	
+	private Long createBy;
+
+	private Long updateBy;
+	
+	private String password;
 
 	private String oldPassword;
 

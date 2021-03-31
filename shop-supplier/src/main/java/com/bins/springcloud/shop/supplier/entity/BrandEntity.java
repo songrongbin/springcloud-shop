@@ -25,6 +25,8 @@ public class BrandEntity {
 	
 	private Long createBy;
 	
+	private Long updateBy;
+	
 	private LocalDateTime createTime;
 	
 	private LocalDateTime updateTime;

@@ -10,11 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import com.bins.springcloud.shop.common.constants.CommonHelper;
 import com.bins.springcloud.shop.common.utils.PageUtil;
 import com.bins.springcloud.shop.common.vo.ResultVo;
 import com.bins.springcloud.shop.common.vo.SelectVo;
 import com.bins.springcloud.shop.user.common.UserHelper;
 import com.bins.springcloud.shop.user.dto.LoginDto;
+import com.bins.springcloud.shop.user.dto.UserDto;
 import com.bins.springcloud.shop.user.dto.UserPageDto;
 import com.bins.springcloud.shop.user.entity.DeptEntity;
 import com.bins.springcloud.shop.user.entity.UserEntity;
@@ -64,9 +66,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public PageInfo<UserVo> getUserPagination(UserPageDto userPageDto) {
-		PageHelper.startPage(userPageDto.getPageNum(), userPageDto.getPageSize()).setOrderBy("id DESC");
-		List<UserEntity> userList = userMapper.getAllUserList();
+	public PageInfo<UserVo> getUserPagination(UserPageDto pageDto) {
+		PageHelper.startPage(pageDto.getPageNum(), pageDto.getPageSize()).setOrderBy("id DESC");
+		List<UserEntity> userList = userMapper.getUserList(pageDto);
 		if (CollectionUtils.isEmpty(userList)) {
 			PageInfo<UserVo> pageInfo = new PageInfo<>(Collections.emptyList());
 			return pageInfo;
@@ -146,6 +148,80 @@ public class UserServiceImpl implements UserService {
 			return "";
 		}
 		return entity.getUserName();
+	}
+
+	@Override
+	public ResultVo<UserVo> getDetail(UserDto dto) {
+		ResultVo<UserVo> result = new ResultVo<UserVo>();
+		UserEntity entity = userMapper.findById(dto.getId());
+		if (entity == null) {
+			result.isFail("用户不存在", null);
+			return result;
+		}
+		UserVo vo = new UserVo();
+        BeanUtils.copyProperties(entity, vo);
+        
+        UserEntity createByEntity = userMapper.findById(entity.getCreateBy());
+        if (createByEntity != null) {
+        	vo.setCreateByName(createByEntity.getUserName());
+        }
+        
+        DeptEntity deptEntity = deptService.findById(entity.getDeptId());
+        if (deptEntity != null) {
+        	vo.setDeptName(deptEntity.getDeptName());
+        }
+        
+        UserGroupEntity userGroupEntity = userGroupService.findById(entity.getUserGroupId());
+        if (userGroupEntity != null) {
+        	vo.setUserGroupName(userGroupEntity.getGroupName());
+        }
+        result.setData(vo);
+        return result;
+	}
+
+	@Override
+	public ResultVo<Boolean> editUser(UserDto dto) {
+		ResultVo<Boolean> result = new ResultVo<Boolean>();
+		UserEntity entity = userMapper.findById(dto.getId());
+		if (entity == null) {
+			result.isFail("用户不存在", null);
+			return result;
+		}
+		dto.setUpdateBy(1l);
+		if (userMapper.updateById(dto) == 0) {
+			result.isFail("用户未改变");
+			return result;
+		}
+		result.isOk(Boolean.TRUE);
+		return result;
+	}
+
+	@Override
+	public ResultVo<Boolean> delUser(UserDto dto) {
+		dto.setIsDel(CommonHelper.DeleteStatus.DELETED.getCode());
+		int num = userMapper.deleteById(dto);
+		if (num > 0) {
+			return new ResultVo<Boolean>(0, "删除成功", true);
+		}
+		return new ResultVo<Boolean>(0, "删除失败", false);
+	}
+
+	@Override
+	public ResultVo<UserVo> addUser(UserDto dto) {
+		ResultVo<UserVo> result = new ResultVo<UserVo>();
+		dto.setCreateBy(1l);
+		dto.setUpdateBy(1l);
+		dto.setStatus(1);
+		dto.setPassword("123456");
+		if (userMapper.insert(dto) > 0) {
+			UserVo vo = new UserVo();
+			vo.setId(dto.getId());
+			result.isOk(vo);
+			return result;
+		} else {
+			result.isFail("添加失败");
+			return result;
+		}
 	}
 
 }

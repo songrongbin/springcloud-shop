@@ -11,12 +11,16 @@
         <result column="sort" property="sort" jdbcType="INTEGER"/>
         <result column="is_del" property="isDel" jdbcType="INTEGER"/>
         <result column="create_by" property="createBy" jdbcType="BIGINT"/>
+        <result column="update_by" property="updateBy" jdbcType="BIGINT"/>
         <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
         <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>    
     </resultMap>
     
-    <select id="findList" resultMap="BaseResultMap">
+    <select id="findList" resultMap="BaseResultMap" parameterType="com.bins.springcloud.shop.supplier.dto.BrandPageDto">
         select * from t_brand where is_del = 0
+        <if test="brandName != null and brandName != ''">
+          and brand_name like concat('%',#{brandName},'%')
+    	</if>
     </select>
     
     <select id="findById" resultMap="BaseResultMap" parameterType="Long">
@@ -24,13 +28,13 @@
     </select>
     
     <insert id="insert" parameterType="com.bins.springcloud.shop.supplier.dto.BrandDto">
-    	INSERT INTO `t_brand` (brand_name, brand_desc, pic_url, status, sort, is_del, create_by) VALUES 
-    	(#{brandName}, #{brandDesc}, #{pic_url}, #{status}, #{sort}, #{isDel}, #{createBy})
+    	INSERT INTO `t_brand` (brand_name, brand_desc, pic_url, status, sort, is_del, create_by, update_by) VALUES 
+    	(#{brandName}, #{brandDesc}, #{picUrl}, #{status}, #{sort}, #{isDel}, #{createBy}, #{updateBy})
     </insert>
     
     <update id="updateById" parameterType="com.bins.springcloud.shop.supplier.dto.BrandDto">
     	update `t_brand` set brand_name = #{brandName}, brand_desc = #{brandDesc},
-    	pic_url = #{picUrl}, status = #{status}, sort = #{sort} where id = #{id}
+    	pic_url = #{picUrl}, status = #{status}, sort = #{sort}, update_by = #{updateBy} where id = #{id}
     </update>
     
     <select id="getByIds" parameterType="Long" resultMap="BaseResultMap">

@@ -11,10 +11,12 @@ public class RoleDto {
 
 	private String roleName;
 
-	private Long operatorId;
-
 	private Integer sort;
 
 	private Integer isDel;
+	
+	private Long createBy;
+	
+	private Long updateBy;
 
 }

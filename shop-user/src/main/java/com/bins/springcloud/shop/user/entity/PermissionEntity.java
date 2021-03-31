@@ -25,9 +25,11 @@ public class PermissionEntity {
     
     private Long pid;
     
-    private Long operatorId;
-    
     private Integer isDel;
+    
+    private Long createBy;
+    
+    private Long updateBy;
     
     private LocalDateTime createTime;
     

@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.bins.springcloud.shop.user.dto.UserGroupDto;
+import com.bins.springcloud.shop.user.dto.UserGroupPageDto;
 import com.bins.springcloud.shop.user.entity.UserGroupEntity;
 
 
@@ -15,12 +16,14 @@ public interface UserGroupMapper {
 
 	public int insert(UserGroupDto dto);
 
-	public int update(UserGroupDto dto);
+	public int updateById(UserGroupDto dto);
 
-	public List<UserGroupEntity> findList();
+	public List<UserGroupEntity> findList(UserGroupPageDto pageDto);
 
 	public List<UserGroupEntity> findByIds(List<Long> userGroupIds);
+	
+	public List<UserGroupEntity> findSelectList();
 
-	public int deleteUserGroup(UserGroupDto dto);
+	public int deleteById(UserGroupDto dto);
 
 }

@@ -2,25 +2,31 @@ package com.bins.springcloud.shop.user.service;
 
 import java.util.List;
 
+import com.bins.springcloud.shop.common.vo.ResultVo;
 import com.bins.springcloud.shop.common.vo.SelectVo;
 import com.bins.springcloud.shop.user.dto.PermissionDto;
 import com.bins.springcloud.shop.user.dto.PermissionPageDto;
-import com.bins.springcloud.shop.user.entity.PermissionEntity;
 import com.bins.springcloud.shop.user.vo.PermissionVo;
 import com.github.pagehelper.PageInfo;
 
 public interface PermissionService {
 
-	PageInfo<PermissionEntity> getPermissionList(PermissionPageDto dto);
+	// PageInfo<PermissionEntity> getPermissionList(PermissionPageDto dto);
 
-	List<PermissionVo> getPermissionList();
+	// List<PermissionVo> getPermissionList();
 
-	PermissionVo findById(Long permissionId);
+	PermissionVo findById(Long id);
 
 	List<SelectVo> getByModuelAndMenu();
 
-	boolean permissionEdit(PermissionDto permissionDto);
+	ResultVo<Boolean> editPermission(PermissionDto dto);
 
-	PermissionVo createPermission(PermissionDto permissionDto);
+	ResultVo<PermissionVo> addPermission(PermissionDto dto);
+
+	PageInfo<PermissionVo> getPagination(PermissionPageDto pageDto);
+
+	ResultVo<PermissionVo> getDetail(PermissionDto dto);
+
+	ResultVo<Boolean> delPermission(PermissionDto dto);
 
 }

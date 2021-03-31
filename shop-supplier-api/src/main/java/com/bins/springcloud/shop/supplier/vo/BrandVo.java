@@ -1,4 +1,5 @@
 package com.bins.springcloud.shop.supplier.vo;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -24,6 +25,8 @@ public class BrandVo implements Serializable {
 	private Integer sort;
 	
 	private Long createBy;
+	
+	private String createByName;
 	
 	private LocalDateTime createTime;
 	

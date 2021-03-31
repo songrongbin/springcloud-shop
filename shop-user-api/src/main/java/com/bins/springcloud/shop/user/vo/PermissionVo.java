@@ -26,7 +26,9 @@ public class PermissionVo implements Serializable {
     
     private Long pid;
     
-    private Long operatorId;
+    private Long createBy;
+    
+    private Long updateBy;
     
     private List<PermissionVo> permissionList;
 

@@ -35,6 +35,10 @@ public class UserVo implements Serializable {
 	
 	private String address;
 	
+	private Long createBy;
+    
+    private String createByName;
+	
 	private LocalDateTime frozenRecoveryDate;
 	
 	private LocalDateTime createTime;

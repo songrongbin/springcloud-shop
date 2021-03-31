@@ -18,5 +18,13 @@ public class SupplierDto implements Serializable {
 	private Integer status;
 
 	private String picUrl;
+	
+	private Integer sort;
+	
+	private Integer isDel;
+	
+	private Long createBy;
+	
+	private Long updateBy;
 
 }

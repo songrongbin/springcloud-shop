@@ -12,9 +12,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import com.bins.springcloud.shop.common.constants.CommonHelper;
+import com.bins.springcloud.shop.common.constants.CommonHelper.ResultCodeEnum;
 import com.bins.springcloud.shop.common.utils.PageUtil;
 import com.bins.springcloud.shop.common.vo.ResultVo;
 import com.bins.springcloud.shop.common.vo.SelectVo;
+import com.bins.springcloud.shop.user.dto.DeptDto;
 import com.bins.springcloud.shop.user.dto.UserGroupDto;
 import com.bins.springcloud.shop.user.dto.UserGroupPageDto;
 import com.bins.springcloud.shop.user.entity.UserEntity;
@@ -37,7 +39,7 @@ public class UserGroupServiceImpl implements UserGroupService {
 	
 	public PageInfo<UserGroupVo> getUserGroupPagination(UserGroupPageDto pageDto) {
 		PageHelper.startPage(pageDto.getPageNum(), pageDto.getPageSize()).setOrderBy("id DESC");
-		List<UserGroupEntity> list = userGroupMapper.findList();
+		List<UserGroupEntity> list = userGroupMapper.findList(pageDto);
 		if (CollectionUtils.isEmpty(list)) {
 			return new PageInfo<>(Collections.emptyList());
 		}
@@ -46,20 +48,13 @@ public class UserGroupServiceImpl implements UserGroupService {
 		
 		List<Long> userIds = list.stream().map(UserGroupEntity::getCreateBy).distinct().collect(Collectors.toList());
 		List<UserEntity> userList = userService.findByIds(userIds);
-		Map<Long, UserEntity> userMap = userList.stream().collect(Collectors.toMap(UserEntity::getId, a -> a));
+		Map<Long, String> userMap = userList.stream().collect(Collectors.toMap(UserEntity::getId, UserEntity::getUserName));
 		
 		List<UserGroupVo> userGroupList = list.stream().map(temp -> {
-			UserGroupVo userGroup = new UserGroupVo();
-			userGroup.setId(temp.getId());
-			userGroup.setGroupName(temp.getGroupName());
-			userGroup.setIsDel(temp.getIsDel());
-			userGroup.setCreateBy(temp.getCreateBy());
-			userGroup.setCreateTime(temp.getCreateTime());
-			UserEntity user = userMap.get(temp.getCreateBy());
-			if (user != null) {
-				userGroup.setCreateName(userMap.get(temp.getCreateBy()).getUserName());
-			}
-            return userGroup;
+			UserGroupVo vo = new UserGroupVo();
+			BeanUtils.copyProperties(temp, vo);
+			vo.setCreateByName(userMap.get(temp.getCreateBy()));
+            return vo;
         }).collect(Collectors.toList());
 		pageInfo.setList(userGroupList);
 		return pageInfo;
@@ -108,32 +103,48 @@ public class UserGroupServiceImpl implements UserGroupService {
 		return voList;
 	}
 
-	public int updateUserGroup(UserGroupDto dto) {
-		return userGroupMapper.update(dto);
+	public ResultVo<Boolean> updateUserGroup(UserGroupDto dto) {
+		ResultVo<Boolean> result = new ResultVo<Boolean>();
+		UserGroupEntity entity = userGroupMapper.findById(dto.getId());
+		if (entity == null) {
+			result.isFail("用户组不存在", null);
+			return result;
+		}
+		if (userGroupMapper.updateById(dto) == 0) {
+			result.isFail("用户组未修改");
+			return result;
+		}
+		result.isOk(Boolean.TRUE);
+		return result;
 	}
 	
-	public boolean addNewUserGroup(UserGroupDto dto) {
+	public ResultVo<UserGroupVo> addNewUserGroup(UserGroupDto dto) {
+		dto.setCreateBy(1l);
+		dto.setUpdateBy(1l);
 		int result = userGroupMapper.insert(dto);
 		if (result > 0) {
-			return true;
+			UserGroupVo vo = new UserGroupVo();
+			vo.setId(dto.getId());
+			return new ResultVo<UserGroupVo>(ResultCodeEnum.SUCCESS.getCode(), "保存成功", vo);
 		} else {
-			return false;
+			return new ResultVo<UserGroupVo>(ResultCodeEnum.FAILURE.getCode(), "保存失败", null);
 		}
 	}
 
 	public ResultVo<Boolean> delUserGroup(UserGroupDto dto) {
 		dto.setIsDel(CommonHelper.DeleteStatus.DELETED.getCode());
-		int num = userGroupMapper.deleteUserGroup(dto);
+		dto.setIsDel(CommonHelper.DeleteStatus.NO_DELETE.getCode());
+		int num = userGroupMapper.deleteById(dto);
 		if (num > 0) {
-			return new ResultVo<Boolean>(0, "删除成功", true);
+			return new ResultVo<Boolean>(ResultCodeEnum.SUCCESS.getCode(), "删除成功", true);
 		}
-		return new ResultVo<Boolean>(0, "删除失败", false);
+		return new ResultVo<Boolean>(ResultCodeEnum.FAILURE.getCode(), "删除失败", false);
 	}
 	
 	public List<SelectVo> getUserGroupSelectList() {
-		List<UserGroupEntity> list = userGroupMapper.findList();
+		List<UserGroupEntity> list = userGroupMapper.findSelectList();
 		if (CollectionUtils.isEmpty(list)) {
-			return null;
+			return Collections.emptyList();
 		}
 		List<SelectVo> voList = new ArrayList<SelectVo>(list.size());
 		SelectVo vo;
@@ -144,6 +155,25 @@ public class UserGroupServiceImpl implements UserGroupService {
 	        voList.add(vo);
 		}
 		return voList;
+	}
+
+	@Override
+	public ResultVo<UserGroupVo> getDetail(DeptDto dto) {
+		ResultVo<UserGroupVo> result = new ResultVo<UserGroupVo>();
+		UserGroupEntity entity = userGroupMapper.findById(dto.getId());
+		if (entity == null) {
+			result.isFail("用户组不存在", null);
+			return result;
+		}
+		UserGroupVo vo = new UserGroupVo();
+        BeanUtils.copyProperties(entity, vo);
+        
+        UserEntity createBy = userService.findById(vo.getCreateBy());
+        if (createBy != null) {
+        	vo.setCreateByName(createBy.getUserName());
+        }
+        result.setData(vo);
+        return result;
 	}
 
 }

@@ -4,14 +4,21 @@
     
     <resultMap id="BaseResultMap" type="com.bins.springcloud.shop.user.entity.UserGroupEntity" >
    		<id column="id" property="id" jdbcType="BIGINT"/>
+   		<result column="group_code" property="groupCode" jdbcType="VARCHAR"/>
         <result column="group_name" property="groupName" jdbcType="VARCHAR"/>
         <result column="is_del" property="isDel" jdbcType="INTEGER"/>
         <result column="create_by" property="createBy" jdbcType="BIGINT"/>
         <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
     </resultMap>
     
-    <select id="findList" resultMap="BaseResultMap">
+    <select id="findList" resultMap="BaseResultMap" parameterType="com.bins.springcloud.shop.user.dto.UserGroupPageDto">
         select * from t_user_group where is_del = 0
+        <if test="groupCode != null and groupCode != ''">
+          and group_code like concat('%',#{groupCode},'%')
+    	</if>
+	    <if test="groupName != null and groupName !=''">
+	      and group_name like concat('%',#{groupName},'%')
+	    </if>
     </select>
     
     <select id="findById" resultMap="BaseResultMap" parameterType="Long">
@@ -25,19 +32,23 @@
 	      </foreach>
     </select>
     
-    <insert id="insert" parameterType="com.bins.springcloud.shop.user.dto.UserGroupDto">
-    	INSERT INTO `t_user_group` (group_name, is_del, create_by) VALUES 
-    	(#{groupName}, #{isDel}, #{createBy})
+    <insert id="insert" parameterType="com.bins.springcloud.shop.user.dto.UserGroupDto" useGeneratedKeys="true" keyProperty="id">
+    	INSERT INTO `t_user_group` (group_name, group_code, sort, create_by, update_by) VALUES 
+    	(#{groupName}, #{groupCode}, #{sort}, #{createBy}, #{updateBy})
     </insert>
     
-    <update id="update" parameterType="com.bins.springcloud.shop.user.dto.UserGroupDto">
-    	update `t_user_group` set group_name = #{groupName},
-    	is_del =  #{isDel} where id = #{id}
+    <update id="updateById" parameterType="com.bins.springcloud.shop.user.dto.UserGroupDto">
+    	update `t_user_group` set group_name = #{groupName}, group_code = #{groupCode},
+    	sort =  #{sort} where id = #{id}
     </update>
     
-    <update id="deleteUserGroup" parameterType="com.bins.springcloud.shop.user.dto.UserGroupDto">
+    <update id="deleteById" parameterType="com.bins.springcloud.shop.user.dto.UserGroupDto">
     	update `t_user_group` set is_del = 1 where id = #{id}
     </update>
+    
+    <select id="findSelectList" resultMap="BaseResultMap">
+        select * from t_user_group where is_del = 0
+    </select>
     
     <select id="getUserGroupByIds" parameterType="Long" resultMap="BaseResultMap">
         select * from t_user_group where is_del = 0 and id in

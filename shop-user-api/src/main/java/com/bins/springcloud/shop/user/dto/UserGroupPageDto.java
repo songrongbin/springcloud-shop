@@ -13,8 +13,8 @@ public class UserGroupPageDto extends PageDto implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	private String deptCode;
+	private String groupCode;
 	
-	private String deptName;
+	private String groupName;
 
 }

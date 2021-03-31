@@ -11,26 +11,33 @@
         <result column="sort" property="sort" jdbcType="INTEGER"/>
         <result column="is_del" property="isDel" jdbcType="INTEGER"/>
         <result column="create_by" property="createBy" jdbcType="BIGINT"/>
+        <result column="update_by" property="updateBy" jdbcType="BIGINT"/>
         <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
         <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
     </resultMap>
     
-    <select id="findSupplierList" resultMap="BaseResultMap">
+    <select id="findSupplierList" resultMap="BaseResultMap" parameterType="com.bins.springcloud.shop.supplier.dto.SupplierPageDto">
         select * from t_supplier where is_del = 0
+        <if test="supplierCode != null and supplierCode != ''">
+          and supplier_code like concat('%',#{supplierCode},'%')
+    	</if>
+	    <if test="supplierName != null and supplierName !=''">
+	      and supplier_name like concat('%',#{supplierName},'%')
+	    </if>
     </select>
     
     <select id="findById" resultMap="BaseResultMap" parameterType="Long">
         select * from t_supplier where id = #{id}
     </select>
     
-    <insert id="insertSupplier" parameterType="com.bins.springcloud.shop.supplier.dto.SupplierDto">
-    	INSERT INTO `t_supplier` (supplier_code, supplier_name, pic_url, status, sort, is_del, create_by) VALUES 
-    	(#{supplierCode}, #{supplierName}, #{picUrl}, #{status}, #{sort}, #{isDel}, #{createBy})
+    <insert id="insert" parameterType="com.bins.springcloud.shop.supplier.dto.SupplierDto">
+    	INSERT INTO `t_supplier` (supplier_code, supplier_name, pic_url, status, sort, is_del, create_by, update_by) 
+    	VALUES (#{supplierCode}, #{supplierName}, #{picUrl}, #{status}, #{sort}, #{isDel}, #{createBy}, #{updateBy})
     </insert>
     
-    <update id="updateSupplier" parameterType="com.bins.springcloud.shop.supplier.dto.SupplierDto">
+    <update id="updateById" parameterType="com.bins.springcloud.shop.supplier.dto.SupplierDto">
     	update `t_supplie` set supplie_code = #{supplieCode}, supplie_name = #{supplieName},
-    	pic_url = #{picUrl}, status = #{status}, sort = #{sort}, is_del =  #{isDel} where id = #{id}
+    	pic_url = #{picUrl}, status = #{status}, sort = #{sort}, update_by =  #{updateBy} where id = #{id}
     </update>
     
     <select id="findByIds" parameterType="Long" resultMap="BaseResultMap">
@@ -40,7 +47,7 @@
 	      </foreach>
     </select>
     
-    <update id="deleteSupplier" parameterType="com.bins.springcloud.shop.supplier.dto.SupplierDto">
+    <update id="deleteById" parameterType="com.bins.springcloud.shop.supplier.dto.SupplierDto">
     	update `t_supplier` set is_del = 1 where id = #{id}
     </update>
 

@@ -5,20 +5,23 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.bins.springcloud.shop.user.dto.PermissionDto;
+import com.bins.springcloud.shop.user.dto.PermissionPageDto;
 import com.bins.springcloud.shop.user.entity.PermissionEntity;
 
 
 @Mapper
 public interface PermissionMapper {
 
-	List<PermissionEntity> findPermissionList();
-
-	int insertPermission(PermissionDto permissionDto);
+	List<PermissionEntity> findPermissionList(PermissionPageDto pageDto);
 
 	PermissionEntity findById(Long id);
 
 	List<PermissionEntity> getByModuelAndMenu();
+	
+	int insert(PermissionDto dto);
 
-	int updatePermission(PermissionDto permissionDto);
+	int updateById(PermissionDto dto);
+	
+	int deleteById(PermissionDto dto);
 
 }

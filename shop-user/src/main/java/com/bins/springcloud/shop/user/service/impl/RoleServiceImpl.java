@@ -33,27 +33,20 @@ public class RoleServiceImpl implements RoleService {
 	
 	public PageInfo<RoleVo> getRolePagination(RolePageDto pageDto) {
 		PageHelper.startPage(pageDto.getPageNum(), pageDto.getPageSize()).setOrderBy("id DESC");
-		List<RoleEntity> list = roleMapper.findRoleList();
+		List<RoleEntity> list = roleMapper.findRoleList(pageDto);
 		PageInfo<RoleEntity> originPageInfo = new PageInfo<>(list);
 		PageInfo<RoleVo> pageInfo = PageUtil.pageInfoToPageInfoVo(originPageInfo);
 		
-		List<Long> userIds = list.stream().map(RoleEntity::getOperatorId).distinct().collect(Collectors.toList());
+		List<Long> userIds = list.stream().map(RoleEntity::getCreateBy).distinct().collect(Collectors.toList());
 		List<UserEntity> userList = userService.findByIds(userIds);
 		Map<Long, UserEntity> userMap = userList.stream().collect(Collectors.toMap(UserEntity::getId, a -> a));
 		
 		List<RoleVo> roleList = list.stream().map(temp -> {
 			RoleVo role = new RoleVo();
-			role.setId(temp.getId());
-			role.setRoleCode(temp.getRoleCode());
-			role.setRoleName(temp.getRoleName());
-			role.setIsDel(temp.getIsDel());
-			role.setOperatorId(temp.getOperatorId());
-			role.setSort(temp.getSort());
-			role.setCreateTime(temp.getCreateTime());
-			role.setUpdateTime(temp.getUpdateTime());
-			UserEntity user = userMap.get(temp.getOperatorId());
+			BeanUtils.copyProperties(temp, role);
+			UserEntity user = userMap.get(temp.getCreateBy());
 			if (user != null) {
-				role.setOperatorName(user.getUserName());
+				role.setCreateByName(user.getUserName());
 			}
             return role;
         }).collect(Collectors.toList());
@@ -75,27 +68,63 @@ public class RoleServiceImpl implements RoleService {
 		return roleMapper.findById(id);
 	}
 
-	public int updateRole(RoleDto dto) {
-		return roleMapper.updateRole(dto);
+	public ResultVo<Boolean> updateRole(RoleDto dto) {
+		ResultVo<Boolean> result = new ResultVo<Boolean>();
+		RoleEntity entity = roleMapper.findById(dto.getId());
+		if (entity == null) {
+			result.isFail("角色不存在", null);
+			return result;
+		}
+		dto.setUpdateBy(entity.getUpdateBy());
+		if (roleMapper.updateById(dto) > 0) {
+			result.isOk(Boolean.TRUE);
+			return result;
+		}
+		result.isFail("删除失败");
+		return result;
 	}
 
-	public boolean addNewRole(RoleDto dto) {
-		// dto.setOperatorId(SecurityUtils.getUserId());
-		int result = roleMapper.insertRole(dto);
-		if (result > 0) {
-			return true;
+	public ResultVo<RoleVo> addNewRole(RoleDto dto) {
+		ResultVo<RoleVo> result = new ResultVo<RoleVo>();
+		dto.setCreateBy(1l);
+		dto.setUpdateBy(1l);
+		if (roleMapper.insert(dto) > 0) {
+			RoleVo vo = new RoleVo();
+			vo.setId(dto.getId());
+			result.isOk(vo);
+			return result;
 		} else {
-			return false;
+			result.isFail("添加失败");
+			return result;
 		}
 	}
 	
 	public ResultVo<Boolean> delRole(RoleDto dto) {
 		dto.setIsDel(CommonHelper.DeleteStatus.DELETED.getCode());
-		int num = roleMapper.deleteRole(dto);
+		int num = roleMapper.deleteById(dto);
 		if (num > 0) {
 			return new ResultVo<Boolean>(0, "删除成功", true);
 		}
 		return new ResultVo<Boolean>(0, "删除失败", false);
+	}
+
+	@Override
+	public ResultVo<RoleVo> getDetail(RoleDto dto) {
+		ResultVo<RoleVo> result = new ResultVo<RoleVo>();
+		RoleEntity entity = roleMapper.findById(dto.getId());
+		if (entity == null) {
+			result.isFail("角色不存在", null);
+			return result;
+		}
+		RoleVo vo = new RoleVo();
+        BeanUtils.copyProperties(entity, vo);
+        
+        UserEntity createBy = userService.findById(vo.getCreateBy());
+        if (createBy != null) {
+        	vo.setCreateByName(createBy.getUserName());
+        }
+        result.setData(vo);
+        return result;
 	}
 
 }

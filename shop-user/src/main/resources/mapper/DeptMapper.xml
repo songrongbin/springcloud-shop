@@ -39,18 +39,19 @@
 	      </foreach>
     </select>
     
-    <insert id="insertDept" parameterType="com.bins.springcloud.shop.user.dto.DeptDto">
+    <insert id="insertDept" parameterType="com.bins.springcloud.shop.user.dto.DeptDto" useGeneratedKeys="true" keyProperty="id">
     	INSERT INTO `t_dept` (dept_code, dept_name, pid, sort, is_del, create_by) VALUES 
     	(#{deptCode}, #{deptName}, #{pid}, #{sort}, #{isDel}, #{createBy})
     </insert>
     
     <update id="updateById" parameterType="com.bins.springcloud.shop.user.dto.DeptDto">
     	update `t_dept` set dept_code = #{deptCode}, dept_name = #{deptName},
-    	pid = #{pid}, sort = #{sort}, is_del =  #{isDel} where id = #{id}
+    	pid = #{pid}, sort = #{sort} where id = #{id}
     </update>
     
     <update id="deleteById" parameterType="com.bins.springcloud.shop.user.dto.DeptDto">
     	update `t_dept` set is_del = 1 where id = #{id}
     </update>
+
 
 </mapper>

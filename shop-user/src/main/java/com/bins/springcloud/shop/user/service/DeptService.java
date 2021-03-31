@@ -23,6 +23,8 @@ public interface DeptService {
 	int updateDept(DeptDto dto);
 
 	List<SelectVo> getDeptSelectList();
+	
+	DeptEntity findById(Long id);
 
 	List<DeptEntity> findByIds(List<Long> ids);
 	

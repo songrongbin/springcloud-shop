@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.bins.springcloud.shop.supplier.dto.BrandDto;
+import com.bins.springcloud.shop.supplier.dto.BrandPageDto;
 import com.bins.springcloud.shop.supplier.entity.BrandEntity;
 
 @Mapper
@@ -16,10 +17,12 @@ public interface BrandMapper {
 
 	public BrandEntity findById(Long id);
 
-	public List<BrandEntity> findList();
+	public List<BrandEntity> findList(BrandPageDto pageDto);
 
 	public List<BrandEntity> getByIds(List<Long> ids);
 
 	public int delete(BrandDto dto);
+
+	public int deleteById(BrandDto dto);
 
 }

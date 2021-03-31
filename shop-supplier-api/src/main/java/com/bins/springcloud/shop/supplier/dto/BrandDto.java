@@ -20,5 +20,12 @@ public class BrandDto implements Serializable {
 	private String picUrl;
 	
 	private String sort;
+	
+	private Integer isDel;
+	
+	private Long createBy;
+	
+	private Long updateBy;
+	
 
 }

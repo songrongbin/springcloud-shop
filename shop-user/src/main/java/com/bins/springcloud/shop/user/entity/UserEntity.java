@@ -26,10 +26,12 @@ public class UserEntity {
     private Long userGroupId;
     
     private Integer status;
-        
-    private Long operatorId;
     
     private Integer isDel;
+    
+    private Long createBy;
+    
+    private Long updateBy;
     
     private LocalDateTime createTime;
     

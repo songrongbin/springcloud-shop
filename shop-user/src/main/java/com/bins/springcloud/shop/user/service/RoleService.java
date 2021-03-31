@@ -10,12 +10,14 @@ public interface RoleService {
 
 	ResultVo<Boolean> delRole(RoleDto dto);
 
-	boolean addNewRole(RoleDto dto);
+	ResultVo<RoleVo> addNewRole(RoleDto dto);
 
 	PageInfo<RoleVo> getRolePagination(RolePageDto pageDto);
 
 	RoleVo getById(Long id);
 
-	int updateRole(RoleDto dto);
+	ResultVo<Boolean> updateRole(RoleDto dto);
+
+	ResultVo<RoleVo> getDetail(RoleDto dto);
 
 }

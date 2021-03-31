@@ -14,12 +14,14 @@ public class RoleEntity {
 	private String roleCode;
 
 	private String roleName;
-
-	private Long operatorId;
 	
 	private Integer sort;
 
 	private Integer isDel;
+	
+	private Long createBy;
+	
+	private Long updateBy;
 	
 	private LocalDateTime createTime;
 	

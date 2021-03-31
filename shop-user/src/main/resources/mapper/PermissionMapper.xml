@@ -11,14 +11,21 @@
         <result column="pid" property="pid" jdbcType="BIGINT" />
         <result column="level" property="level" jdbcType="INTEGER"/>
         <result column="sort" property="sort" jdbcType="INTEGER"/>
-        <result column="operator_id" property="operatorId" jdbcType="BIGINT"/>
         <result column="is_del" property="isDel" jdbcType="INTEGER"/>
+        <result column="create_by" property="createBy" jdbcType="BIGINT"/>
+        <result column="update_by" property="updateBy" jdbcType="BIGINT"/>
         <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
         <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>    
     </resultMap>
     
-    <select id="findPermissionList" resultMap="BaseResultMap">
+    <select id="findPermissionList" resultMap="BaseResultMap" parameterType="com.bins.springcloud.shop.user.dto.PermissionPageDto">
         select * from t_permission where id != pid or permission_type != 0 or level != 0
+        <if test="permissionCode != null and permissionCode != ''">
+          and permission_code like concat('%',#{permissionCode},'%')
+    	</if >
+	    <if test="permissionName != null and permissionName !=''">
+	      and permission_name like concat('%',#{permissionName},'%')
+	    </if >
     </select>
     
     <select id="getByModuelAndMenu" resultMap="BaseResultMap">
@@ -29,20 +36,24 @@
         select * from t_permission where id = #{id}
     </select>
     
-    <insert id="insertPermission" parameterType="com.bins.springcloud.shop.user.dto.PermissionDto">
-    	INSERT INTO `t_permission` (permission_code, permission_name, url, permission_type, sort, level, pid, operator_id) VALUES 
-    	(#{permissionCode}, #{permissionName}, #{url}, #{permissionType}, #{sort}, #{level}, #{pid}, #{operatorId})
+    <insert id="insert" parameterType="com.bins.springcloud.shop.user.dto.PermissionDto">
+    	INSERT INTO `t_permission` (permission_code, permission_name, url, permission_type, sort, level, pid, create_by, update_by) 
+    	VALUES (#{permissionCode}, #{permissionName}, #{url}, #{permissionType}, #{sort}, #{level}, #{pid}, #{createBy}, #{updateBy})
     </insert>
     
-    <update id="updatePermission" parameterType="com.bins.springcloud.shop.user.dto.PermissionDto">
+    <update id="updateById" parameterType="com.bins.springcloud.shop.user.dto.PermissionDto">
     	update `t_permission` set permission_code = #{permissionCode}, permission_name = #{permissionName},
     	permission_type = #{permissionType}, url = #{url}, sort =  #{sort}, level = #{level},
-    	pid = #{pid}, operator_id = #{operatorId} where id = #{id}
+    	pid = #{pid}, update_by = #{updateBy} where id = #{id}
     </update>
     
    <insert id="insertRolePermission" parameterType="map">
         INSERT INTO `t_role_permission` (role_id, permission_id) VALUES
             (#{roleId}, #{permissionId})
     </insert>
+    
+    <update id="deleteById" parameterType="com.bins.springcloud.shop.user.dto.PermissionDto">
+    	update `t_permission` set is_del = 1 where id = #{id}
+    </update>
 
 </mapper>

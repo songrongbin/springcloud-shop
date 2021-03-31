@@ -14,7 +14,6 @@ import com.bins.springcloud.shop.common.vo.SelectVo;
 import com.bins.springcloud.shop.user.service.DeptService;
 import com.bins.springcloud.shop.user.service.UserGroupService;
 import com.bins.springcloud.shop.user.service.UserService;
-import com.bins.springcloud.shop.user.vo.DeptVo;
 
 @RestController
 @RequestMapping("/select")
@@ -39,14 +38,18 @@ public class SelectController {
 	
 	@RequestMapping("/userGroupList")
 	@ResponseBody
-	public List<SelectVo> userGroupList(HttpServletRequest req) {
-		return userGroupService.getUserGroupSelectList();
+	public ResultVo<List<SelectVo>> userGroupList(HttpServletRequest req) {
+		ResultVo<List<SelectVo>> result = new ResultVo<List<SelectVo>>();
+		result.isOk(userGroupService.getUserGroupSelectList());
+		return result;
 	}
 	
 	@RequestMapping("/userList")
 	@ResponseBody
-	public List<SelectVo> userList(HttpServletRequest req) {
-		return userService.getUserSelectList();
+	public ResultVo<List<SelectVo>> userList(HttpServletRequest req) {
+		ResultVo<List<SelectVo>> result = new ResultVo<List<SelectVo>>();
+		result.isOk(userService.getUserSelectList());
+		return result;
 	}
 
 }

@@ -1,0 +1,5 @@
+一数据库
+docker run -p 3306:3306 --name mysql04 -e MYSQL_ROOT_PASSWORD=123456 -d mysql
+docker exec -it mysql04 /bin/bash
+mysql -uroot -p123456
+SHOW VARIABLES LIKE 'character_set_%';
