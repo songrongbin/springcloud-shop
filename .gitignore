@@ -1,5 +1,9 @@
 .idea/
 shop-common/target/
+shop-supplier-api/shop-supplier-api.iml
+shop-supplier/shop-supplier.iml
+shop-search/shop-search.iml
+shop-user/shop-user.iml
 shop-user/target/
 shop-user-api/target/
 config-client/com.bins.configclient.iml
@@ -12,6 +16,8 @@ eureka-movie/target/
 eureka-user-provider/target/
 eureka-user-feign/target/
 .idea/workspace.xml
+.idea/compiler.xml
+.idea/encodings.xml
 eureka-movie/eurekamovie.iml
 .project
 .settings/

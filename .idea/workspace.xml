@@ -27,8 +27,8 @@
     <option name="generalSettings">
       <MavenGeneralSettings>
         <option name="localRepository" value="$PROJECT_DIR$/../../maven/repo" />
-        <option name="mavenHome" value="$USER_HOME$/tools/apache-maven-3.5.4" />
-        <option name="userSettingsFile" value="$USER_HOME$/tools/apache-maven-3.5.4/conf/settings.xml" />
+        <option name="mavenHome" value="/usr/local/apache-maven-3.6.3" />
+        <option name="userSettingsFile" value="/usr/local/apache-maven-3.6.3/conf/settings.xml" />
         <option name="workOffline" value="true" />
       </MavenGeneralSettings>
     </option>
@@ -63,11 +63,14 @@
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Facets" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.37011495" />
     <property name="recentsLimit" value="5" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
+  </component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -100,7 +103,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.EurekaServerApplication (3)">
+  <component name="RunManager" selected="Spring Boot.ShopUserApplication">
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -367,6 +370,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="EurekaServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="shop-eureka-server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bins.springcloud.shop.eurekaserver.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.springcloud.shop.eurekaserver.EurekaServerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="GatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="eureka-gateway" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.gateway.GatewayApplication" />
@@ -402,6 +418,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ShopOrderApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="shop-order" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.springcloud.shop.order.ShopOrderApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ShopProductApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="shop-product" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.springcloud.shop.product.ShopProductApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ShopSearchApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="shop-search" />
       <extension name="coverage">
@@ -415,9 +445,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ShopSupplierApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="shop-supplier" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.springcloud.shop.supplier.ShopSupplierApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ShopUserApiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="shop-user-api" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.springcloud.user.ShopUserApiApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ShopUserApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="shop-user" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.springcloud.shop.user.ShopUserApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -453,19 +497,6 @@
     <configuration name="UserFeignApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="shop-monitor" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.userfeign.UserFeignApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserProviderApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="shop-product" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.bins.userprovider.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.userprovider.UserProviderApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -511,19 +542,23 @@
       <item itemvalue="Spring Boot.UserFeignApplication" />
       <item itemvalue="Spring Boot.ShopCommonApplication" />
       <item itemvalue="Spring Boot.ShopUserApiApplication" />
-      <item itemvalue="Spring Boot.UserProviderApplication" />
       <item itemvalue="Spring Boot.EurekaServerApplication (2)" />
       <item itemvalue="Spring Boot.EurekaServerApplication (3)" />
       <item itemvalue="Spring Boot.TradeApplication (1)" />
       <item itemvalue="Spring Boot.ShopSearchApplication" />
+      <item itemvalue="Spring Boot.ShopOrderApplication" />
+      <item itemvalue="Spring Boot.ShopSupplierApplication" />
+      <item itemvalue="Spring Boot.ShopUserApplication" />
+      <item itemvalue="Spring Boot.ShopProductApplication" />
+      <item itemvalue="Spring Boot.EurekaServerApplication" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.EurekaServerApplication" />
         <item itemvalue="Spring Boot.EurekaServerApplication (3)" />
         <item itemvalue="Spring Boot.ShopSearchApplication" />
         <item itemvalue="Spring Boot.TradeApplication (1)" />
         <item itemvalue="Spring Boot.EurekaServerApplication (2)" />
-        <item itemvalue="Spring Boot.UserProviderApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -619,6 +654,7 @@
       <workItem from="1613430301861" duration="750000" />
       <workItem from="1613431070498" duration="723000" />
       <workItem from="1613431994980" duration="1078000" />
+      <workItem from="1617747414144" duration="3793000" />
     </task>
     <servers />
   </component>
@@ -626,10 +662,10 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="208" y="43" key="#Project_Structure" timestamp="1611452492993">
+    <state x="208" y="43" key="#Project_Structure" timestamp="1617750959754">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="208" y="43" key="#Project_Structure/0.23.1440.877@0.23.1440.877" timestamp="1611452492993" />
+    <state x="208" y="43" key="#Project_Structure/0.23.1440.877@0.23.1440.877" timestamp="1617750959754" />
     <state x="533" y="175" key="#com.intellij.ide.util.MemberChooser" timestamp="1611460978780">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
@@ -642,46 +678,62 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="441" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1440.877@0.23.1440.877" timestamp="1611270247453" />
-    <state width="1398" height="311" key="GridCell.Tab.0.bottom" timestamp="1612482962867">
+    <state width="958" height="440" key="GridCell.Tab.0.bottom" timestamp="1617751345447">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="311" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1612482962867" />
-    <state width="1398" height="311" key="GridCell.Tab.0.center" timestamp="1612482962866">
+    <state width="958" height="440" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1617751345447" />
+    <state width="958" height="440" key="GridCell.Tab.0.center" timestamp="1617751345446">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="311" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1612482962866" />
-    <state width="1398" height="311" key="GridCell.Tab.0.left" timestamp="1612482962865">
+    <state width="958" height="440" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1617751345446" />
+    <state width="958" height="440" key="GridCell.Tab.0.left" timestamp="1617751345445">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="311" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1612482962865" />
-    <state width="1398" height="311" key="GridCell.Tab.0.right" timestamp="1612482962867">
+    <state width="958" height="440" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1617751345445" />
+    <state width="958" height="440" key="GridCell.Tab.0.right" timestamp="1617751345447">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="311" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1612482962867" />
-    <state width="958" height="381" key="GridCell.Tab.1.bottom" timestamp="1612451347189">
+    <state width="958" height="440" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1617751345447" />
+    <state width="958" height="440" key="GridCell.Tab.1.bottom" timestamp="1617751344829">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="958" height="381" key="GridCell.Tab.1.bottom/0.23.1440.877@0.23.1440.877" timestamp="1612451347189" />
-    <state width="958" height="381" key="GridCell.Tab.1.center" timestamp="1612451347188">
+    <state width="958" height="440" key="GridCell.Tab.1.bottom/0.23.1440.877@0.23.1440.877" timestamp="1617751344829" />
+    <state width="958" height="440" key="GridCell.Tab.1.center" timestamp="1617751344828">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="958" height="381" key="GridCell.Tab.1.center/0.23.1440.877@0.23.1440.877" timestamp="1612451347188" />
-    <state width="958" height="381" key="GridCell.Tab.1.left" timestamp="1612451347187">
+    <state width="958" height="440" key="GridCell.Tab.1.center/0.23.1440.877@0.23.1440.877" timestamp="1617751344828" />
+    <state width="958" height="440" key="GridCell.Tab.1.left" timestamp="1617751344827">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="958" height="381" key="GridCell.Tab.1.left/0.23.1440.877@0.23.1440.877" timestamp="1612451347187" />
-    <state width="958" height="381" key="GridCell.Tab.1.right" timestamp="1612451347188">
+    <state width="958" height="440" key="GridCell.Tab.1.left/0.23.1440.877@0.23.1440.877" timestamp="1617751344827" />
+    <state width="958" height="440" key="GridCell.Tab.1.right" timestamp="1617751344829">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="958" height="381" key="GridCell.Tab.1.right/0.23.1440.877@0.23.1440.877" timestamp="1612451347188" />
+    <state width="958" height="440" key="GridCell.Tab.1.right/0.23.1440.877@0.23.1440.877" timestamp="1617751344829" />
+    <state width="958" height="440" key="GridCell.Tab.2.bottom" timestamp="1617751344833">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="958" height="440" key="GridCell.Tab.2.bottom/0.23.1440.877@0.23.1440.877" timestamp="1617751344833" />
+    <state width="958" height="440" key="GridCell.Tab.2.center" timestamp="1617751344832">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="958" height="440" key="GridCell.Tab.2.center/0.23.1440.877@0.23.1440.877" timestamp="1617751344832" />
+    <state width="958" height="440" key="GridCell.Tab.2.left" timestamp="1617751344831">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="958" height="440" key="GridCell.Tab.2.left/0.23.1440.877@0.23.1440.877" timestamp="1617751344831" />
+    <state width="958" height="440" key="GridCell.Tab.2.right" timestamp="1617751344833">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="958" height="440" key="GridCell.Tab.2.right/0.23.1440.877@0.23.1440.877" timestamp="1617751344833" />
     <state x="349" y="168" width="812" height="587" key="NewModule_or_Project.wizard" timestamp="1611239832650">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="349" y="168" width="812" height="587" key="NewModule_or_Project.wizard/0.23.1440.877@0.23.1440.877" timestamp="1611239832650" />
-    <state x="208" y="43" key="SettingsEditor" timestamp="1613434393330">
+    <state x="208" y="43" key="SettingsEditor" timestamp="1617751598469">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="208" y="43" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1613434393330" />
+    <state x="208" y="43" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1617751598469" />
     <state x="228" y="143" key="new project wizard" timestamp="1611390969815">
       <screen x="0" y="23" width="1440" height="877" />
     </state>

@@ -20,25 +20,21 @@
 	</properties>
 
 	<dependencies>
-	
 		<dependency>
 			<groupId>com.bins.springcloud.shop.user.api</groupId>
 			<artifactId>shop-user-api</artifactId>
 			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
-		
 		<dependency>
 			<groupId>com.bins.springcloud.shop.supplier</groupId>
 			<artifactId>shop-supplier-api</artifactId>
 			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
-
 		<dependency>
 			<groupId>com.bins.springcloud.shop.common</groupId>
 			<artifactId>shop-common</artifactId>
 			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>

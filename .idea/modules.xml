@@ -13,6 +13,8 @@
       <module fileurl="file://$PROJECT_DIR$/shop-search/shop-search.iml" filepath="$PROJECT_DIR$/shop-search/shop-search.iml" />
       <module fileurl="file://$PROJECT_DIR$/shop-search-api/shop-search-api.iml" filepath="$PROJECT_DIR$/shop-search-api/shop-search-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/shop-statistics/shop-statistics.iml" filepath="$PROJECT_DIR$/shop-statistics/shop-statistics.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shop-supplier/shop-supplier.iml" filepath="$PROJECT_DIR$/shop-supplier/shop-supplier.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shop-supplier-api/shop-supplier-api.iml" filepath="$PROJECT_DIR$/shop-supplier-api/shop-supplier-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/shop-trade/shop-trade.iml" filepath="$PROJECT_DIR$/shop-trade/shop-trade.iml" />
       <module fileurl="file://$PROJECT_DIR$/shop-trade-api/shop-trade-api.iml" filepath="$PROJECT_DIR$/shop-trade-api/shop-trade-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/shop-user/shop-user.iml" filepath="$PROJECT_DIR$/shop-user/shop-user.iml" />

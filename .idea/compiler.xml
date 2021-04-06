@@ -20,6 +20,8 @@
         <module name="shop-product" />
         <module name="shop-monitor" />
         <module name="shop-statistics" />
+        <module name="shop-supplier" />
+        <module name="shop-supplier-api" />
         <module name="shop-search" />
         <module name="shop-common" />
       </profile>
@@ -53,6 +55,8 @@
       <module name="shop-search" target="1.8" />
       <module name="shop-search-api" target="1.8" />
       <module name="shop-statistics" target="1.8" />
+      <module name="shop-supplier" target="1.8" />
+      <module name="shop-supplier-api" target="1.8" />
       <module name="shop-trade" target="1.8" />
       <module name="shop-trade-api" target="1.8" />
       <module name="shop-user" target="1.8" />
@@ -75,6 +79,8 @@
       <module name="shop-search" options="-parameters" />
       <module name="shop-search-api" options="-parameters" />
       <module name="shop-statistics" options="-parameters" />
+      <module name="shop-supplier" options="-parameters" />
+      <module name="shop-supplier-api" options="-parameters" />
       <module name="shop-trade" options="-parameters" />
       <module name="shop-trade-api" options="-parameters" />
       <module name="shop-user" options="-parameters" />
