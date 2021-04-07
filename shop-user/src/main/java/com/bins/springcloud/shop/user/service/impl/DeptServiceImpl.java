@@ -29,10 +29,10 @@ import com.github.pagehelper.PageInfo;
 
 @Service
 public class DeptServiceImpl implements DeptService {
-	
+
 	@Autowired
 	private DeptMapper deptMapper;
-	
+
 	@Autowired
 	private UserService userService;
 
@@ -41,20 +41,19 @@ public class DeptServiceImpl implements DeptService {
 		List<DeptEntity> list = deptMapper.findDeptList(pageDto);
 		PageInfo<DeptEntity> originPageInfo = new PageInfo<>(list);
 		PageInfo<DeptVo> pageInfo = PageUtil.pageInfoToPageInfoVo(originPageInfo);
-		
+
 		if (CollectionUtils.isEmpty(list)) {
 			pageInfo.setList(Collections.emptyList());
 			return pageInfo;
 		}
-		
+
 		List<Long> userIds = list.stream().map(DeptEntity::getCreateBy).distinct().collect(Collectors.toList());
-		List<UserEntity> userList = userService.findByIds(userIds);
-		Map<Long, UserEntity> userMap = userList.stream().collect(Collectors.toMap(UserEntity::getId, a -> a));
-		
+		Map<Long, UserEntity> userMap = userService.getUserEntityMap(userIds);
+
 		List<Long> pids = list.stream().map(DeptEntity::getPid).distinct().collect(Collectors.toList());
 		List<DeptEntity> entityList = deptMapper.findByIds(pids);
 		Map<Long, DeptEntity> deptMap = entityList.stream().collect(Collectors.toMap(DeptEntity::getId, a -> a));
-		
+
 		List<DeptVo> deptList = list.stream().map(temp -> {
 			DeptVo dept = new DeptVo();
 			BeanUtils.copyProperties(temp, dept);
@@ -71,7 +70,7 @@ public class DeptServiceImpl implements DeptService {
 		pageInfo.setList(deptList);
 		return pageInfo;
 	}
-	 
+
 	public List<SelectVo> getDeptSelectList() {
 		List<DeptEntity> list = deptMapper.findAll();
 		if (CollectionUtils.isEmpty(list)) {
@@ -87,7 +86,7 @@ public class DeptServiceImpl implements DeptService {
 		}
 		return voList;
 	}
-	
+
 	public DeptEntity findById(Long id) {
 		return deptMapper.findById(id);
 	}
@@ -99,7 +98,7 @@ public class DeptServiceImpl implements DeptService {
 		}
 		DeptVo vo = new DeptVo();
 		BeanUtils.copyProperties(entity, vo);
-		
+
 		if (entity.getPid() == null || entity.getPid().longValue() == 0) {
 			vo.setPidName(BaseConstant.DEPT_ROOT);
 		} else {
@@ -114,7 +113,7 @@ public class DeptServiceImpl implements DeptService {
 		}
 		return vo;
 	}
-	
+
 	@Override
 	public DeptVo getDetailById(DeptDto dto) {
 		if (dto.getId() == null) {
@@ -122,7 +121,7 @@ public class DeptServiceImpl implements DeptService {
 		}
 		return getById(dto.getId());
 	}
-	
+
 	@Override
 	public List<DeptEntity> findByIds(List<Long> deptIds) {
 		if (CollectionUtils.isEmpty(deptIds)) {
@@ -134,7 +133,7 @@ public class DeptServiceImpl implements DeptService {
 		}
 		return list;
 	}
-	
+
 	@Override
 	public List<DeptVo> getByIds(List<Long> ids) {
 		if (CollectionUtils.isEmpty(ids)) {

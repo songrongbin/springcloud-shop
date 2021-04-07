@@ -14,14 +14,16 @@ public interface PermissionMapper {
 
 	List<PermissionEntity> findPermissionList(PermissionPageDto pageDto);
 
+	List<PermissionEntity> findAll();
+
 	PermissionEntity findById(Long id);
 
 	List<PermissionEntity> getByModuelAndMenu();
-	
+
 	int insert(PermissionDto dto);
 
 	int updateById(PermissionDto dto);
-	
+
 	int deleteById(PermissionDto dto);
 
 }

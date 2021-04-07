@@ -11,13 +11,9 @@ import com.github.pagehelper.PageInfo;
 
 public interface PermissionService {
 
-	// PageInfo<PermissionEntity> getPermissionList(PermissionPageDto dto);
-
-	// List<PermissionVo> getPermissionList();
-
 	PermissionVo findById(Long id);
 
-	List<SelectVo> getByModuelAndMenu();
+	List<PermissionVo> findByUserId(Long id);
 
 	ResultVo<Boolean> editPermission(PermissionDto dto);
 

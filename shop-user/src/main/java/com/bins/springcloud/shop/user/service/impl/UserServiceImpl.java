@@ -5,8 +5,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import com.bins.springcloud.shop.user.security.CustomUserDetails;
+import com.bins.springcloud.shop.user.service.PermissionService;
+import com.bins.springcloud.shop.user.vo.PermissionVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -33,15 +38,18 @@ import com.google.common.collect.Lists;
 
 @Service
 public class UserServiceImpl implements UserService {
-	
+
 	@Autowired
 	private UserMapper userMapper;
-	
+
 	@Autowired
 	private DeptService deptService;
-	
+
 	@Autowired
 	private UserGroupService userGroupService;
+
+	@Autowired
+	private PermissionService permissionService;
 
 	@Override
 	public ResultVo<LoginVo> login(LoginDto dto) {
@@ -94,7 +102,7 @@ public class UserServiceImpl implements UserService {
 		pageInfo.setList(list);
 		return pageInfo;
 	}
-	
+
 	@Override
 	public UserEntity findById(Long id) {
 		return userMapper.findById(id);
@@ -123,7 +131,7 @@ public class UserServiceImpl implements UserService {
 		List<UserVo> voList = list.stream().map(temp -> {
 			UserVo vo = new UserVo();
 			vo.setId(temp.getId());
-			vo.setUserName(temp.getUserName());
+			vo.setUserName(temp.getUsername());
 			vo.setUserCode(temp.getUserCode());
 			vo.setIsDel(temp.getIsDel());
 			vo.setCreateTime(temp.getCreateTime());
@@ -147,7 +155,7 @@ public class UserServiceImpl implements UserService {
 		if (entity == null) {
 			return "";
 		}
-		return entity.getUserName();
+		return entity.getUsername();
 	}
 
 	@Override
@@ -160,17 +168,17 @@ public class UserServiceImpl implements UserService {
 		}
 		UserVo vo = new UserVo();
         BeanUtils.copyProperties(entity, vo);
-        
+
         UserEntity createByEntity = userMapper.findById(entity.getCreateBy());
         if (createByEntity != null) {
-        	vo.setCreateByName(createByEntity.getUserName());
+        	vo.setCreateByName(createByEntity.getUsername());
         }
-        
+
         DeptEntity deptEntity = deptService.findById(entity.getDeptId());
         if (deptEntity != null) {
         	vo.setDeptName(deptEntity.getDeptName());
         }
-        
+
         UserGroupEntity userGroupEntity = userGroupService.findById(entity.getUserGroupId());
         if (userGroupEntity != null) {
         	vo.setUserGroupName(userGroupEntity.getGroupName());
@@ -224,4 +232,29 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
+	@Override
+	public Map<Long, UserEntity> getUserEntityMap(List<Long> userIds) {
+		if (CollectionUtils.isEmpty(userIds)) {
+			return Collections.emptyMap();
+		}
+		List<UserEntity> userList = findByIds(userIds);
+		if (CollectionUtils.isEmpty(userList)) {
+			return Collections.emptyMap();
+		}
+		Map<Long, UserEntity> userMap = userList.stream().collect(Collectors.toMap(UserEntity::getId, a -> a));
+		return userMap;
+	}
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		CustomUserDetails userDetails = null;
+		UserEntity userEntity = userMapper.findByUserCode(username);
+		if (userEntity == null) {
+			return null;
+		}
+		List<PermissionVo> permissionList = permissionService.findByUserId(userEntity.getId());
+		userDetails = new CustomUserDetails(username, userEntity.getPassword(), permissionList);
+		userDetails.setUserId(userEntity.getId());
+		return userDetails;
+	}
 }

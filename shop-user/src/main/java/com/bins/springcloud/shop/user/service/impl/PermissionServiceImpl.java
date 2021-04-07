@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.google.common.collect.Lists;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +25,7 @@ import com.github.pagehelper.PageInfo;
 
 @Service
 public class PermissionServiceImpl implements PermissionService {
-	
+
 	@Autowired
     private PermissionMapper permissionMapper;
 
@@ -34,18 +35,18 @@ public class PermissionServiceImpl implements PermissionService {
 //		PageInfo<PermissionEntity> pageInfo = new PageInfo<>(list);
 //		return pageInfo;
 //	}
-	
+
 	@Override
 	public PageInfo<PermissionVo> getPagination(PermissionPageDto pageDto) {
 		PageHelper.startPage(pageDto.getPageNum(), pageDto.getPageSize()).setOrderBy("id ASC");
 		List<PermissionEntity> list = permissionMapper.findPermissionList(pageDto);
-		
+
 		if (CollectionUtils.isEmpty(list)) {
 			return new PageInfo<>(Collections.emptyList());
 		}
 		PageInfo<PermissionEntity> originPageInfo = new PageInfo<>(list);
 		PageInfo<PermissionVo> pageInfo = PageUtil.pageInfoToPageInfoVo(originPageInfo);
-		
+
 		List<PermissionVo> pageList = list.stream().map(temp -> {
 			PermissionVo vo = new PermissionVo();
 			BeanUtils.copyProperties(temp, vo);
@@ -54,7 +55,7 @@ public class PermissionServiceImpl implements PermissionService {
 		pageInfo.setList(pageList);
 		return pageInfo;
 	}
-	
+
 //	public List<PermissionVo> getPermissionList() {
 //		List<PermissionEntity> list = permissionMapper.findPermissionList();
 //		if (list == null) {
@@ -78,7 +79,22 @@ public class PermissionServiceImpl implements PermissionService {
 		PermissionVo vo = new PermissionVo();
         BeanUtils.copyProperties(permission, vo);
         return vo;
-		
+	}
+
+	@Override
+	public List<PermissionVo> findByUserId(Long id) {
+		List<PermissionEntity> list = permissionMapper.findAll();
+		if (list == null) {
+			return null;
+		}
+		List<PermissionVo> voList = Lists.newArrayList();
+		PermissionVo vo;
+		for (PermissionEntity eo : list) {
+			vo = new PermissionVo();
+			BeanUtils.copyProperties(eo, vo);
+			voList.add(vo);
+		}
+		return voList;
 	}
 
 	public List<SelectVo> getByModuelAndMenu() {
@@ -96,7 +112,7 @@ public class PermissionServiceImpl implements PermissionService {
 		}
 		return voList;
 	}
-	
+
 	public PermissionVo createPermission(PermissionDto permissionDto) {
 		permissionDto.setLevel(permissionDto.getPermissionType());
 		permissionDto.setCreateBy(1l);

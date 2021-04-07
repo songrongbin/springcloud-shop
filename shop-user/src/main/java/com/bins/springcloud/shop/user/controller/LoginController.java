@@ -13,21 +13,23 @@ import com.bins.springcloud.shop.user.vo.LoginVo;
 
 @RestController
 public class LoginController {
-	
+
 	@Autowired
 	private UserService userService;
-	
-	@RequestMapping("/login")
-	public ResultVo<LoginVo> login(@RequestBody LoginDto dto) {
-		ResultVo<LoginVo> result = new ResultVo<LoginVo>();
-		if (StringUtils.isEmpty(dto.getUserName())) {
-			result.isFail("用户名不能空", null);
-		}
-		if (StringUtils.isEmpty(dto.getPassword())) {
-			result.isFail("密码不能空", null);
-		}
-		result = userService.login(dto);
-		return result;
-	}
-	
+
+//	@RequestMapping("/login")
+//	public ResultVo<LoginVo> login(@RequestBody LoginDto dto) {
+//		ResultVo<LoginVo> result = new ResultVo<LoginVo>();
+//		if (StringUtils.isEmpty(dto.getUserName())) {
+//			result.isFail("用户名不能空", null);
+//			return result;
+//		}
+//		if (StringUtils.isEmpty(dto.getPassword())) {
+//			result.isFail("密码不能空", null);
+//			return result;
+//		}
+//		result = userService.login(dto);
+//		return result;
+//	}
+
 }
