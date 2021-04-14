@@ -8,7 +8,7 @@ import lombok.ToString;
 @Data
 @ToString
 public class PermissionEntity {
-	
+
 	private Long id;
 
     private String permissionName;
@@ -19,20 +19,22 @@ public class PermissionEntity {
 
     private String url;
 
+    private String urlClass;
+
     private Integer sort;
-    
+
     private Integer level;
-    
+
     private Long pid;
-    
+
     private Integer isDel;
-    
+
     private Long createBy;
-    
+
     private Long updateBy;
-    
+
     private LocalDateTime createTime;
-    
+
     private LocalDateTime updateTime;
 
 }

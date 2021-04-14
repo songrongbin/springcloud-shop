@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 import com.bins.springcloud.shop.common.constants.CommonHelper;
@@ -30,13 +31,13 @@ import com.github.pagehelper.PageInfo;
 
 @Service
 public class UserGroupServiceImpl implements UserGroupService {
-	
+
 	@Autowired
 	private UserGroupMapper userGroupMapper;
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	public PageInfo<UserGroupVo> getUserGroupPagination(UserGroupPageDto pageDto) {
 		PageHelper.startPage(pageDto.getPageNum(), pageDto.getPageSize()).setOrderBy("id DESC");
 		List<UserGroupEntity> list = userGroupMapper.findList(pageDto);
@@ -45,11 +46,11 @@ public class UserGroupServiceImpl implements UserGroupService {
 		}
 		PageInfo<UserGroupEntity> originPageInfo = new PageInfo<>(list);
 		PageInfo<UserGroupVo> pageInfo = PageUtil.pageInfoToPageInfoVo(originPageInfo);
-		
+
 		List<Long> userIds = list.stream().map(UserGroupEntity::getCreateBy).distinct().collect(Collectors.toList());
 		List<UserEntity> userList = userService.findByIds(userIds);
 		Map<Long, String> userMap = userList.stream().collect(Collectors.toMap(UserEntity::getId, UserEntity::getUserName));
-		
+
 		List<UserGroupVo> userGroupList = list.stream().map(temp -> {
 			UserGroupVo vo = new UserGroupVo();
 			BeanUtils.copyProperties(temp, vo);
@@ -69,11 +70,11 @@ public class UserGroupServiceImpl implements UserGroupService {
 		BeanUtils.copyProperties(entity, vo);
 		return vo;
 	}
-	
+
 	public UserGroupEntity findById(Long id) {
 		return userGroupMapper.findById(id);
 	}
-	
+
 	@Override
 	public List<UserGroupEntity> findByIds(List<Long> ids) {
 		if (CollectionUtils.isEmpty(ids)) {
@@ -85,7 +86,7 @@ public class UserGroupServiceImpl implements UserGroupService {
 		}
 		return list;
 	}
-	
+
 	@Override
 	public List<UserGroupVo> getByIds(List<Long> ids) {
 		if (CollectionUtils.isEmpty(ids)) {
@@ -103,6 +104,7 @@ public class UserGroupServiceImpl implements UserGroupService {
 		return voList;
 	}
 
+	@Transactional
 	public ResultVo<Boolean> updateUserGroup(UserGroupDto dto) {
 		ResultVo<Boolean> result = new ResultVo<Boolean>();
 		UserGroupEntity entity = userGroupMapper.findById(dto.getId());
@@ -117,7 +119,8 @@ public class UserGroupServiceImpl implements UserGroupService {
 		result.isOk(Boolean.TRUE);
 		return result;
 	}
-	
+
+	@Transactional
 	public ResultVo<UserGroupVo> addNewUserGroup(UserGroupDto dto) {
 		dto.setCreateBy(1l);
 		dto.setUpdateBy(1l);
@@ -131,6 +134,7 @@ public class UserGroupServiceImpl implements UserGroupService {
 		}
 	}
 
+	@Transactional
 	public ResultVo<Boolean> delUserGroup(UserGroupDto dto) {
 		dto.setIsDel(CommonHelper.DeleteStatus.DELETED.getCode());
 		dto.setIsDel(CommonHelper.DeleteStatus.NO_DELETE.getCode());
@@ -140,7 +144,7 @@ public class UserGroupServiceImpl implements UserGroupService {
 		}
 		return new ResultVo<Boolean>(ResultCodeEnum.FAILURE.getCode(), "删除失败", false);
 	}
-	
+
 	public List<SelectVo> getUserGroupSelectList() {
 		List<UserGroupEntity> list = userGroupMapper.findSelectList();
 		if (CollectionUtils.isEmpty(list)) {
@@ -167,7 +171,7 @@ public class UserGroupServiceImpl implements UserGroupService {
 		}
 		UserGroupVo vo = new UserGroupVo();
         BeanUtils.copyProperties(entity, vo);
-        
+
         UserEntity createBy = userService.findById(vo.getCreateBy());
         if (createBy != null) {
         	vo.setCreateByName(createBy.getUserName());

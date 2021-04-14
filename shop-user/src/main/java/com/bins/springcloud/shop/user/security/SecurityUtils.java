@@ -28,11 +28,6 @@ public class SecurityUtils {
 		return customUser.getUserId();
 	}
 
-	public static Long getUserId() {
-		Authentication authentication = getAuthentication();
-		return getUserId(authentication);
-	}
-
 	public static Authentication getAuthentication() {
 		SecurityContext securityContext = SecurityContextHolder.getContext();
 		if (securityContext == null) {

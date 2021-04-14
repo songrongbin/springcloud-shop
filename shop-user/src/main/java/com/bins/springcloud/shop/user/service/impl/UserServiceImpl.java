@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 import com.bins.springcloud.shop.common.constants.CommonHelper;
@@ -187,6 +188,7 @@ public class UserServiceImpl implements UserService {
         return result;
 	}
 
+	@Transactional
 	@Override
 	public ResultVo<Boolean> editUser(UserDto dto) {
 		ResultVo<Boolean> result = new ResultVo<Boolean>();
@@ -204,6 +206,7 @@ public class UserServiceImpl implements UserService {
 		return result;
 	}
 
+	@Transactional
 	@Override
 	public ResultVo<Boolean> delUser(UserDto dto) {
 		dto.setIsDel(CommonHelper.DeleteStatus.DELETED.getCode());
@@ -214,6 +217,7 @@ public class UserServiceImpl implements UserService {
 		return new ResultVo<Boolean>(0, "删除失败", false);
 	}
 
+	@Transactional
 	@Override
 	public ResultVo<UserVo> addUser(UserDto dto) {
 		ResultVo<UserVo> result = new ResultVo<UserVo>();
@@ -243,6 +247,11 @@ public class UserServiceImpl implements UserService {
 		}
 		Map<Long, UserEntity> userMap = userList.stream().collect(Collectors.toMap(UserEntity::getId, a -> a));
 		return userMap;
+	}
+
+	@Override
+	public ResultVo<List<PermissionVo>> getUserMenuList(UserDto dto) {
+		return permissionService.getUserMenuList(dto);
 	}
 
 	@Override

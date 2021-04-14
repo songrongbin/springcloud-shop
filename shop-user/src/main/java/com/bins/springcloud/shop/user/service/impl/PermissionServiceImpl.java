@@ -1,14 +1,20 @@
 package com.bins.springcloud.shop.user.service.impl;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
+import com.bins.springcloud.shop.common.constants.CommonHelper;
+import com.bins.springcloud.shop.user.dto.UserDto;
+import com.bins.springcloud.shop.user.entity.UserEntity;
+import com.bins.springcloud.shop.user.security.SecurityUtils;
+import com.bins.springcloud.shop.user.service.UserService;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 import com.bins.springcloud.shop.common.utils.PageUtil;
@@ -29,12 +35,8 @@ public class PermissionServiceImpl implements PermissionService {
 	@Autowired
     private PermissionMapper permissionMapper;
 
-//	public PageInfo<PermissionEntity> getPermissionList(PermissionPageDto dto) {
-//		PageHelper.startPage(dto.getPageNum(), dto.getPageSize()).setOrderBy("id ASC");
-//		List<PermissionEntity> list = permissionMapper.findPermissionList();
-//		PageInfo<PermissionEntity> pageInfo = new PageInfo<>(list);
-//		return pageInfo;
-//	}
+	@Autowired
+	private UserService userService;
 
 	@Override
 	public PageInfo<PermissionVo> getPagination(PermissionPageDto pageDto) {
@@ -55,21 +57,6 @@ public class PermissionServiceImpl implements PermissionService {
 		pageInfo.setList(pageList);
 		return pageInfo;
 	}
-
-//	public List<PermissionVo> getPermissionList() {
-//		List<PermissionEntity> list = permissionMapper.findPermissionList();
-//		if (list == null) {
-//			return null;
-//		}
-//		List<PermissionVo> voList = Lists.newArrayList();
-//		PermissionVo vo;
-//		for (PermissionEntity eo : list) {
-//			vo = new PermissionVo();
-//			BeanUtils.copyProperties(eo, vo);
-//			voList.add(vo);
-//		}
-//		return voList;
-//	}
 
 	public PermissionVo findById(Long id) {
 		PermissionEntity permission = permissionMapper.findById(id);
@@ -102,84 +89,33 @@ public class PermissionServiceImpl implements PermissionService {
 		if (CollectionUtils.isEmpty(list)) {
 			return null;
 		}
-		List<SelectVo> voList = new ArrayList<SelectVo>(list.size());
+		List<SelectVo> voList = transferSelectVoList(list, false);
+		return voList;
+	}
+
+	private List<SelectVo> transferSelectVoList(List<PermissionEntity> list, Boolean isHasRoot) {
+		List<SelectVo> voList;
+		if (isHasRoot) {
+			voList = new ArrayList<SelectVo>(list.size() + 1);
+			SelectVo rootSelectVo = new SelectVo();
+			rootSelectVo.setCode("0");
+			rootSelectVo.setName("根权限");
+			voList.add(rootSelectVo);
+		} else {
+			voList = new ArrayList<SelectVo>(list.size());
+		}
+
 		SelectVo permission;
 		for (PermissionEntity permissionEntity : list) {
 			permission = new SelectVo();
 			permission.setCode("" + permissionEntity.getId());
 			permission.setName(permissionEntity.getPermissionName());
-	        voList.add(permission);
+			voList.add(permission);
 		}
 		return voList;
 	}
 
-	public PermissionVo createPermission(PermissionDto permissionDto) {
-		permissionDto.setLevel(permissionDto.getPermissionType());
-		permissionDto.setCreateBy(1l);
-		permissionDto.setUpdateBy(1l);
-		permissionDto.setLevel(1);
-		permissionDto.setPid(0l);
-		PermissionVo vo = new PermissionVo();
-		if (permissionMapper.insert(permissionDto) > 0) {
-			vo.setId(permissionDto.getId());
-		} else {
-			vo.setId(0l);
-		}
-        return vo;
-	}
-
-	public boolean permissionEdit(PermissionDto permissionDto) {
-		permissionDto.setLevel(permissionDto.getPermissionType());
-		permissionDto.setUpdateBy(1l);
-		int i = permissionMapper.updateById(permissionDto);
-		if (i > 0) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	/*public List<PermissionVo> getPermissionList(Long id) {
-		List<PermissionEntity> list = permissionMapper.findPermissionList();
-		if (CollectionUtils.isEmpty(list)) {
-			return null;
-		}
-		Set<PermissionVo> moduleList = Sets.newHashSet();
-		Map<Long, List<PermissionVo>> menuMap = Maps.newHashMap();
-		PermissionVo vo;
-		for (PermissionEntity e : list) {
-			Integer type = e.getPermissionType();
-			Optional<Integer> optional = Optional.fromNullable(type);
-			if (!optional.isPresent()) {
-				continue;
-			}
-			if (e.getPermissionType() == 1) {
-				vo = new PermissionVo();
-				BeanUtils.copyProperties(e, vo);
-				moduleList.add(vo);
-			} else if (e.getPermissionType() == 2) {
-				List<PermissionVo> menuList = menuMap.get(e.getPid());
-				if (CollectionUtils.isEmpty(menuList)) {
-					menuList = Lists.newArrayList();
-				}
-				vo = new PermissionVo();
-				BeanUtils.copyProperties(e, vo);
-				menuList.add(vo);
-				menuMap.put(e.getPid(), menuList);
-			}
-		}
-		if (CollectionUtils.isEmpty(moduleList)) {
-			return null;
-		}
-		List<PermissionVo> voList = Lists.newArrayList();
-		for (PermissionVo c : moduleList) {
-			List<PermissionVo> menuList = menuMap.get(c.getId());
-			c.setPermissionList(menuList);
-			voList.add(c);
-		}
-		return voList;
-	}*/
-
+	@Transactional
 	@Override
 	public ResultVo<Boolean> editPermission(PermissionDto dto) {
 		ResultVo<Boolean> result = new ResultVo<Boolean>();
@@ -188,6 +124,7 @@ public class PermissionServiceImpl implements PermissionService {
 			result.isFail("权限不存在", null);
 			return result;
 		}
+		dto.setUpdateBy(1l);
 		if (permissionMapper.updateById(dto) == 0) {
 			result.isFail("权限未修改");
 			return result;
@@ -196,14 +133,15 @@ public class PermissionServiceImpl implements PermissionService {
 		return result;
 	}
 
+	@Transactional
 	@Override
 	public ResultVo<PermissionVo> addPermission(PermissionDto dto) {
 		ResultVo<PermissionVo> result = new ResultVo<PermissionVo>();
 		dto.setCreateBy(1l);
 		dto.setUpdateBy(1l);
-		dto.setPermissionType(1);
-		dto.setLevel(1);
-		dto.setPid(0l);
+		dto.setPermissionType(dto.getPermissionType());
+		dto.setLevel(dto.getPermissionType());
+		dto.setPid(dto.getPid());
 		if (permissionMapper.insert(dto) > 0) {
 			PermissionVo vo = new PermissionVo();
 			vo.setId(dto.getId());
@@ -224,19 +162,90 @@ public class PermissionServiceImpl implements PermissionService {
 		}
 		PermissionVo vo = new PermissionVo();
         BeanUtils.copyProperties(entity, vo);
+
+        if (entity.getPid() == null || entity.getPid().longValue() == 0) {
+			vo.setPidName("");
+		} else {
+			PermissionEntity pidEntity = permissionMapper.findById(entity.getPid());
+			if (pidEntity == null) {
+				vo.setPidName("");
+			} else {
+				vo.setPidName(pidEntity.getPermissionName());
+			}
+		}
+
+		UserEntity createBy = userService.findById(vo.getCreateBy());
+		if (createBy != null) {
+			vo.setCreateByName(createBy.getUserName());
+		}
+
         result.setData(vo);
         return result;
 	}
 
+	@Transactional
 	@Override
 	public ResultVo<Boolean> delPermission(PermissionDto dto) {
 		ResultVo<Boolean> result = new ResultVo<Boolean>();
+		dto.setUpdateBy(1l);
 		if (permissionMapper.deleteById(dto) > 0) {
 			result.isOk(Boolean.TRUE);
 			return result;
 		}
 		result.isFail("权限删除失败");
 		return result;
+	}
+
+	@Override
+	public ResultVo<List<PermissionVo>> getUserMenuList(UserDto dto) {
+		List<PermissionEntity> list = permissionMapper.findAll();
+		if (CollectionUtils.isEmpty(list)) {
+			return new ResultVo<List<PermissionVo>>(CommonHelper.ResultCodeEnum.SUCCESS.getCode(), "未查询到数据!", null);
+		}
+		Set<PermissionVo> moduleList = Sets.newHashSet();
+		Map<Long, List<PermissionVo>> menuMap = Maps.newHashMap();
+		PermissionVo vo;
+		for (PermissionEntity e : list) {
+			Integer type = e.getPermissionType();
+			Optional<Integer> optional = Optional.ofNullable(type);
+			if (!optional.isPresent()) {
+				continue;
+			}
+			if (e.getPermissionType() == 1) {
+				vo = new PermissionVo();
+				BeanUtils.copyProperties(e, vo);
+				moduleList.add(vo);
+			} else if (e.getPermissionType() == 2) {
+				List<PermissionVo> menuList = menuMap.get(e.getPid());
+				if (CollectionUtils.isEmpty(menuList)) {
+					menuList = Lists.newArrayList();
+				}
+				vo = new PermissionVo();
+				BeanUtils.copyProperties(e, vo);
+				menuList.add(vo);
+				menuMap.put(e.getPid(), menuList);
+			}
+		}
+		if (CollectionUtils.isEmpty(moduleList)) {
+			return new ResultVo<List<PermissionVo>>(CommonHelper.ResultCodeEnum.SUCCESS.getCode(), "未查询到数据!", null);
+		}
+		List<PermissionVo> voList = Lists.newArrayList();
+		for (PermissionVo c : moduleList) {
+			List<PermissionVo> menuList = menuMap.get(c.getId());
+			c.setPermissionList(menuList);
+			voList.add(c);
+		}
+		return new ResultVo<List<PermissionVo>>(CommonHelper.ResultCodeEnum.SUCCESS.getCode(), "", voList);
+	}
+
+	@Override
+	public ResultVo<List<SelectVo>> pidList(PermissionDto dto) {
+		List<PermissionEntity> list = permissionMapper.pidList();
+		if (CollectionUtils.isEmpty(list)) {
+			return new ResultVo<List<SelectVo>>(CommonHelper.ResultCodeEnum.SUCCESS.getCode(), "未查询到数据!", null);
+		}
+		List<SelectVo> voList = transferSelectVoList(list, true);
+		return new ResultVo<List<SelectVo>>(CommonHelper.ResultCodeEnum.SUCCESS.getCode(), "未查询到数据!", voList);
 	}
 
 }

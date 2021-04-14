@@ -20,6 +20,7 @@ CREATE TABLE `t_permission` (
   `permission_code` varchar(20) DEFAULT NULL,
   `permission_name` varchar(100) NOT NULL,
   `url` varchar(50) DEFAULT NULL,
+  `url_class` varchar(20) DEFAULT NULL,
   `permission_type` int NOT NULL DEFAULT '0',
   `level` int NOT NULL DEFAULT '0',
   `pid` int NOT NULL,
@@ -33,6 +34,8 @@ CREATE TABLE `t_permission` (
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 INSERT INTO `t_permission` VALUES (1,'sys:user:view','用户查看','',0,0,0,0,1,0,1,1,'2020-09-07 15:30:59','2020-09-07 15:30:59'),(2,'sys:user:add','用户添加','',0,0,0,0,1,0,1,1,'2020-09-07 15:30:59','2020-09-07 15:30:59'),(3,'sys:user:edit','用户编辑','',0,0,0,0,1,0,1,1,'2020-09-07 15:30:59','2020-09-07 15:30:59'),(4,'sys:user:delete','用户删除','',0,0,0,0,1,0,1,1,'2020-09-07 15:30:59','2020-09-07 15:30:59'),(5,'sys:role:view','角色查看','',0,0,0,0,1,0,1,1,'2020-09-07 15:31:01','2020-09-07 15:31:01'),(6,'sys:role:edit','角色编辑',NULL,1,1,1,1,0,0,1,1,'2020-09-09 00:18:29','2020-09-09 00:18:29');
+
+ALTER TABLE t_permission ADD COLUMN `url_class` VARCHAR(30) NOT NULL DEFAULT 'el-icon-setting' COMMENT '图标' AFTER `url`;
 
 DROP TABLE IF EXISTS `t_dept`;
 CREATE TABLE `t_dept` (
@@ -121,7 +124,7 @@ CREATE TABLE `t_user_address` (
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8; 
+) ENGINE=InnoDB AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `t_order`;
 CREATE TABLE `t_order` (
@@ -172,7 +175,7 @@ CREATE TABLE `t_order_goods` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8;
 
 INSERT INTO `t_order_goods` VALUES (1000,1000,'SN10000',1000,'GN000001','java',100,1,100,10,5,1,'www.baidu.com',1,0,1,'2021-03-21 07:53:59','2021-03-21 07:53:59');
-insert into t_order_goods (order_id, order_code, goods_id, goods_code, goods_name, goods_price, goods_number, goods_amount,coupon_amount,discount_amount, shopping_amount, pic_url, status, create_by) 
+insert into t_order_goods (order_id, order_code, goods_id, goods_code, goods_name, goods_price, goods_number, goods_amount,coupon_amount,discount_amount, shopping_amount, pic_url, status, create_by)
 values(1000, 'SN10000',1000, 'GN000001', 'java', 100, 1, 100, 10, 5, 1, 'www.baidu.com', 1,1);
 
 DROP TABLE IF EXISTS `t_supplier`;
@@ -220,14 +223,14 @@ CREATE TABLE `t_category` (
   `pic_url` varchar(20) NOT NULL COMMENT '图片',
   `level` tinyint(1) NOT NULL COMMENT '层级',
   `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '状态',
-  `sort` bigint NOT NULL COMMENT '排序',
+  `sort` int NOT NULL COMMENT '排序',
   `is_del` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否删除',
   `create_by` bigint NOT NULL COMMENT '创建人',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8; 
-    
+) ENGINE=InnoDB AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8;
+
 DROP TABLE IF EXISTS `t_comment`;
 CREATE TABLE `t_comment` (
   `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'id',
@@ -242,7 +245,7 @@ CREATE TABLE `t_comment` (
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8; 
+) ENGINE=InnoDB AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `t_coupon`;
 CREATE TABLE `t_coupon` (
@@ -271,9 +274,9 @@ CREATE TABLE `t_keyword` (
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8; 
+) ENGINE=InnoDB AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8;
 
-    
+
 DROP TABLE IF EXISTS `t_goods`;
 CREATE TABLE `t_goods` (
   `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'id',
@@ -291,8 +294,30 @@ CREATE TABLE `t_goods` (
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8; 
+) ENGINE=InnoDB AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8;
 
-insert into t_goods (id, goods_code, goods_name, brand_id, category_id, goods_brief, goods_price,pic_url,keywords,is_on_sale, create_by) 
+insert into t_goods (id, goods_code, goods_name, brand_id, category_id, goods_brief, goods_price,pic_url,keywords,is_on_sale, create_by)
 values(1000, 'GN000001','JAVA', 1000,1000,'JAVA book', 100, 'www.baidu.com','java',1,1);
 
+CREATE TABLE persistent_logins (
+    username VARCHAR (64) NOT NULL,
+    series VARCHAR (64) PRIMARY KEY,
+    token VARCHAR (64) NOT NULL,
+    last_used TIMESTAMP NOT NULL
+)
+
+create table `t_menu` (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `menu_name` varchar(20) NOT NULL comment '菜单名称',
+  `command` varchar(50) NOT NULL comment '菜单命令',
+  `url` varchar(50) NOT NULL comment '菜单链接',
+  `pid` int default 0 comment '父级 ID, 最顶级为 0',
+  `is_blank` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否新页面打开',
+  `sort` int NOT NULL comment '排序, 序号越大, 越靠前',
+  `is_del` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否删除',
+  `create_by` bigint NOT NULL COMMENT '创建人',
+  `update_by` bigint NOT NULL COMMENT '修改人',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8;

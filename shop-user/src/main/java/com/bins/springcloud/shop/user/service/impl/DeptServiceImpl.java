@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 import com.bins.springcloud.shop.common.constants.BaseConstant;
@@ -151,10 +152,12 @@ public class DeptServiceImpl implements DeptService {
 		return voList;
 	}
 
+	@Transactional
 	public int updateDept(DeptDto dto) {
 		return deptMapper.updateById(dto);
 	}
 
+	@Transactional
 	public DeptVo addNewDept(DeptDto dto) {
 		int result = deptMapper.insertDept(dto);
 		DeptVo vo = new DeptVo();
@@ -166,6 +169,7 @@ public class DeptServiceImpl implements DeptService {
 		return vo;
 	}
 
+	@Transactional
 	public ResultVo<Boolean> delDept(DeptDto dto) {
 		dto.setIsDel(CommonHelper.DeleteStatus.DELETED.getCode());
 		int num = deptMapper.deleteById(dto);

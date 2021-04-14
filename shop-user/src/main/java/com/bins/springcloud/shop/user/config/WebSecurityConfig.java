@@ -57,6 +57,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.permitAll() // 释放上面的资源，不需要认证即可访问
 				.anyRequest()
 				.authenticated() // 表示其他请求资源需要认证之后才能访问
+			.and()
+				.rememberMe()//记住我功能
+				.userDetailsService(userService)//设置用户业务
+				.tokenRepository(persistentTokenRepository())//设置持久化token
+				.tokenValiditySeconds(24 * 60 * 60)//记住登录1天(24小时 *60分钟 * 60秒)
 			.and() // csrf配置（csrf功能默认开启，如果不需要关闭，下面都不用配置了）
 				.addFilterBefore(new JwtLoginFilter("/login", authenticationManager()), UsernamePasswordAuthenticationFilter.class)
 				.addFilterBefore(new JwtFilter(), UsernamePasswordAuthenticationFilter.class)

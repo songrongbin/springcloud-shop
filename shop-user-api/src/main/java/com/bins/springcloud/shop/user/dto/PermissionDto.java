@@ -6,9 +6,9 @@ import lombok.Data;
 
 @Data
 public class PermissionDto implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
-	
+
 	private Long id;
 
 	private String permissionName;
@@ -19,14 +19,16 @@ public class PermissionDto implements Serializable {
 
     private String url;
 
+    private String urlClass;
+
     private Integer sort;
-    
+
     private Integer level;
-    
+
     private Long pid;
-    
+
     private Long createBy;
-    
+
     private Long updateBy;
-    
+
 }

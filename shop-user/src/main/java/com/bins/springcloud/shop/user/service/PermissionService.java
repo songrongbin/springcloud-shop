@@ -6,6 +6,7 @@ import com.bins.springcloud.shop.common.vo.ResultVo;
 import com.bins.springcloud.shop.common.vo.SelectVo;
 import com.bins.springcloud.shop.user.dto.PermissionDto;
 import com.bins.springcloud.shop.user.dto.PermissionPageDto;
+import com.bins.springcloud.shop.user.dto.UserDto;
 import com.bins.springcloud.shop.user.vo.PermissionVo;
 import com.github.pagehelper.PageInfo;
 
@@ -25,4 +26,7 @@ public interface PermissionService {
 
 	ResultVo<Boolean> delPermission(PermissionDto dto);
 
+	ResultVo<List<PermissionVo>> getUserMenuList(UserDto dto);
+
+	ResultVo<List<SelectVo>> pidList(PermissionDto dto);
 }

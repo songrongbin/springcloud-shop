@@ -32,4 +32,10 @@ public class LoginController {
 //		return result;
 //	}
 
+	@RequestMapping("/logout")
+	public ResultVo<LoginVo> login(@RequestBody LoginDto dto) {
+		ResultVo<LoginVo> result = new ResultVo<LoginVo>();
+		return result;
+	}
+
 }

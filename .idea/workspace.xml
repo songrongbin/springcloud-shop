@@ -68,7 +68,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.37011495" />
     <property name="recentsLimit" value="5" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
@@ -317,60 +317,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Application (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="com.bins.eurekaclient" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.eurekaclient.Application" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Application (2)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="com.bins.configserver" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.configserver.Application" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="com.bins.configclient" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.configclient.Application" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="EurekaServerApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="eureka-authenticating" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.eurekaauthenticating.EurekaServerApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="EurekaServerApplication (2)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="shop-eureka-server" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.bins.movie.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.movie.EurekaServerApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="EurekaServerApplication (3)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="shop-eureka-server" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.bins.eurekaserver.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.eurekaserver.EurekaServerApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="EurekaServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="shop-eureka-server" />
       <extension name="coverage">
@@ -384,120 +330,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="eureka-gateway" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.gateway.GatewayApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MovieApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="eurekamovie" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.movie.MovieApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="OrderApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="eureka-order" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.order.OrderApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SentenceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="shop-search" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.sentence.ShopSearchApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ShopCommonApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="shop-common" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.springcloud.common.ShopCommonApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ShopOrderApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="shop-order" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.springcloud.shop.order.ShopOrderApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ShopProductApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="shop-product" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.springcloud.shop.product.ShopProductApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ShopSearchApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="shop-search" />
+    <configuration name="GatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="shop-gateway" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.bins.sentence.*" />
+          <option name="PATTERN" value="com.bins.springcloud.shop.gateway.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.sentence.ShopSearchApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.springcloud.shop.gateway.GatewayApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ShopSupplierApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="shop-supplier" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.springcloud.shop.supplier.ShopSupplierApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ShopUserApiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="shop-user-api" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.springcloud.user.ShopUserApiApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ShopUserApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <configuration name="ShopUserApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="shop-user" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bins.springcloud.shop.user.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.springcloud.shop.user.ShopUserApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TradeApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="shop-trade" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.bins.trade.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.trade.TradeApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TradeApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="eureka-trade" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.trade.TradeApplication" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="shop-user" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.user.ShopUserApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserFeignApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="shop-monitor" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bins.userfeign.UserFeignApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -529,37 +383,11 @@
       <pass-parent-envs>true</pass-parent-envs>
       <method v="2" />
     </configuration>
-    <list>
-      <item itemvalue="Spring Boot.TradeApplication" />
-      <item itemvalue="Spring Boot.Application" />
-      <item itemvalue="Spring Boot.GatewayApplication" />
-      <item itemvalue="Spring Boot.Application (1)" />
-      <item itemvalue="Spring Boot.Application (2)" />
-      <item itemvalue="Spring Boot.SentenceApplication" />
-      <item itemvalue="Spring Boot.OrderApplication" />
-      <item itemvalue="Spring Boot.MovieApplication" />
-      <item itemvalue="Spring Boot.EurekaServerApplication (1)" />
-      <item itemvalue="Spring Boot.UserApplication" />
-      <item itemvalue="Spring Boot.UserFeignApplication" />
-      <item itemvalue="Spring Boot.ShopCommonApplication" />
-      <item itemvalue="Spring Boot.ShopUserApiApplication" />
-      <item itemvalue="Spring Boot.EurekaServerApplication (2)" />
-      <item itemvalue="Spring Boot.EurekaServerApplication (3)" />
-      <item itemvalue="Spring Boot.TradeApplication (1)" />
-      <item itemvalue="Spring Boot.ShopSearchApplication" />
-      <item itemvalue="Spring Boot.ShopOrderApplication" />
-      <item itemvalue="Spring Boot.ShopSupplierApplication" />
-      <item itemvalue="Spring Boot.ShopUserApplication" />
-      <item itemvalue="Spring Boot.ShopProductApplication" />
-      <item itemvalue="Spring Boot.EurekaServerApplication" />
-    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.ShopUserApplication" />
+        <item itemvalue="Spring Boot.GatewayApplication" />
         <item itemvalue="Spring Boot.EurekaServerApplication" />
-        <item itemvalue="Spring Boot.EurekaServerApplication (3)" />
-        <item itemvalue="Spring Boot.ShopSearchApplication" />
-        <item itemvalue="Spring Boot.TradeApplication (1)" />
-        <item itemvalue="Spring Boot.EurekaServerApplication (2)" />
       </list>
     </recent_temporary>
   </component>
@@ -655,7 +483,7 @@
       <workItem from="1613430301861" duration="750000" />
       <workItem from="1613431070498" duration="723000" />
       <workItem from="1613431994980" duration="1078000" />
-      <workItem from="1617747414144" duration="11511000" />
+      <workItem from="1617747414144" duration="49809000" />
     </task>
     <servers />
   </component>
@@ -667,10 +495,14 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="208" y="43" key="#Project_Structure/0.23.1440.877@0.23.1440.877" timestamp="1617750959754" />
-    <state x="533" y="175" key="#com.intellij.ide.util.MemberChooser" timestamp="1617826265314">
+    <state x="184" y="123" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1618358086148">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="533" y="175" key="#com.intellij.ide.util.MemberChooser/0.23.1440.877@0.23.1440.877" timestamp="1617826265314" />
+    <state x="184" y="123" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.877@0.23.1440.877" timestamp="1618358086148" />
+    <state x="533" y="175" key="#com.intellij.ide.util.MemberChooser" timestamp="1618242965896">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="533" y="175" key="#com.intellij.ide.util.MemberChooser/0.23.1440.877@0.23.1440.877" timestamp="1618242965896" />
     <state x="470" y="337" width="641" height="256" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1611455169367">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
@@ -679,70 +511,82 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="441" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1440.877@0.23.1440.877" timestamp="1611270247453" />
-    <state width="459" height="466" key="DebuggerActiveHint" timestamp="1617828920279">
+    <state width="488" height="466" key="DebuggerActiveHint" timestamp="1618415347989">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="459" height="466" key="DebuggerActiveHint/0.23.1440.877@0.23.1440.877" timestamp="1617828920279" />
-    <state width="1106" height="397" key="GridCell.Tab.0.bottom" timestamp="1617829612081">
+    <state width="488" height="466" key="DebuggerActiveHint/0.23.1440.877@0.23.1440.877" timestamp="1618415347989" />
+    <state width="1106" height="246" key="GridCell.Tab.0.bottom" timestamp="1618415123445">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1106" height="397" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1617829612081" />
-    <state width="1106" height="397" key="GridCell.Tab.0.center" timestamp="1617829612080">
+    <state width="1106" height="246" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1618415123445" />
+    <state width="1106" height="246" key="GridCell.Tab.0.center" timestamp="1618415123441">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1106" height="397" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1617829612080" />
-    <state width="1106" height="397" key="GridCell.Tab.0.left" timestamp="1617829612079">
+    <state width="1106" height="246" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1618415123441" />
+    <state width="1106" height="246" key="GridCell.Tab.0.left" timestamp="1618415123438">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1106" height="397" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1617829612079" />
-    <state width="1106" height="397" key="GridCell.Tab.0.right" timestamp="1617829612080">
+    <state width="1106" height="246" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1618415123438" />
+    <state width="1106" height="246" key="GridCell.Tab.0.right" timestamp="1618415123443">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1106" height="397" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1617829612080" />
-    <state width="1106" height="325" key="GridCell.Tab.1.bottom" timestamp="1617829648283">
+    <state width="1106" height="246" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1618415123443" />
+    <state width="1106" height="246" key="GridCell.Tab.1.bottom" timestamp="1618415281799">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1106" height="325" key="GridCell.Tab.1.bottom/0.23.1440.877@0.23.1440.877" timestamp="1617829648283" />
-    <state width="1106" height="325" key="GridCell.Tab.1.center" timestamp="1617829648273">
+    <state width="1106" height="246" key="GridCell.Tab.1.bottom/0.23.1440.877@0.23.1440.877" timestamp="1618415281799" />
+    <state width="1106" height="246" key="GridCell.Tab.1.center" timestamp="1618415281797">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1106" height="325" key="GridCell.Tab.1.center/0.23.1440.877@0.23.1440.877" timestamp="1617829648273" />
-    <state width="1106" height="325" key="GridCell.Tab.1.left" timestamp="1617829648266">
+    <state width="1106" height="246" key="GridCell.Tab.1.center/0.23.1440.877@0.23.1440.877" timestamp="1618415281797" />
+    <state width="1106" height="246" key="GridCell.Tab.1.left" timestamp="1618415281796">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1106" height="325" key="GridCell.Tab.1.left/0.23.1440.877@0.23.1440.877" timestamp="1617829648266" />
-    <state width="1106" height="325" key="GridCell.Tab.1.right" timestamp="1617829648281">
+    <state width="1106" height="246" key="GridCell.Tab.1.left/0.23.1440.877@0.23.1440.877" timestamp="1618415281796" />
+    <state width="1106" height="246" key="GridCell.Tab.1.right" timestamp="1618415281798">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1106" height="325" key="GridCell.Tab.1.right/0.23.1440.877@0.23.1440.877" timestamp="1617829648281" />
-    <state width="1106" height="397" key="GridCell.Tab.2.bottom" timestamp="1617829612084">
+    <state width="1106" height="246" key="GridCell.Tab.1.right/0.23.1440.877@0.23.1440.877" timestamp="1618415281798" />
+    <state width="1106" height="246" key="GridCell.Tab.2.bottom" timestamp="1618415123452">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1106" height="397" key="GridCell.Tab.2.bottom/0.23.1440.877@0.23.1440.877" timestamp="1617829612084" />
-    <state width="1106" height="397" key="GridCell.Tab.2.center" timestamp="1617829612083">
+    <state width="1106" height="246" key="GridCell.Tab.2.bottom/0.23.1440.877@0.23.1440.877" timestamp="1618415123452" />
+    <state width="1106" height="246" key="GridCell.Tab.2.center" timestamp="1618415123450">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1106" height="397" key="GridCell.Tab.2.center/0.23.1440.877@0.23.1440.877" timestamp="1617829612083" />
-    <state width="1106" height="397" key="GridCell.Tab.2.left" timestamp="1617829612083">
+    <state width="1106" height="246" key="GridCell.Tab.2.center/0.23.1440.877@0.23.1440.877" timestamp="1618415123450" />
+    <state width="1106" height="246" key="GridCell.Tab.2.left" timestamp="1618415123450">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1106" height="397" key="GridCell.Tab.2.left/0.23.1440.877@0.23.1440.877" timestamp="1617829612083" />
-    <state width="1106" height="397" key="GridCell.Tab.2.right" timestamp="1617829612084">
+    <state width="1106" height="246" key="GridCell.Tab.2.left/0.23.1440.877@0.23.1440.877" timestamp="1618415123450" />
+    <state width="1106" height="246" key="GridCell.Tab.2.right" timestamp="1618415123451">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1106" height="397" key="GridCell.Tab.2.right/0.23.1440.877@0.23.1440.877" timestamp="1617829612084" />
+    <state width="1106" height="246" key="GridCell.Tab.2.right/0.23.1440.877@0.23.1440.877" timestamp="1618415123451" />
     <state x="349" y="168" width="812" height="587" key="NewModule_or_Project.wizard" timestamp="1611239832650">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="349" y="168" width="812" height="587" key="NewModule_or_Project.wizard/0.23.1440.877@0.23.1440.877" timestamp="1611239832650" />
-    <state x="208" y="43" key="SettingsEditor" timestamp="1617754197346">
+    <state x="526" y="386" key="ReplaceDuplicatesPrompt" timestamp="1618186278790">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="208" y="43" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1617754197346" />
-    <state x="464" y="306" key="extract.method.dialog" timestamp="1617825960065">
+    <state x="526" y="386" key="ReplaceDuplicatesPrompt/0.23.1440.877@0.23.1440.877" timestamp="1618186278790" />
+    <state x="208" y="43" key="SettingsEditor" timestamp="1618356026833">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="464" y="306" key="extract.method.dialog/0.23.1440.877@0.23.1440.877" timestamp="1617825960065" />
+    <state x="208" y="43" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1618356026833" />
+    <state x="216" y="197" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1618270277399">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="216" y="197" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.23.1440.877@0.23.1440.877" timestamp="1618270277399" />
+    <state x="464" y="306" key="extract.method.dialog" timestamp="1618186275486">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="464" y="306" key="extract.method.dialog/0.23.1440.877@0.23.1440.877" timestamp="1618186275486" />
+    <state x="421" y="187" width="598" height="548" key="find.popup" timestamp="1618242692895">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="421" y="187" width="598" height="548" key="find.popup/0.23.1440.877@0.23.1440.877" timestamp="1618242692895" />
     <state x="228" y="143" key="new project wizard" timestamp="1611390969815">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
@@ -751,6 +595,10 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="385" y="211" width="670" height="675" key="run.anything.popup/0.23.1440.877@0.23.1440.877" timestamp="1612396116842" />
+    <state x="385" y="213" key="search.everywhere.popup" timestamp="1618355894046">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="385" y="213" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1618355894046" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -771,9 +619,29 @@
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/shop-user/src/main/java/com/bins/springcloud/shop/user/filter/JwtFilter.java</url>
-          <line>21</line>
-          <option name="timeStamp" value="12" />
+          <url>file://$PROJECT_DIR$/shop-user/src/main/java/com/bins/springcloud/shop/user/controller/UserController.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/shop-user/src/main/java/com/bins/springcloud/shop/user/security/SecurityUtils.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$PROJECT_DIR$/../../maven/repo/org/springframework/security/spring-security-web/5.3.4.RELEASE/spring-security-web-5.3.4.RELEASE-sources.jar!/org/springframework/security/web/authentication/UsernamePasswordAuthenticationFilter.java</url>
+          <line>75</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$PROJECT_DIR$/../../maven/repo/org/springframework/security/spring-security-web/5.3.4.RELEASE/spring-security-web-5.3.4.RELEASE-sources.jar!/org/springframework/security/web/authentication/UsernamePasswordAuthenticationFilter.java</url>
+          <line>76</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$PROJECT_DIR$/../../maven/repo/org/springframework/security/spring-security-core/5.3.4.RELEASE/spring-security-core-5.3.4.RELEASE-sources.jar!/org/springframework/security/access/expression/SecurityExpressionRoot.java</url>
+          <line>81</line>
+          <option name="timeStamp" value="64" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -2,6 +2,7 @@ package com.bins.springcloud.shop.user.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.bins.springcloud.shop.common.vo.SelectVo;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,13 +19,15 @@ import com.bins.springcloud.shop.user.service.PermissionService;
 import com.bins.springcloud.shop.user.vo.PermissionVo;
 import com.github.pagehelper.PageInfo;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/permission")
 public class PermissionController {
-	
+
 	@Autowired
 	private PermissionService permissionService;
-	
+
 	@RequestMapping("/pagination")
 	public ResultVo<PageInfo<PermissionVo>> pageList(PermissionPageDto pageDto, HttpServletRequest req) {
 		PageInfo<PermissionVo> pageInfo = permissionService.getPagination(pageDto);
@@ -32,7 +35,7 @@ public class PermissionController {
 		result.setData(pageInfo);
 		return result;
 	}
-	
+
 	@GetMapping("/detail")
 	public ResultVo<PermissionVo> detail(PermissionDto dto) {
 		if (dto.getId() == null || dto.getId() == 0) {
@@ -41,7 +44,7 @@ public class PermissionController {
 		ResultVo<PermissionVo> result = permissionService.getDetail(dto);
 		return result;
 	}
-	
+
 	@RequestMapping("/edit")
 	public ResultVo<Boolean> permissionEdit(@RequestBody PermissionDto dto, HttpServletRequest req){
 		if (dto.getId() == null || dto.getId() == 0) {
@@ -50,7 +53,7 @@ public class PermissionController {
 		ResultVo<Boolean> result = permissionService.editPermission(dto);
 		return result;
 	}
-	
+
 	@RequestMapping("/add")
 	public ResultVo<PermissionVo> permissionAdd(@RequestBody PermissionDto dto, HttpServletRequest req){
 		if (StringUtils.isBlank(dto.getPermissionCode())) {
@@ -61,7 +64,7 @@ public class PermissionController {
 		}
 		return permissionService.addPermission(dto);
 	}
-	
+
 	@RequestMapping("/delete")
 	@ResponseBody
 	public ResultVo<Boolean> delPermission(PermissionDto dto, HttpServletRequest req){
@@ -69,6 +72,12 @@ public class PermissionController {
 			return new ResultVo<Boolean>(ResultCodeEnum.FAILURE.getCode(), "参数错误!", false);
 		}
 		return permissionService.delPermission(dto);
+	}
+
+	@GetMapping("/pidList")
+	public ResultVo<List<SelectVo>> pidList(PermissionDto dto) {
+		ResultVo<List<SelectVo>> result = permissionService.pidList(dto);
+		return result;
 	}
 
 }

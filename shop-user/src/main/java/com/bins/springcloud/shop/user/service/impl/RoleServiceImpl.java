@@ -21,26 +21,27 @@ import com.bins.springcloud.shop.user.service.UserService;
 import com.bins.springcloud.shop.user.vo.RoleVo;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class RoleServiceImpl implements RoleService {
 
 	@Autowired
 	private RoleMapper roleMapper;
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	public PageInfo<RoleVo> getRolePagination(RolePageDto pageDto) {
 		PageHelper.startPage(pageDto.getPageNum(), pageDto.getPageSize()).setOrderBy("id DESC");
 		List<RoleEntity> list = roleMapper.findRoleList(pageDto);
 		PageInfo<RoleEntity> originPageInfo = new PageInfo<>(list);
 		PageInfo<RoleVo> pageInfo = PageUtil.pageInfoToPageInfoVo(originPageInfo);
-		
+
 		List<Long> userIds = list.stream().map(RoleEntity::getCreateBy).distinct().collect(Collectors.toList());
 		List<UserEntity> userList = userService.findByIds(userIds);
 		Map<Long, UserEntity> userMap = userList.stream().collect(Collectors.toMap(UserEntity::getId, a -> a));
-		
+
 		List<RoleVo> roleList = list.stream().map(temp -> {
 			RoleVo role = new RoleVo();
 			BeanUtils.copyProperties(temp, role);
@@ -63,11 +64,12 @@ public class RoleServiceImpl implements RoleService {
 		BeanUtils.copyProperties(entity, vo);
 		return vo;
 	}
-	
+
 	public RoleEntity findById(Long id) {
 		return roleMapper.findById(id);
 	}
 
+	@Transactional
 	public ResultVo<Boolean> updateRole(RoleDto dto) {
 		ResultVo<Boolean> result = new ResultVo<Boolean>();
 		RoleEntity entity = roleMapper.findById(dto.getId());
@@ -84,6 +86,7 @@ public class RoleServiceImpl implements RoleService {
 		return result;
 	}
 
+	@Transactional
 	public ResultVo<RoleVo> addNewRole(RoleDto dto) {
 		ResultVo<RoleVo> result = new ResultVo<RoleVo>();
 		dto.setCreateBy(1l);
@@ -98,7 +101,8 @@ public class RoleServiceImpl implements RoleService {
 			return result;
 		}
 	}
-	
+
+	@Transactional
 	public ResultVo<Boolean> delRole(RoleDto dto) {
 		dto.setIsDel(CommonHelper.DeleteStatus.DELETED.getCode());
 		int num = roleMapper.deleteById(dto);
@@ -118,7 +122,7 @@ public class RoleServiceImpl implements RoleService {
 		}
 		RoleVo vo = new RoleVo();
         BeanUtils.copyProperties(entity, vo);
-        
+
         UserEntity createBy = userService.findById(vo.getCreateBy());
         if (createBy != null) {
         	vo.setCreateByName(createBy.getUserName());

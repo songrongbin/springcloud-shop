@@ -10,6 +10,7 @@ import com.bins.springcloud.shop.user.dto.UserDto;
 import com.bins.springcloud.shop.user.dto.UserPageDto;
 import com.bins.springcloud.shop.user.entity.UserEntity;
 import com.bins.springcloud.shop.user.vo.LoginVo;
+import com.bins.springcloud.shop.user.vo.PermissionVo;
 import com.bins.springcloud.shop.user.vo.UserVo;
 import com.github.pagehelper.PageInfo;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -41,4 +42,6 @@ public interface UserService extends UserDetailsService {
 	ResultVo<UserVo> addUser(UserDto dto);
 
     Map<Long, UserEntity> getUserEntityMap(List<Long> userIds);
+
+    ResultVo<List<PermissionVo>> getUserMenuList(UserDto dto);
 }

@@ -20,13 +20,19 @@ public class PermissionVo implements GrantedAuthority {
 
     private String url;
 
+    private String urlClass;
+
     private Integer sort;
 
     private Integer level;
 
     private Long pid;
 
+    private String pidName;
+
     private Long createBy;
+
+    private String createByName;
 
     private Long updateBy;
 

@@ -26,4 +26,5 @@ public interface PermissionMapper {
 
 	int deleteById(PermissionDto dto);
 
+    List<PermissionEntity> pidList();
 }
